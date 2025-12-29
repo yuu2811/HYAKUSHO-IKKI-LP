@@ -75,18 +75,18 @@
     "founder": {
       "@type": "Person",
       "name": "齋藤 禎紀",
-      "jobTitle": "CEO"
+      "jobTitle": "代表取締役CEO"
     },
     "employee": [
       {
         "@type": "Person",
         "name": "久保 裕太郎",
-        "jobTitle": "COO/CFO"
+        "jobTitle": "取締役COO&CFO"
       },
       {
         "@type": "Person",
         "name": "鈴木 雄大",
-        "jobTitle": "CPO"
+        "jobTitle": "取締役CPO"
       }
     ],
     "contactPoint": {
@@ -286,6 +286,12 @@
       gap: 24px;
       align-items: center;
     }
+    
+    /* Utility: Mobile Only Item */
+    /* デフォルト（PC）では非表示 */
+    .mobile-only {
+      display: none;
+    }
 
     /* Mobile Hamburger Menu */
     .menu-toggle {
@@ -295,7 +301,7 @@
         width: 30px;
         height: 21px;
         cursor: pointer;
-        z-index: 1002;
+        z-index: 2000; /* ナビゲーション(z-index:1001)より確実に上にする */
         margin-right: 4px;
         /* Reset Button Styles */
         background: none;
@@ -315,6 +321,10 @@
     @media (max-width: 900px) {
         .menu-toggle {
             display: flex;
+            /* Scroll時にも固定位置に表示し、メニュー展開時も隠れないようにする */
+            position: fixed;
+            top: 24px; /* ヘッダー高さ中央付近 */
+            right: 5%; /* コンテナのマージンに合わせる */
         }
         .nav {
             position: fixed;
@@ -322,12 +332,19 @@
             right: -100%;
             width: 85%; /* 少し広めに */
             max-width: 320px;
-            height: 100vh;
+            height: 100dvh; /* 100vh -> 100dvh (アドレスバー考慮) */
             background: rgba(255, 255, 255, 0.98);
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
+            
+            /* 修正: 画面からはみ出す場合の対策 */
+            justify-content: flex-start; /* 中央寄せをやめて上詰めに */
+            padding-top: 90px; /* 閉じるボタンと重ならないよう上部に余白 */
+            padding-bottom: 40px; /* 下部にも余白 */
+            overflow-y: auto; /* 内容が多い場合はスクロール可能に */
+            -webkit-overflow-scrolling: touch; /* スクロールを滑らかに */
+            
+            gap: 20px; /* 間隔を少し詰めて収まりやすく */
+            
             transition: right 0.4s cubic-bezier(0.22, 1, 0.36, 1);
             box-shadow: -5px 0 20px rgba(0,0,0,0.1);
             backdrop-filter: blur(10px);
@@ -336,6 +353,12 @@
         .nav.active {
             right: 0;
         }
+        
+        /* モバイルメニュー内では表示する */
+        .mobile-only {
+            display: block;
+        }
+        
         .menu-toggle.active span:nth-child(1) {
             transform: translateY(9px) rotate(45deg);
         }
@@ -595,18 +618,18 @@
         fill: currentColor;
     }
 
-    /* --- Purpose Section --- */
-    #purpose.purpose-section {
+    /* --- Purpose Section (ID Changed to #ikki) --- */
+    #ikki.purpose-section {
         position: relative;
         color: #fff;
         /* 静岡・沼津周辺のイメージに近い「茶畑と富士山」の画像に変更 */
         background: var(--primary) url('https://images.unsplash.com/photo-1589308078059-be1415eab4c3?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat fixed;
     }
     @supports (-webkit-touch-callout: none) {
-        #purpose.purpose-section { background-attachment: scroll; }
+        #ikki.purpose-section { background-attachment: scroll; }
     }
     
-    #purpose.purpose-section::before {
+    #ikki.purpose-section::before {
         content: '';
         position: absolute;
         inset: 0;
@@ -614,24 +637,24 @@
         z-index: 1;
     }
     
-    #purpose.purpose-section .container { z-index: 2; position: relative; }
+    #ikki.purpose-section .container { z-index: 2; position: relative; }
 
-    #purpose.purpose-section .eyebrow {
+    #ikki.purpose-section .eyebrow {
         color: #fff;
         background: var(--accent);
         border: 1px solid rgba(255,255,255,0.2);
     }
-    #purpose.purpose-section .eyebrow::before, #purpose.purpose-section .eyebrow::after {
+    #ikki.purpose-section .eyebrow::before, #ikki.purpose-section .eyebrow::after {
         background-color: #fff;
         opacity: 0.6;
     }
 
-    #purpose.purpose-section h2 {
+    #ikki.purpose-section h2 {
         color: #fff;
         text-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
     
-    #purpose.purpose-section p {
+    #ikki.purpose-section p {
         color: #fff;
         text-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
@@ -698,13 +721,13 @@
     }
 
     /* Purpose内の会社概要 (Definition List Mobile Fix) */
-    #purpose.purpose-section .card {
+    #ikki.purpose-section .card {
         background: rgba(255,255,255,0.95);
         color: var(--text);
         box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         border: none;
     }
-    #purpose.purpose-section .card h3 { color: var(--text); }
+    #ikki.purpose-section .card h3 { color: var(--text); }
     
     .definition div { 
         padding: 14px 0; 
@@ -1288,7 +1311,8 @@
       </button>
 
       <nav class="nav" id="navMenu">
-        <a href="#purpose">Purpose</a>
+        <a href="#">Purpose</a> <!-- Link changed to TOP -->
+        <a href="#ikki" class="mobile-only">Ikki</a> <!-- Mobile Only Link -->
         <a href="#issues">Issues</a>
         <a href="#solutions">Solutions</a> <!-- メニュー順序変更: Issuesの次にSolutions -->
         <a href="#trends">Trends</a>
@@ -1311,14 +1335,14 @@
             <span class="keep-all">日本の未来を耕す。</span>
         </h1>
       </div>
-      <a href="#purpose" class="scroll-down">
+      <a href="#ikki" class="scroll-down"> <!-- Scroll down link to #ikki -->
           <span class="scroll-text">SCROLL</span>
           <div class="scroll-line"></div>
       </a>
     </section>
 
-    <!-- Purpose -->
-    <section id="purpose" class="section purpose-section">
+    <!-- Purpose Section (ID changed to ikki) -->
+    <section id="ikki" class="section purpose-section">
       <div class="container two-col">
         <div class="purpose-panel fade-up">
           <span class="eyebrow">百姓イッキとは</span>
@@ -1353,7 +1377,7 @@
           <h3 style="margin-bottom:24px; font-size:1.25rem;">会社概要</h3>
           <dl class="definition">
             <div><dt>会社名</dt><dd>株式会社百姓イッキ</dd></div>
-            <div><dt>役員</dt><dd>齋藤 禎紀 (CEO)<br>久保 裕太郎 (COO/CFO)<br>鈴木 雄大 (CPO)</dd></div>
+            <div><dt>役員</dt><dd>齋藤 禎紀 | 代表取締役CEO<br>久保 裕太郎 | 取締役COO&CFO<br>鈴木 雄大 | 取締役CPO</dd></div>
             <div><dt>所在地</dt><dd>静岡県沼津市</dd></div>
             <div><dt>設立</dt><dd>2026年2月予定</dd></div>
             <div><dt>資本金</dt><dd>100万円</dd></div>
@@ -1732,7 +1756,7 @@
                 </span>
             </div>
             <span class="member-en">Yutaro KUBO</span>
-            <p class="member-role">取締役COO/CFO<span>Board Director, COO & CFO</span></p>
+            <p class="member-role">取締役COO&CFO<span>Board Director, COO & CFO</span></p>
           </div>
           <div class="card" style="text-align: center;">
             <div class="member-name">
