@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="format-detection" content="telephone=no">
-  
+   
   <!-- === SEO & Metadata === -->
   <title>株式会社百姓イッキ | HYAKUSHO IKKI, Inc. - 次世代農業プラットフォーム</title>
-  <meta name="description" content="一次産業を次世代へ継承し、日本の未来を耕す「株式会社百姓イッキ」。中山間地域での高収益農業モデル確立、サプライチェーン改革、事業承継を通じて、持続可能な食料生産基盤と次世代農業インフラを構築します。">
-  <meta name="keywords" content="百姓イッキ, 農業, 一次産業, 事業承継, スマート農業, 農業DX, 地方創生, 食料安全保障, アグリテック, 静岡県沼津市, 農業プラットフォーム">
-  
+  <meta name="description" content="一次産業を次世代へ継承し、日本の未来を耕す農業スタートアップ「株式会社百姓イッキ」。静岡県沼津市を拠点に、テクノロジーを活用した高収益生産モデル(FARM)、サプライチェーン改革(SCM)、農業参入基盤(OS)の構築を通じて、若者が活躍する持続可能な食料生産インフラを創造します。">
+  <meta name="keywords" content="百姓イッキ, 株式会社百姓イッキ, 農業, 一次産業, 農業スタートアップ, 農業ベンチャー, 事業承継, スマート農業, 農業DX, 食料安全保障, アグリテック, サプライチェーンマネジメント, 新規就農, 地方創生, 静岡県沼津市, 若手農家, 農業プラットフォーム, 生産性向上">
+   
   <!-- URL正規化 (SEO評価の分散防止) -->
   <link rel="canonical" href="https://100ikki.com/">
-  
+   
   <!-- セキュリティ対策: リファラポリシーの設定 -->
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
@@ -20,17 +20,17 @@
   <meta property="og:title" content="株式会社百姓イッキ | 次世代農業プラットフォーム">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://100ikki.com/"> <!-- 本番URL -->
-  
+   
   <!-- 重要: OGP画像設定
        画像ファイル(OGP.png)がルートディレクトリにある前提です。 -->
   <meta property="og:image" content="https://100ikki.com/OGP.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  
+   
   <meta property="og:description" content="一次産業を次世代へ継承し、日本の未来を耕す。中山間地域から農業の未来をつくる百姓イッキの会社紹介ページ。">
   <meta property="og:site_name" content="株式会社百姓イッキ">
   <meta property="og:locale" content="ja_JP">
-  
+   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="株式会社百姓イッキ | HYAKUSHO IKKI, Inc.">
@@ -41,7 +41,7 @@
   <link rel="icon" href="logo_sq_trans.png" type="image/png">
   <!-- スマホのホーム画面追加用アイコン -->
   <link rel="apple-touch-icon" href="logo_sq_trans.png">
-  
+   
   <!-- === Performance Optimization === -->
   <!-- 外部リソースへの事前接続 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,7 +51,7 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-  
+   
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -111,13 +111,13 @@
       --accent-light: #d66a6a;
       --soft: #f0f4f2;
       --border: #e5e7eb;
-      
+       
       --header-bg: rgba(255, 255, 255, 0.95);
       --header-height: 70px;
-      
+       
       --gradient-hero: linear-gradient(rgba(15, 40, 25, 0.3), rgba(10, 20, 15, 0.6));
       --gradient-purpose: linear-gradient(to right, rgba(10, 63, 42, 0.85), rgba(44, 37, 33, 0.7));
-      
+       
       --font-jp: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
       --font-en: "Inter", -apple-system, sans-serif;
     }
@@ -194,7 +194,7 @@
       position: relative;
       padding: 0 12px;
     }
-    
+     
     .eyebrow::before, .eyebrow::after {
         content: '';
         position: absolute;
@@ -216,7 +216,7 @@
       word-break: keep-all; 
       overflow-wrap: break-word;
     }
-    
+     
     /* 改行崩れ防止: 文節ごとにまとめる */
     h2 .keep-all {
         display: inline-block;
@@ -286,7 +286,7 @@
       gap: 24px;
       align-items: center;
     }
-    
+     
     /* Utility: Mobile Only Item */
     /* デフォルト（PC）では非表示 */
     .mobile-only {
@@ -335,16 +335,16 @@
             height: 100dvh; /* 100vh -> 100dvh (アドレスバー考慮) */
             background: rgba(255, 255, 255, 0.98);
             flex-direction: column;
-            
+             
             /* 修正: 画面からはみ出す場合の対策 */
             justify-content: flex-start; /* 中央寄せをやめて上詰めに */
             padding-top: 90px; /* 閉じるボタンと重ならないよう上部に余白 */
             padding-bottom: 40px; /* 下部にも余白 */
             overflow-y: auto; /* 内容が多い場合はスクロール可能に */
             -webkit-overflow-scrolling: touch; /* スクロールを滑らかに */
-            
+             
             gap: 20px; /* 間隔を少し詰めて収まりやすく */
-            
+             
             transition: right 0.4s cubic-bezier(0.22, 1, 0.36, 1);
             box-shadow: -5px 0 20px rgba(0,0,0,0.1);
             backdrop-filter: blur(10px);
@@ -353,12 +353,12 @@
         .nav.active {
             right: 0;
         }
-        
+         
         /* モバイルメニュー内では表示する */
         .mobile-only {
             display: block;
         }
-        
+         
         .menu-toggle.active span:nth-child(1) {
             transform: translateY(9px) rotate(45deg);
         }
@@ -379,7 +379,7 @@
       letter-spacing: 0.05em;
       padding: 8px; /* タップ領域確保 */
     }
-    
+     
     .nav a:not(.btn)::after {
       content: '';
       position: absolute;
@@ -460,12 +460,12 @@
       word-break: auto-phrase;
       overflow-wrap: break-word;
     }
-    
+     
     .hero-copy h1 span {
         display: inline-block;
         white-space: nowrap;
     }
-    
+     
     /* 極小画面対応 */
     @media (max-width: 360px) {
         .hero-copy h1 span {
@@ -551,7 +551,7 @@
     @media (min-width: 900px) {
         .grid-3 { grid-template-columns: repeat(3, 1fr); gap: 32px; }
     }
-    
+     
     .grid-2 {
       display: grid;
       gap: 24px;
@@ -560,7 +560,7 @@
     @media (min-width: 768px) {
         .grid-2 { grid-template-columns: 1fr 1fr; gap: 32px; }
     }
-    
+     
     .two-col {
       display: grid;
       grid-template-columns: 1fr;
@@ -582,7 +582,7 @@
       position: relative;
       overflow: hidden;
     }
-    
+     
     .card::before {
         content: '';
         position: absolute;
@@ -628,7 +628,7 @@
     @supports (-webkit-touch-callout: none) {
         #ikki.purpose-section { background-attachment: scroll; }
     }
-    
+     
     #ikki.purpose-section::before {
         content: '';
         position: absolute;
@@ -636,7 +636,7 @@
         background: var(--gradient-purpose);
         z-index: 1;
     }
-    
+     
     #ikki.purpose-section .container { z-index: 2; position: relative; }
 
     #ikki.purpose-section .eyebrow {
@@ -653,7 +653,7 @@
         color: #fff;
         text-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-    
+     
     #ikki.purpose-section p {
         color: #fff;
         text-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -688,7 +688,7 @@
     }
     @media (min-width: 600px) { .ikki-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
     @media (min-width: 900px) { .ikki-grid { grid-template-columns: repeat(5, 1fr); } }
-    
+     
     .ikki-item {
         background: rgba(255,255,255,0.1);
         border: 1px solid rgba(255,255,255,0.3);
@@ -728,7 +728,7 @@
         border: none;
     }
     #ikki.purpose-section .card h3 { color: var(--text); }
-    
+     
     .definition div { 
         padding: 14px 0; 
         border-bottom: 1px solid rgba(0,0,0,0.1); 
@@ -746,13 +746,13 @@
         font-weight: 500; 
         font-size: 0.95rem; 
     }
-    
+     
     /* 完全縦積み（スマホ） */
     @media (max-width: 600px) {
         .definition div { display: block; }
         .definition dt { width: 100%; margin-bottom: 4px; display: block; font-size: 0.8rem; }
     }
-    
+     
     .purpose-image {
         width: 100%;
         height: auto;
@@ -808,7 +808,7 @@
     @media (min-width: 768px) {
         .stat-chart-container { height: 150px; } /* PCでは少し低くてもOK */
     }
-    
+     
     .source-note {
         font-size: 0.75rem;
         color: var(--muted);
@@ -825,7 +825,7 @@
         margin-top: 40px;
     }
     @media (min-width: 900px) { .why-grid { grid-template-columns: repeat(3, 1fr); } }
-    
+     
     .why-card {
         background: #fff;
         padding: 32px;
@@ -954,7 +954,7 @@
         align-items: center;
         gap: 8px;
     }
-    
+     
     .wp-source {
         margin-top: 24px;
         text-align: right;
@@ -998,7 +998,7 @@
     .solution-card::before {
         display: none; /* アクセントバー無効化 */
     }
-    
+     
     /* 背景画像のオーバーレイ */
     .solution-card::after {
         content: '';
@@ -1041,14 +1041,14 @@
 
     /* --- Roadmap Refined --- */
     .roadmap-wrapper { position: relative; padding: 20px 0; }
-    
+     
     /* New Roadmap Container */
     .roadmap-steps {
         display: flex;
         flex-direction: column;
         gap: 40px;
     }
-    
+     
     /* Step Item */
     .step-item {
         position: relative;
@@ -1060,13 +1060,13 @@
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         overflow: hidden;
     }
-    
+     
     .step-item:hover {
         transform: translateY(-5px);
         box-shadow: 0 15px 30px rgba(0,0,0,0.08);
         border-color: var(--primary);
     }
-    
+     
     /* Background Number */
     .step-bg-num {
         position: absolute;
@@ -1080,7 +1080,7 @@
         pointer-events: none;
         z-index: 0;
     }
-    
+     
     /* Step Content */
     .step-header {
         display: flex;
@@ -1090,7 +1090,7 @@
         position: relative;
         z-index: 1;
     }
-    
+     
     .step-year {
         font-family: var(--font-en);
         font-size: 0.9rem;
@@ -1100,7 +1100,7 @@
         padding: 4px 12px;
         border-radius: 20px;
     }
-    
+     
     .step-badge {
         font-family: var(--font-en);
         font-weight: 700;
@@ -1108,12 +1108,12 @@
         color: var(--muted);
         letter-spacing: 0.05em;
     }
-    
+     
     .step-item.active .step-year {
         background: var(--accent);
         color: #fff;
     }
-    
+     
     .step-title {
         font-size: 1.25rem;
         font-weight: 700;
@@ -1122,7 +1122,7 @@
         position: relative;
         z-index: 1;
     }
-    
+     
     .step-desc {
         font-size: 0.9rem;
         color: var(--muted);
@@ -1131,7 +1131,7 @@
         position: relative;
         z-index: 1;
     }
-    
+     
     /* Connector Arrows */
     .step-connector {
         display: flex;
@@ -1141,7 +1141,7 @@
         font-size: 1.5rem;
         padding: 10px 0;
     }
-    
+     
     /* PC Layout (Horizontal) */
     @media (min-width: 900px) {
         .roadmap-steps {
@@ -1159,7 +1159,7 @@
             width: 40px;
             flex-shrink: 0;
         }
-        
+         
         /* Line connecting steps */
         .roadmap-steps::before {
             display: none; /* Simplify to just cards for cleaner look */
@@ -1179,7 +1179,7 @@
     }
     .member-name { margin-bottom: 8px; font-size: 1.25rem; font-weight: 700; display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; }
     .member-en { display: block; font-family: var(--font-en); font-weight: 400; font-size: 0.85rem; color: var(--muted); margin-top: 4px; width: 100%; }
-    
+     
     .role-wrapper {
         display: flex;
         justify-content: center;
@@ -1201,7 +1201,7 @@
         color: var(--muted);
         margin-top: 2px;
     }
-    
+     
     .name-row {
         display: flex;
         justify-content: center;
@@ -1226,7 +1226,7 @@
         height: 20px;
         fill: currentColor;
     }
-    
+     
     .ceo-content p { text-align: justify; color: #4b5563; font-size: 0.95rem; line-height: 1.8; }
     .ceo-content h4 { color: var(--text); margin-top: 24px; }
     .ceo-content h4:first-child { margin-top: 0; }
@@ -1246,7 +1246,7 @@
         border-radius: 50%;
     }
     .contact h2 { color: #fff; }
-    
+     
     .contact h2 .keep-all {
         display: inline-block;
         white-space: nowrap;
@@ -1302,7 +1302,7 @@
       <a href="#" class="logo">
         <img src="logo_trans.png" alt="百姓イッキ | HYAKUSHO-IKKI" onerror="this.src='https://placehold.co/200x50?text=HYAKUSHO-IKKI'">
       </a>
-      
+       
       <!-- Hamburger Button (Mobile) - Button tag for accessibility -->
       <button class="menu-toggle" id="menuToggle" aria-label="メニューを開く" aria-expanded="false">
         <span></span>
@@ -1348,7 +1348,7 @@
           <span class="eyebrow">百姓イッキとは</span>
           <h2>一次産業の構造を刷新し、<br>次世代の農業をつくる。</h2>
           <p>日本の農業は高齢化・担い手不足に直面しながらも、国の根幹であり未来を耕す力があります。百姓イッキは、若者が先導して立ち上がり、農業を未来へ継承するムーブメントです。</p>
-          
+           
           <div class="ikki-title">5つのイッキ</div>
           <div class="ikki-grid">
             <div class="ikki-item">
@@ -1400,7 +1400,7 @@
             <span class="keep-all">日本の生産力は限界を迎えている。</span>
           </h2>
         </div>
-        
+         
         <div class="grid-3 fade-up">
           <div class="card stat-card">
             <div>
@@ -1497,7 +1497,7 @@
               <span class="keep-all">「構造転換」を求めている。</span>
             </h2>
         </div>
-        
+         
         <div class="why-grid fade-up">
             <div class="why-card">
                 <div class="why-title"><span>🌏</span>地政学リスクと食料安保</div>
@@ -1607,7 +1607,7 @@
                 <span class="keep-all">2050年、食料生産は半減の危機。</span><br>
                 <span class="keep-all">8兆円産業を「維持・再生」する。</span>
             </h2>
-            
+             
             <div style="max-width: 800px; margin: 32px auto 0; text-align: left;">
                 <p style="color:var(--muted); margin-bottom:24px;">現在のトレンドでは、2050年の国内農業生産額は4兆円台へ半減すると予測されています。百姓イッキは、テクノロジーと新しい生産体制により、この下落トレンドを逆転させ、8兆円規模の生産力を維持・再生することを目指します。</p>
                 <ul class="bullet">
@@ -1638,7 +1638,7 @@
                 <span class="keep-all">日本の農業インフラになる。</span>
             </h2>
         </div>
-        
+         
         <div class="roadmap-wrapper">
             <div class="roadmap-steps">
               <!-- Step 1 -->
@@ -1656,7 +1656,7 @@
                   <li><strong>ブランド:</strong> 地域ブランド「百姓イッキ」の立ち上げとファン獲得</li>
                 </ul>
               </div>
-              
+               
               <!-- Connector -->
               <div class="step-connector">
                   ▼
@@ -1710,7 +1710,7 @@
             <span class="eyebrow">創業メンバー</span>
             <h2>Leadership</h2>
         </div>
-        
+         
         <!-- CEO -->
         <div class="card ceo-card" style="margin-bottom:40px;">
             <div class="two-col" style="gap:40px; align-items:start;">
@@ -1771,7 +1771,7 @@
             <p class="member-role">取締役CPO<span>Board Director, Chief Project Officer</span></p>
           </div>
         </div>
-        
+         
         <!-- Advisors -->
         <div class="card" style="text-align: center; background:var(--soft); margin-top: 40px;">
             <h4 style="margin-top:10px; font-size:14px;">技術アドバイザー</h4>
@@ -1780,7 +1780,7 @@
               <li style="padding:0;">南原 武博<br><span style="font-size:11px; color:var(--muted);">（南原農園 代表取締役）</span></li>
             </ul>
         </div>
-        
+         
       </div>
     </section>
 
@@ -1831,7 +1831,7 @@
     // --- Mobile Menu Toggle ---
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
-    
+     
     if (menuToggle && navMenu) {
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('active');
