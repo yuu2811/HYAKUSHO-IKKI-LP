@@ -1,0 +1,1953 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  
+  <!-- 基本SEO設定 (Updated) -->
+  <title>株式会社百姓イッキ | HYAKUSHO IKKI, Inc. - 次世代農業プラットフォーム</title>
+  <meta name="description" content="一次産業を次世代へ継承し、日本の未来を耕す「株式会社百姓イッキ」。中山間地域での高収益農業モデル確立、サプライチェーン改革、事業承継を通じて、持続可能な食料生産基盤と次世代農業インフラを構築します。">
+  <meta name="keywords" content="百姓イッキ, 農業, 一次産業, 事業承継, スマート農業, 農業DX, 地方創生, 食料安全保障, アグリテック, 静岡県沼津市, 農業プラットフォーム">
+  
+  <!-- OGP (SNSシェア用) -->
+  <meta property="og:title" content="株式会社百姓イッキ | 次世代農業プラットフォーム">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://100ikki.com/"> <!-- 本番URLに変更してください -->
+  <meta property="og:image" content="OGP.png">
+  <meta property="og:description" content="一次産業を次世代へ継承し、日本の未来を耕す。中山間地域から農業の未来をつくる百姓イッキの会社紹介ページ。">
+  <meta property="og:site_name" content="株式会社百姓イッキ">
+  <meta property="og:locale" content="ja_JP">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="株式会社百姓イッキ | HYAKUSHO IKKI, Inc.">
+  <meta name="twitter:description" content="一次産業を次世代へ継承し、日本の未来を耕す。">
+  <meta name="twitter:image" content="OGP.png">
+
+  <!-- Favicon -->
+  <link rel="icon" href="logo_sq_trans.png" type="image/png">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- 構造化データ (JSON-LD) Updated -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Corporation",
+    "name": "株式会社百姓イッキ",
+    "alternateName": "HYAKUSHO IKKI, Inc.",
+    "url": "https://100ikki.com/",
+    "logo": "https://100ikki.com/logo_trans.png",
+    "description": "一次産業を次世代へ継承し、日本の未来を耕す農業スタートアップ。",
+    "foundingDate": "2026-02",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "沼津市",
+      "addressRegion": "静岡県",
+      "addressCountry": "JP"
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "齋藤 禎紀",
+      "jobTitle": "CEO"
+    },
+    "employee": [
+      {
+        "@type": "Person",
+        "name": "久保 裕太郎",
+        "jobTitle": "COO/CFO"
+      },
+      {
+        "@type": "Person",
+        "name": "鈴木 雄大",
+        "jobTitle": "CPO"
+      }
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "info@100ikki.com",
+      "contactType": "customer support"
+    }
+  }
+  </script>
+
+  <style>
+    /* === 統合スタイル (Universal & Responsive Optimized) === */
+    :root {
+      /* カラーパレット */
+      --bg: #f9f9f7;
+      --surface: #ffffff;
+      --text: #2c2521;
+      --muted: #6b7280;
+      --primary: #0f5a3a;
+      --primary-dark: #0a3f2a;
+      --accent: #b93b3b;
+      --accent-light: #d66a6a;
+      --soft: #f0f4f2;
+      --border: #e5e7eb;
+      
+      --header-bg: rgba(255, 255, 255, 0.95);
+      --header-height: 70px;
+      
+      --gradient-hero: linear-gradient(rgba(15, 40, 25, 0.3), rgba(10, 20, 15, 0.6));
+      --gradient-purpose: linear-gradient(to right, rgba(10, 63, 42, 0.85), rgba(44, 37, 33, 0.7));
+      
+      --font-jp: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+      --font-en: "Inter", -apple-system, sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--header-height);
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background-color: var(--bg);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+      font-family: var(--font-jp);
+      line-height: 1.8;
+      overflow-x: hidden;
+      letter-spacing: 0.04em;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.3s ease, opacity 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--accent);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      vertical-align: bottom;
+      object-fit: cover;
+    }
+
+    .container {
+      width: min(1200px, 90%); /* スマホでは左右5%の余白 */
+      margin: 0 auto;
+    }
+
+    /* --- Typography --- */
+    h1, h2, h3, h4 {
+      margin-top: 0;
+      line-height: 1.4;
+    }
+
+    .font-en {
+      font-family: var(--font-en);
+    }
+
+    /* Section Headers */
+    .section-header {
+      text-align: center;
+      margin-bottom: clamp(40px, 8vw, 80px);
+      position: relative;
+    }
+
+    .eyebrow {
+      font-family: var(--font-en);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 16px;
+      position: relative;
+      padding: 0 12px;
+    }
+    
+    .eyebrow::before, .eyebrow::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 20px;
+        height: 1px;
+        background-color: var(--accent);
+        opacity: 0.5;
+    }
+    .eyebrow::before { left: -20px; }
+    .eyebrow::after { right: -20px; }
+
+    h2 {
+      font-size: clamp(1.5rem, 5vw, 2.75rem); /* スマホサイズ考慮して最小値を少し小さく */
+      font-weight: 700;
+      color: var(--text);
+      position: relative;
+      z-index: 1;
+      word-break: keep-all; 
+      overflow-wrap: break-word;
+    }
+    
+    /* 改行崩れ防止: 文節ごとにまとめる */
+    h2 .keep-all {
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+    /* Background Watermark Text */
+    .section-header::before {
+      content: attr(data-title);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-en);
+      font-size: clamp(3rem, 12vw, 8rem);
+      font-weight: 900;
+      color: rgba(0, 0, 0, 0.03);
+      white-space: nowrap;
+      z-index: 0;
+      pointer-events: none;
+      letter-spacing: 0.05em;
+    }
+
+    /* --- Header & Navigation --- */
+    .site-header {
+      height: var(--header-height);
+      background-color: var(--header-bg);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .logo {
+      font-family: var(--font-jp);
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0;
+      z-index: 1001;
+      text-decoration: none;
+    }
+    .logo img {
+        height: auto;
+        max-height: 40px;
+        max-width: 180px; /* スマホでロゴが大きすぎないように */
+        width: auto;
+        display: block;
+    }
+
+    /* PC Navigation */
+    .nav {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    /* Mobile Hamburger Menu */
+    .menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        cursor: pointer;
+        z-index: 1002;
+        margin-right: 4px;
+    }
+    .menu-toggle span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: var(--primary);
+        transition: all 0.3s;
+        border-radius: 2px;
+    }
+
+    /* Mobile Styles for Nav */
+    @media (max-width: 900px) {
+        .menu-toggle {
+            display: flex;
+        }
+        .nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%; /* 少し広めに */
+            max-width: 320px;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.98);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            transition: right 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            z-index: 1001;
+        }
+        .nav.active {
+            right: 0;
+        }
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+    }
+
+    .nav a {
+      font-family: var(--font-en);
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text);
+      position: relative;
+      letter-spacing: 0.05em;
+      padding: 8px; /* タップ領域確保 */
+    }
+    
+    .nav a:not(.btn)::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+
+    .nav a:not(.btn):hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      letter-spacing: 0.05em;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff !important;
+      box-shadow: 0 4px 12px rgba(185, 59, 59, 0.2);
+    }
+
+    .btn-primary:hover {
+      background: #a32e2e;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(185, 59, 59, 0.3);
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+      position: relative;
+      height: 100dvh; /* スマホのアドレスバー対応 */
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      background-image: var(--gradient-hero), url('https://images.unsplash.com/photo-1500964757637-c85e8a162699?q=80&w=2103&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-copy {
+        max-width: 900px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+        transform: translateY(-20px);
+        padding: 0 20px;
+        width: 100%;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(1.6rem, 5vw, 4rem); /* スマホ最小値を1.6remに */
+      line-height: 1.3;
+      font-weight: 900;
+      margin: 0 0 32px;
+      letter-spacing: 0.05em;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      word-break: auto-phrase;
+      overflow-wrap: break-word;
+    }
+    
+    .hero-copy h1 span {
+        display: inline-block;
+        white-space: nowrap;
+    }
+    
+    /* 極小画面対応 */
+    @media (max-width: 360px) {
+        .hero-copy h1 span {
+            white-space: normal;
+        }
+    }
+
+    .hero-purpose-en {
+      display: inline-block;
+      margin-bottom: 24px;
+      font-family: var(--font-en);
+      font-size: clamp(0.7rem, 1.5vw, 1.1rem); /* スマホで小さくなりすぎないように */
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: rgba(255, 255, 255, 0.9);
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 8px;
+    }
+
+    .scroll-down {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      z-index: 10;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+    .scroll-down:hover { opacity: 1; }
+
+    .scroll-text {
+      font-family: var(--font-en);
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      color: #fff;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 60px;
+      background: rgba(255,255,255,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-line::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 50%;
+      background: #fff;
+      animation: scrollAnim 2s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+    }
+
+    @keyframes scrollAnim {
+      0% { transform: translateY(-100%); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(200%); opacity: 0; }
+    }
+
+    /* --- Sections & Grid --- */
+    .section {
+      padding: clamp(60px, 10vw, 120px) 0;
+      position: relative;
+    }
+
+    .section.alt {
+      background-color: #fff;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .grid-3 {
+      display: grid;
+      gap: 32px; /* スマホ表示時の間隔を広げて見やすく */
+      grid-template-columns: 1fr;
+    }
+    /* ブレークポイントを900pxに変更し、タブレット縦持ち等でも縦並びを維持 */
+    @media (min-width: 900px) {
+        .grid-3 { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    }
+    
+    .grid-2 {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 768px) {
+        .grid-2 { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    @media (min-width: 900px) {
+        .two-col { grid-template-columns: 1fr 1fr; gap: 60px; }
+    }
+
+    /* --- Cards --- */
+    .card {
+      background: var(--surface);
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 16px;
+      padding: clamp(20px, 5vw, 40px); /* パディングをスマホ最適化 */
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 4px;
+        background: var(--primary);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+    .card:hover::before { transform: scaleX(1); }
+
+    /* LinkedIn Icon Positioning */
+    .card-social {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        color: #d1d5db;
+        transition: color 0.3s ease, transform 0.3s ease;
+        z-index: 5;
+    }
+    .card-social:hover {
+        color: #0077b5;
+        transform: scale(1.1);
+    }
+    .social-icon {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+    }
+
+    /* --- Purpose Section --- */
+    #purpose.purpose-section {
+        position: relative;
+        color: #fff;
+        /* 静岡・沼津周辺のイメージに近い「茶畑と富士山」の画像に変更 */
+        background: var(--primary) url('https://images.unsplash.com/photo-1589308078059-be1415eab4c3?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat fixed;
+    }
+    @supports (-webkit-touch-callout: none) {
+        #purpose.purpose-section { background-attachment: scroll; }
+    }
+    
+    #purpose.purpose-section::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: var(--gradient-purpose);
+        z-index: 1;
+    }
+    
+    #purpose.purpose-section .container { z-index: 2; position: relative; }
+
+    #purpose.purpose-section .eyebrow {
+        color: #fff;
+        background: var(--accent);
+        border: 1px solid rgba(255,255,255,0.2);
+    }
+    #purpose.purpose-section .eyebrow::before, #purpose.purpose-section .eyebrow::after {
+        background-color: #fff;
+        opacity: 0.6;
+    }
+
+    #purpose.purpose-section h2 {
+        color: #fff;
+        text-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    
+    #purpose.purpose-section p {
+        color: #fff;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    /* 5つのイッキ (Responsive Grid) */
+    .ikki-title {
+        text-align: center;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 20px;
+        letter-spacing: 0.1em;
+        opacity: 0.9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+    }
+    .ikki-title::before, .ikki-title::after {
+        content: '';
+        width: 30px;
+        height: 1px;
+        background-color: rgba(255,255,255,0.5);
+    }
+
+    .ikki-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px; /* スマホでのgapを少し狭める */
+        margin-bottom: 40px;
+    }
+    @media (min-width: 600px) { .ikki-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
+    @media (min-width: 900px) { .ikki-grid { grid-template-columns: repeat(5, 1fr); } }
+    
+    .ikki-item {
+        background: rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 8px;
+        padding: 16px 12px; /* 内部パディング微調整 */
+        text-align: center;
+        backdrop-filter: blur(4px);
+        transition: transform 0.3s, background 0.3s;
+    }
+    .ikki-item:hover {
+        transform: translateY(-3px);
+        background: rgba(255,255,255,0.2);
+    }
+    .ikki-kanji {
+        display: block;
+        font-size: clamp(1.8rem, 4vw, 2rem);
+        font-weight: 900;
+        color: #fff;
+        margin-bottom: 8px;
+        line-height: 1;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        font-family: serif;
+    }
+    .ikki-desc {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: rgba(255,255,255,0.9);
+        line-height: 1.4;
+    }
+
+    /* Purpose内の会社概要 (Definition List Mobile Fix) */
+    #purpose.purpose-section .card {
+        background: rgba(255,255,255,0.95);
+        color: var(--text);
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        border: none;
+    }
+    #purpose.purpose-section .card h3 { color: var(--text); }
+    
+    .definition div { 
+        padding: 14px 0; 
+        border-bottom: 1px solid rgba(0,0,0,0.1); 
+        display: flex;
+        flex-wrap: wrap; 
+    }
+    .definition dt { 
+        font-weight: 700; 
+        width: 100px; 
+        color: var(--muted); 
+        font-size: 0.9rem; 
+        flex-shrink: 0; 
+    }
+    .definition dd { 
+        font-weight: 500; 
+        font-size: 0.95rem; 
+    }
+    
+    /* 完全縦積み（スマホ） */
+    @media (max-width: 600px) {
+        .definition div { display: block; }
+        .definition dt { width: 100%; margin-bottom: 4px; display: block; font-size: 0.8rem; }
+    }
+    
+    .purpose-image {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        display: block;
+        margin-top: 20px;
+    }
+    @media (min-width: 900px) {
+        .purpose-image {
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    /* --- Issues Section --- */
+    .stat-card {
+        text-align: center;
+        border-top: 4px solid var(--accent);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .stat-value {
+        font-family: var(--font-en);
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        font-weight: 800;
+        color: var(--text);
+        line-height: 1;
+        margin: 16px 0;
+        letter-spacing: -0.02em;
+    }
+    .stat-value span { font-size: 1.25rem; color: var(--muted); font-weight: 700; margin-left: 4px; }
+    .stat-label { font-weight: 700; color: var(--primary); font-size: 0.95rem; }
+    .stat-desc {
+        font-size: 0.8rem;
+        color: var(--accent);
+        background: rgba(185, 59, 59, 0.1);
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-weight: 700;
+        margin-bottom: 24px;
+    }
+    .stat-chart-container {
+        height: 200px; /* スマホで見やすい高さ確保 */
+        width: 100%;
+        max-width: 100%;
+        margin-top: auto;
+        position: relative;
+    }
+    @media (min-width: 768px) {
+        .stat-chart-container { height: 150px; } /* PCでは少し低くてもOK */
+    }
+    
+    .source-note {
+        font-size: 0.75rem;
+        color: var(--muted);
+        text-align: right;
+        margin-top: 16px;
+        opacity: 0.8;
+    }
+
+    /* --- Trends --- */
+    .why-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+        margin-top: 40px;
+    }
+    @media (min-width: 900px) { .why-grid { grid-template-columns: repeat(3, 1fr); } }
+    
+    .why-card {
+        background: #fff;
+        padding: 32px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        transition: all 0.3s;
+    }
+    .why-card:hover {
+        border-color: var(--primary);
+        transform: translateY(-4px);
+        box-shadow: 0 10px 30px rgba(15, 90, 58, 0.1);
+    }
+    .why-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--primary-dark);
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border-bottom: 2px solid var(--soft);
+        padding-bottom: 12px;
+    }
+    .why-desc { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+    .citation {
+        margin-top: 20px;
+        font-size: 0.75rem;
+        color: var(--muted);
+        background: var(--soft);
+        padding: 12px;
+        border-radius: 8px;
+        line-height: 1.6;
+        word-break: break-all;
+    }
+    .citation ul { list-style: none; padding: 0; margin: 0; }
+    .citation li { margin-bottom: 6px; }
+    .citation li:last-child { margin-bottom: 0; }
+    .citation a { color: var(--primary); text-decoration: underline; display: block; }
+
+    /* Whitepaper Highlight */
+    .whitepaper-highlight {
+        margin-top: 40px;
+        background-color: #fff;
+        border: 1px solid var(--primary);
+        border-radius: 12px;
+        padding: clamp(20px, 4vw, 32px);
+        position: relative;
+        overflow: hidden;
+    }
+    .whitepaper-highlight::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 6px; height: 100%;
+        background-color: var(--primary);
+    }
+    .wp-header {
+        margin-bottom: 24px;
+        border-bottom: 1px solid var(--soft);
+        padding-bottom: 16px;
+    }
+    .wp-header h3 {
+        font-size: clamp(1rem, 3vw, 1.25rem);
+        color: var(--primary-dark);
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+    .infographic-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
+    }
+    .info-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background: #fdfdfd;
+        padding: 24px;
+        border-radius: 8px;
+        border: 1px solid #eee;
+    }
+    .info-icon {
+        font-size: 2rem;
+        margin-bottom: 12px;
+        background: var(--soft);
+        width: 60px; height: 60px;
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        color: var(--primary);
+    }
+    .info-title {
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 8px;
+        font-size: 1rem;
+    }
+    .info-text {
+        font-size: 0.85rem;
+        color: var(--muted);
+        line-height: 1.6;
+        text-align: left;
+        width: 100%;
+    }
+    .info-text ul { list-style: none; padding: 0; margin: 0; }
+    .info-text li { margin-bottom: 6px; position: relative; padding-left: 14px; }
+    .info-text li::before {
+        content: '・';
+        position: absolute; left: 0;
+        color: var(--primary);
+        font-weight: bold;
+    }
+    .policy-highlight {
+        margin-top: 40px;
+        border-top: 1px dashed var(--border);
+        padding-top: 32px;
+    }
+    .policy-highlight h3 {
+        font-size: 1.1rem;
+        color: var(--text);
+        margin-bottom: 16px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .wp-source {
+        margin-top: 24px;
+        text-align: right;
+        font-size: 0.75rem;
+        color: var(--muted);
+        word-break: break-all;
+    }
+    .wp-source a {
+        color: var(--muted);
+        text-decoration: underline;
+    }
+
+    /* --- Solutions --- */
+    .solution-icon { font-size: 48px; margin-bottom: 24px; display: block; }
+    .bullet { list-style: none; padding: 0; margin: 0; }
+    .bullet li {
+        position: relative;
+        padding-left: 24px;
+        margin-bottom: 12px;
+        color: var(--text);
+        font-size: 0.95rem;
+    }
+    .bullet li::before {
+        content: '';
+        position: absolute;
+        left: 0; top: 10px;
+        width: 12px; height: 2px;
+        background: var(--accent);
+    }
+
+    /* Solutions Card Styles with Background Images */
+    .solution-card {
+        color: #fff;
+        border: none;
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+        /* カード自体の背景色を透明に強制する */
+        background-color: transparent !important; 
+    }
+    .solution-card::before {
+        display: none; /* アクセントバー無効化 */
+    }
+    
+    /* 背景画像のオーバーレイ */
+    .solution-card::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.85));
+        z-index: -1;
+        transition: opacity 0.3s ease;
+    }
+    .solution-card:hover::after {
+        opacity: 0.95;
+    }
+    .solution-card h3 { color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+    .solution-card .solution-icon { color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+    .solution-card .bullet li { color: rgba(255,255,255,0.95); }
+    .solution-card .bullet li::before { background: #fff; box-shadow: 0 0 4px rgba(255,255,255,0.5); }
+    .solution-en {
+        display: block;
+        font-family: var(--font-en);
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.8);
+        margin-top: -8px;
+        margin-bottom: 20px;
+        letter-spacing: 0.05em;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    }
+
+    /* Updated Images */
+    /* 背景画像指定 - !important を追加して確実に上書き */
+    .card.solution-card.solution-farm {
+        background: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=800&auto=format&fit=crop') center/cover no-repeat !important;
+    }
+    .card.solution-card.solution-scm {
+        background: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop') center/cover no-repeat !important;
+    }
+    .card.solution-card.solution-os {
+        background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop') center/cover no-repeat !important;
+    }
+
+    /* --- Roadmap Refined --- */
+    .roadmap-wrapper { position: relative; padding: 20px 0; }
+    
+    /* New Roadmap Container */
+    .roadmap-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    /* Step Item */
+    .step-item {
+        position: relative;
+        flex: 1;
+        background: #fff;
+        border-radius: 16px;
+        border: 1px solid var(--border);
+        padding: 30px 24px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+    }
+    
+    .step-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        border-color: var(--primary);
+    }
+    
+    /* Background Number */
+    .step-bg-num {
+        position: absolute;
+        top: -20px;
+        right: -10px;
+        font-family: var(--font-en);
+        font-size: 8rem;
+        font-weight: 900;
+        color: rgba(0,0,0,0.03);
+        line-height: 1;
+        pointer-events: none;
+        z-index: 0;
+    }
+    
+    /* Step Content */
+    .step-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .step-year {
+        font-family: var(--font-en);
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--primary);
+        background: rgba(15, 90, 58, 0.1);
+        padding: 4px 12px;
+        border-radius: 20px;
+    }
+    
+    .step-badge {
+        font-family: var(--font-en);
+        font-weight: 700;
+        font-size: 0.8rem;
+        color: var(--muted);
+        letter-spacing: 0.05em;
+    }
+    
+    .step-item.active .step-year {
+        background: var(--accent);
+        color: #fff;
+    }
+    
+    .step-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: var(--text);
+        position: relative;
+        z-index: 1;
+    }
+    
+    .step-desc {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-bottom: 20px;
+        font-weight: 500;
+        position: relative;
+        z-index: 1;
+    }
+    
+    /* Connector Arrows */
+    .step-connector {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--border);
+        font-size: 1.5rem;
+        padding: 10px 0;
+    }
+    
+    /* PC Layout (Horizontal) */
+    @media (min-width: 900px) {
+        .roadmap-steps {
+            flex-direction: row;
+            align-items: stretch;
+            gap: 20px;
+        }
+        .step-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .step-connector {
+            transform: rotate(-90deg); /* Make arrow point right */
+            padding: 0;
+            width: 40px;
+            flex-shrink: 0;
+        }
+        
+        /* Line connecting steps */
+        .roadmap-steps::before {
+            display: none; /* Simplify to just cards for cleaner look */
+        }
+    }
+
+    /* --- Team --- */
+    .profile-img-placeholder {
+        width: 100px; height: 100px;
+        background: #e5e7eb;
+        border-radius: 50%;
+        margin: 0 auto 16px;
+        overflow: hidden;
+        border: 4px solid #fff;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        flex-shrink: 0;
+    }
+    .member-name { margin-bottom: 8px; font-size: 1.25rem; font-weight: 700; display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .member-en { display: block; font-family: var(--font-en); font-weight: 400; font-size: 0.85rem; color: var(--muted); margin-top: 4px; width: 100%; }
+    
+    .role-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+    }
+    .member-role {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 0;
+        text-align: center;
+    }
+    .member-role span {
+        display: block;
+        font-weight: 400;
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin-top: 2px;
+    }
+    
+    .name-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+    }
+
+    /* LinkedIn Icon */
+    .inline-social {
+        color: #d1d5db;
+        transition: color 0.3s ease, transform 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .inline-social:hover {
+        color: #0077b5;
+        transform: scale(1.1);
+    }
+    .social-icon {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+    }
+    
+    .ceo-content p { text-align: justify; color: #4b5563; font-size: 0.95rem; line-height: 1.8; }
+    .ceo-content h4 { color: var(--text); margin-top: 24px; }
+    .ceo-content h4:first-child { margin-top: 0; }
+
+    /* --- Contact --- */
+    #contact.contact {
+        background-color: var(--text);
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+    }
+    #contact.contact::after {
+        content: '';
+        position: absolute; top: -100px; right: -100px;
+        width: 400px; height: 400px;
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 50%;
+    }
+    .contact h2 { color: #fff; }
+    
+    .contact h2 .keep-all {
+        display: inline-block;
+        white-space: nowrap;
+    }
+    /* スマホでの折り返し許可 */
+    @media (max-width: 480px) {
+        .contact h2 .keep-all {
+            white-space: normal;
+        }
+    }
+
+    .contact .card {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        color: #fff;
+        backdrop-filter: blur(10px);
+    }
+    .contact .muted { color: rgba(255,255,255,0.6); }
+
+    /* --- Footer --- */
+    .site-footer {
+        background: var(--bg);
+        padding: 60px 0;
+        border-top: 1px solid var(--border);
+        font-size: 0.85rem;
+        color: var(--muted);
+    }
+    .footer-inner {
+        display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 32px;
+    }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { color: var(--text); font-weight: 500; font-size: 0.9rem; }
+
+    /* Footer Logo */
+    .site-footer .logo img {
+        max-height: 50px;
+    }
+
+    /* Animation Class */
+    .fade-up {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <img src="logo_trans.png" alt="百姓イッキ | HYAKUSHO-IKKI" onerror="this.src='https://placehold.co/200x50?text=HYAKUSHO-IKKI'">
+      </a>
+      
+      <!-- Hamburger Button (Mobile) -->
+      <div class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <nav class="nav" id="navMenu">
+        <a href="#purpose">Purpose</a>
+        <a href="#issues">Issues</a>
+        <a href="#solutions">Solutions</a> <!-- メニュー順序変更: Issuesの次にSolutions -->
+        <a href="#trends">Trends</a>
+        <a href="#market">Market</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#team">Leadership</a>
+        <a href="#contact" class="btn btn-primary">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-copy fade-up">
+        <p class="hero-purpose-en">To revitalize primary industries and cultivate the future of Japan.</p>
+        <!-- 改行崩れ防止: 文節ごとにspanで囲む -->
+        <h1>
+            <span class="keep-all">一次産業を次世代へ継承し、</span><br>
+            <span class="keep-all">日本の未来を耕す。</span>
+        </h1>
+      </div>
+      <a href="#purpose" class="scroll-down">
+          <span class="scroll-text">SCROLL</span>
+          <div class="scroll-line"></div>
+      </a>
+    </section>
+
+    <!-- Purpose -->
+    <section id="purpose" class="section purpose-section">
+      <div class="container two-col">
+        <div class="purpose-panel fade-up">
+          <span class="eyebrow">百姓イッキとは</span>
+          <h2>一次産業の構造を刷新し、<br>次世代の農業をつくる。</h2>
+          <p>日本の農業は高齢化・担い手不足に直面しながらも、国の根幹であり未来を耕す力があります。百姓イッキは、若者が先導して立ち上がり、農業を未来へ継承するムーブメントです。</p>
+          
+          <div class="ikki-title">5つのイッキ</div>
+          <div class="ikki-grid">
+            <div class="ikki-item">
+                <span class="ikki-kanji">一揆</span>
+                <span class="ikki-desc">連帯して<br>立ち上がる力</span>
+            </div>
+            <div class="ikki-item">
+                <span class="ikki-kanji">一気</span>
+                <span class="ikki-desc">一気呵成に<br>変革を起こす</span>
+            </div>
+            <div class="ikki-item">
+                <span class="ikki-kanji">一期</span>
+                <span class="ikki-desc">自然と人に<br>向き合う</span>
+            </div>
+            <div class="ikki-item">
+                <span class="ikki-kanji">一喜</span>
+                <span class="ikki-desc">喜びを<br>共有する</span>
+            </div>
+            <div class="ikki-item">
+                <span class="ikki-kanji">一輝</span>
+                <span class="ikki-desc">一人ひとりが<br>輝く</span>
+            </div>
+          </div>
+        </div>
+        <div class="card fade-up" style="align-self: start;">
+          <h3 style="margin-bottom:24px; font-size:1.25rem;">会社概要</h3>
+          <dl class="definition">
+            <div><dt>会社名</dt><dd>株式会社百姓イッキ</dd></div>
+            <div><dt>役員</dt><dd>齋藤 禎紀 (CEO)<br>久保 裕太郎 (COO/CFO)<br>鈴木 雄大 (CPO)</dd></div>
+            <div><dt>所在地</dt><dd>静岡県沼津市</dd></div>
+            <div><dt>設立</dt><dd>2026年2月予定</dd></div>
+            <div><dt>資本金</dt><dd>100万円</dd></div>
+          </dl>
+        </div>
+      </div>
+      <div class="container fade-up" style="margin-top: 40px;">
+        <!-- Placeholder Image. Replace with 5IKKI.png in production -->
+        <img src="5IKKI.png" alt="5つのイッキ" class="purpose-image" loading="lazy" onerror="this.src='https://placehold.co/800x400?text=5+IKKI+Image'">
+      </div>
+    </section>
+
+    <!-- Issues -->
+    <section id="issues" class="section">
+      <div class="container">
+        <div class="section-header fade-up" data-title="ISSUES">
+          <span class="eyebrow">現状の課題</span>
+          <h2>
+            <span class="keep-all">上がる物価、減り続ける農家。</span><br>
+            <span class="keep-all">日本の生産力は限界を迎えている。</span>
+          </h2>
+        </div>
+        
+        <div class="grid-3 fade-up">
+          <div class="card stat-card">
+            <div>
+              <p class="stat-label">基幹的農業従事者の平均年齢</p>
+              <p class="stat-value">67.6<span>歳</span></p>
+              <p class="stat-desc">高齢層の離農が加速</p>
+            </div>
+            <div class="stat-chart-container">
+                <canvas id="chartAge"></canvas>
+            </div>
+          </div>
+          <div class="card stat-card">
+            <div>
+              <p class="stat-label">基幹的農業従事者数</p>
+              <p class="stat-value">102.1<span>万人</span></p>
+              <p class="stat-desc">2015年比で4割減</p>
+            </div>
+            <div class="stat-chart-container">
+                <canvas id="chartWorkers"></canvas>
+            </div>
+          </div>
+          <div class="card stat-card">
+            <div>
+              <p class="stat-label">食料自給率 (先進国比較)</p>
+              <p class="stat-value">38<span>%</span></p>
+              <p class="stat-desc">G7中で最低水準</p>
+            </div>
+            <div class="stat-chart-container">
+                <canvas id="chartFoodG7"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="source-note fade-up">
+            出典：<a href="https://www.maff.go.jp/j/tokei/kouhyou/noucen/pdf/census_25.pdf" target="_blank">2025年農林業センサス結果の概要(概数値)</a>、<a href="https://www.maff.go.jp/j/zyukyu/zikyu_ritu/attach/pdf/012-19.pdf" target="_blank">農林水産省 令和6年度食料自給率</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solutions (Moved here) -->
+    <section id="solutions" class="section alt">
+      <div class="container fade-up">
+        <div class="section-header" data-title="SOLUTIONS">
+            <span class="eyebrow">取り組み方針</span>
+            <h2>
+                <span class="keep-all">現場の成果を、</span>
+                <span class="keep-all">再現性ある事業モデルへ。</span><br>
+                <span class="keep-all">3つの事業基盤。</span>
+            </h2>
+        </div>
+        <div class="grid-3">
+          <div class="card solution-card solution-farm">
+            <h3>生産事業 (FARM)</h3>
+            <span class="solution-en">Farming Operation</span>
+            <p style="font-size: 0.9rem; margin-bottom: 16px; opacity: 0.9;">テクノロジー実装により「稼げる農業モデル」を確立し、労働生産性を最大化する。</p>
+            <ul class="bullet">
+              <li><strong>超省力化:</strong> 専用機械とフィジカルAIの導入で、匠の技を自動化・標準化</li>
+              <li><strong>高収益化:</strong> 露地野菜・お茶・きのこの複合経営で、1年目から黒字化を実現</li>
+              <li><strong>データ栽培:</strong> センシングによる生育管理で、収量ブレと品質リスクを最小化</li>
+            </ul>
+          </div>
+          <div class="card solution-card solution-scm">
+            <h3>サプライチェーン事業 (SCM)</h3>
+            <span class="solution-en">Supply Chain Management</span>
+            <p style="font-size: 0.9rem; margin-bottom: 16px; opacity: 0.9;">「作って終わり」からの脱却。流通過程のムダを排除し、農家の手取りを最大化する。</p>
+            <ul class="bullet">
+              <li><strong>原価低減:</strong> 地域を越えた資材の共同仕入れで、圧倒的なスケールメリットを創出</li>
+              <li><strong>ロス削減:</strong> AI需給予測と検品自動化で、欠品・返品リスクをコントロール</li>
+              <li><strong>販路直結:</strong> 市場・実需者との直接提携により、価格決定権を取り戻す</li>
+            </ul>
+          </div>
+          <div class="card solution-card solution-os">
+            <h3>運用基盤事業 (OS)</h3>
+            <span class="solution-en">Operating System</span>
+            <p style="font-size: 0.9rem; margin-bottom: 16px; opacity: 0.9;">農業を「職人芸」から「産業」へ。新規参入のハードルを極限まで下げるインフラ。</p>
+            <ul class="bullet">
+              <li><strong>パッケージ化:</strong> 「土地・資金・技術・販路」をセット提供し、即座に事業開始可能へ</li>
+              <li><strong>リスク低減:</strong> 機材レンタルと遠隔指導により、初期投資と経験不足の不安を解消</li>
+              <li><strong>モデル展開:</strong> 若手が地域の高齢農家を束ねる「百姓イッキモデル」を全国へ横展開</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trends (Class changed to 'section' to alternate backgrounds) -->
+    <section id="trends" class="section">
+      <div class="container">
+        <div class="section-header fade-up" data-title="TRENDS">
+            <span class="eyebrow">外部環境</span>
+            <!-- 改行崩れ防止: 文節ごとにまとめる -->
+            <h2>
+              <span class="keep-all">なぜ今、百姓イッキなのか。</span><br>
+              <span class="keep-all">時代は「食料安保」と</span>
+              <span class="keep-all">「構造転換」を求めている。</span>
+            </h2>
+        </div>
+        
+        <div class="why-grid fade-up">
+            <div class="why-card">
+                <div class="why-title"><span>🌏</span>地政学リスクと食料安保</div>
+                <p class="why-desc">国際情勢の不安定化に伴い、食料・肥料の調達リスクが高まっている。経済安全保障の観点からも、国内生産基盤の強化は待ったなしの状況にある。</p>
+                <div class="citation">
+                    <ul>
+                        <li><a href="https://www.murc.jp/wp-content/uploads/2025/12/report_251219_01.pdf" target="_blank">三菱UFJリサーチ&コンサルティング「経済調査 地政学リスクの展望 (2025年12月)」</a></li>
+                        <li><a href="https://www.mizuho-rt.co.jp/business/research/report/pdf/outlook251225.pdf" target="_blank">みずほリサーチ&テクノロジーズ「2026年 新春経済見通し (2025年12月)」</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="why-card">
+                <div class="why-title"><span>📉</span>2030年の需給逼迫</div>
+                <p class="why-desc">2026年〜2030年にかけて、労働力不足と供給制約がさらに深刻化する見通し。従来の労働集約型から、省人化・効率化された「新しい産業モデル」への転換が急務。</p>
+                <div class="citation">
+                    <ul>
+                        <li><a href="https://www.mizuhobank.co.jp/corporate/industry/sangyou/pdf/1079.pdf" target="_blank">みずほ銀行「日本産業の中期見通し (2025年11月)」</a></li>
+                        <li><a href="https://www.smbc.co.jp/hojin/report/investigationlecture/resources/pdf/3_00_CRSDReport147.pdf" target="_blank">三井住友銀行「2025年の回顧と2026年の展望 (2025年12月)」</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="why-card">
+                <div class="why-title"><span>🌱</span>GX・成長戦略の主役へ</div>
+                <p class="why-desc">政府の成長戦略においても、スマート農業やGXは重点投資分野。地域資源を活用した持続可能な農業は、次世代の成長産業として期待されている。</p>
+                <div class="citation">
+                    <ul>
+                        <li><a href="https://www.meti.go.jp/press/2025/12/20251226003/20251226003-1.pdf" target="_blank">経済産業省 GX実行会議「分野別投資戦略 (2025年12月)」</a></li>
+                        <li><a href="https://www.cas.go.jp/jp/seisaku/nipponseichosenryaku/kaigi/dai2/shiryou1-2.pdf" target="_blank">内閣官房「成長戦略の検討体制 (2025年12月)」</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Whitepaper Highlight Section -->
+        <div class="whitepaper-highlight fade-up">
+            <div class="wp-header">
+                <h3><span>📖</span>令和6年度 食料・農業・農村白書 ハイライト</h3>
+            </div>
+            <div class="infographic-grid">
+                <div class="info-item">
+                    <div class="info-icon">🌾</div>
+                    <div class="info-title">食料安全保障の強化</div>
+                    <div class="info-text">
+                        <ul>
+                            <li>肥料原料(リン・カリ)の海外依存度ほぼ100%という脆弱性の克服。</li>
+                            <li>「食料安全保障強化政策大綱」に基づき、国内生産の増大を推進。</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">🌿</div>
+                    <div class="info-title">環境と調和(みどり戦略)</div>
+                    <div class="info-text">
+                        <ul>
+                            <li>2050年までに化学農薬使用量50%低減、化学肥料30%低減を目指す。</li>
+                            <li>有機農業の取組面積を全体の25%(100万ha)へ拡大する目標。</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">🚜</div>
+                    <div class="info-title">スマート農業・DX</div>
+                    <div class="info-text">
+                        <ul>
+                            <li>基幹的農業従事者数116万人(65歳以上7割超)という急速な減少に対応。</li>
+                            <li>ロボット・AI・IoT等の先端技術活用による生産性の飛躍的向上。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="wp-source">
+                出典：<a href="https://www.maff.go.jp/j/wpaper/w_maff/r6/pdf/zentaiban.pdf" target="_blank">農林水産省「令和6年度 食料・農業・農村白書(全体版)」</a>
+            </div>
+
+            <!-- Policy Outline -->
+            <div class="policy-highlight">
+                <h3><span>🏛️</span>食料安全保障強化政策大綱 (改訂版)</h3>
+                <div class="infographic-grid">
+                    <div class="info-text">
+                        <ul>
+                            <li><strong>構造転換:</strong> 過度な輸入依存からの脱却と国内生産資源(肥料・飼料)の確保。</li>
+                            <li><strong>適正価格:</strong> 生産資材高騰などのコスト上昇分を農産物価格に適正に転嫁できる仕組みの構築。</li>
+                        </ul>
+                    </div>
+                    <div class="info-text">
+                        <ul>
+                            <li><strong>スマート化:</strong> 自動走行農機やドローン等の社会実装を加速し、労働力不足を補う。</li>
+                            <li><strong>輸出拡大:</strong> 海外市場の開拓による農業所得の向上と生産基盤の維持。</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="wp-source">
+                    出典：<a href="https://www.kantei.go.jp/jp/singi/nousui/pdf/20231227honbun.pdf" target="_blank">食料安定供給・農林水産業基盤強化本部「食料安全保障強化政策大綱(改訂版)」</a>
+                </div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Market (Class changed to 'section alt' to alternate backgrounds) -->
+    <section id="market" class="section alt">
+      <div class="container">
+        <!-- 上部：テキスト情報 -->
+        <div class="section-header fade-up" data-title="MARKET">
+            <span class="eyebrow">市場と目指す姿</span>
+            <h2>
+                <span class="keep-all">2050年、食料生産は半減の危機。</span><br>
+                <span class="keep-all">8兆円産業を「維持・再生」する。</span>
+            </h2>
+            
+            <div style="max-width: 800px; margin: 32px auto 0; text-align: left;">
+                <p style="color:var(--muted); margin-bottom:24px;">現在のトレンドでは、2050年の国内農業生産額は4兆円台へ半減すると予測されています。百姓イッキは、テクノロジーと新しい生産体制により、この下落トレンドを逆転させ、8兆円規模の生産力を維持・再生することを目指します。</p>
+                <ul class="bullet">
+                    <li><strong>2020年：</strong>約 8.9 兆円(実績)</li>
+                    <li style="color:var(--muted);"><strong>2050年予測(成り行き)：</strong>約 4.3 兆円 <span style="font-size:0.75rem; color:var(--accent); font-weight:700; margin-left:8px;">(半減)</span></li>
+                    <li style="color:var(--primary); font-weight:700;"><strong>2050年目標(百姓イッキ)：</strong>8.0 兆円規模を維持</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 下部：グラフ -->
+        <div class="fade-up">
+            <div class="chart-wrapper" style="height:400px; padding:24px; background:#fff; border-radius:16px; border:1px solid var(--border); box-shadow:0 10px 30px rgba(0,0,0,0.05); max-width: 900px; margin: 0 auto;">
+                <canvas id="marketChart"></canvas>
+            </div>
+            <p style="text-align:center; font-size:0.75rem; color:var(--muted); margin-top:16px;">出典：<a href="https://www.mri.co.jp/knowledge/insight/policy/i5inlu000000ito0-att/nr20240731pec-2.pdf" target="_blank" style="text-decoration:underline;">三菱総合研究所『食料安全保障の長期ビジョン』(2024年7月) 提言シナリオより加工</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Roadmap (New Design) -->
+    <section id="roadmap" class="section">
+      <div class="container fade-up">
+        <div class="section-header" data-title="ROADMAP">
+            <span class="eyebrow">ロードマップ</span>
+            <h2>
+                <span class="keep-all">「稼げるモデル」を確立し、</span><br>
+                <span class="keep-all">日本の農業インフラになる。</span>
+            </h2>
+        </div>
+        
+        <div class="roadmap-wrapper">
+            <div class="roadmap-steps">
+              <!-- Step 1 -->
+              <div class="step-item">
+                <span class="step-bg-num">01</span>
+                <div class="step-header">
+                    <span class="step-badge">Phase 1</span>
+                    <span class="step-year">2026 - 2027</span>
+                </div>
+                <h3 class="step-title">モデル実証と基盤構築</h3>
+                <p class="step-desc">沼津・忍野エリアで「稼げる農業」を証明する。</p>
+                <ul class="bullet">
+                  <li><strong>自社生産:</strong> 露地野菜・茶・きのこの複合経営で初年度黒字化</li>
+                  <li><strong>DX推進:</strong> 栽培データの活用とスマート技術による生産効率化</li>
+                  <li><strong>ブランド:</strong> 地域ブランド「百姓イッキ」の立ち上げとファン獲得</li>
+                </ul>
+              </div>
+              
+              <!-- Connector -->
+              <div class="step-connector">
+                  ▼
+              </div>
+
+              <!-- Step 2 -->
+              <div class="step-item">
+                <span class="step-bg-num">02</span>
+                <div class="step-header">
+                    <span class="step-badge">Phase 2</span>
+                    <span class="step-year">2028 - 2030</span>
+                </div>
+                <h3 class="step-title">地域展開とSCM統合</h3>
+                <p class="step-desc">事業承継と流通改革で、地域農業の核になる。</p>
+                <ul class="bullet">
+                  <li><strong>規模拡大:</strong> 耕作放棄地の再生と離農農家の事業承継（50ha規模へ）</li>
+                  <li><strong>SCM内製:</strong> 自社集荷場・物流網の整備で中間コストを圧縮</li>
+                  <li><strong>販路直結:</strong> 大手実需者・スーパーとの直接契約による価格安定化</li>
+                </ul>
+              </div>
+
+              <!-- Connector -->
+              <div class="step-connector">
+                  ▼
+              </div>
+
+              <!-- Step 3 -->
+              <div class="step-item active">
+                <span class="step-bg-num">03</span>
+                <div class="step-header">
+                    <span class="step-badge">Phase 3</span>
+                    <span class="step-year" style="background:var(--accent); color:#fff;">2031 -</span>
+                </div>
+                <h3 class="step-title">全国プラットフォーム化</h3>
+                <p class="step-desc">「百姓イッキOS」で日本の農業地図を書き換える。</p>
+                <ul class="bullet">
+                  <li><strong>OS提供:</strong> 成功モデルをパッケージ化し、若手参入障壁をゼロに</li>
+                  <li><strong>全国展開:</strong> 20都道府県へ拠点を拡大、自律分散型ネットワーク構築</li>
+                  <li><strong>業界再編:</strong> 日本最大の次世代農業グループとして産業構造を変革</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team (Full Bio) -->
+    <section id="team" class="section alt">
+      <div class="container fade-up">
+        <div class="section-header" data-title="LEADERSHIP">
+            <span class="eyebrow">創業メンバー</span>
+            <h2>Leadership</h2>
+        </div>
+        
+        <!-- CEO -->
+        <div class="card ceo-card" style="margin-bottom:40px;">
+            <div class="two-col" style="gap:40px; align-items:start;">
+                <div style="flex:0 0 240px; text-align:center;">
+                    <div class="profile-img-placeholder">
+                        <img src="https://placehold.co/400x400/0f5a3a/ffffff?text=CEO" alt="CEO" style="width:100%; height:100%; object-fit:cover;" loading="lazy">
+                    </div>
+                    <div class="member-name">
+                        <span class="name-row">
+                            齋藤 禎紀
+                            <a href="https://www.linkedin.com/in/yoshiki-saito-43bb40297/" target="_blank" class="inline-social" aria-label="LinkedIn">
+                                <svg class="social-icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                        </span>
+                    </div>
+                    <span class="member-en">Yoshiki SAITO</span>
+                    <p class="member-role">代表取締役CEO<span>President & CEO</span></p>
+                    <p style="font-size:0.8rem; font-weight:700; color:var(--primary); margin-top:8px;">座右の銘：昼夜突貫</p>
+                </div>
+                <div class="ceo-content">
+                    <h4 style="margin-bottom:12px; font-size:1.1rem; border-bottom:1px solid var(--border); padding-bottom:8px;">経歴</h4>
+                    <p style="margin-bottom:24px;">
+                        1997年生まれ、神奈川県出身。関西学院大学総合政策学部で経営学を専攻。幼少期より阪神タイガースファンとして英才教育を受け、3度の優勝に貢献。<br><br>
+                        花のサブスク/ギフト事業を展開するユーザーライク社に入社。ブーケの加工/出荷を行うオペレーション責任者として事業成長とユーザーさんのうれしいを両立する体制を構築し、SCMマネージャーへ就任。仕入れ・加工・物流等のサプライチェーン全体を統括。産地開発にも携わり、全国の花き生産者と関係性構築し、安定した調達網の構築と原価改善を実現。
+                    </p>
+                    <h4 style="margin-bottom:12px; font-size:1.1rem; border-bottom:1px solid var(--border); padding-bottom:8px;">創業の経緯</h4>
+                    <p>
+                        純粋に花が好きで入社したユーザーライク社にて、全国の生産者や卸売市場を取締役の久保と訪問する中で、生産者や市場関係者の熱い想いやモノづくりへの姿勢等、日本の一次産業を長年支えてこられた先輩方に感銘を受けました。同時に、日本の一次産業には現場レベルから業界全体まで課題が山積していることを知り、フラワーデジタルマーケティング協議会を設立し、生産者や市場関係者と農林水産省補助事業にて生産者の原価改善や構造的課題に踏み込んだ調査報告を行いました。<br><br>
+                        若年層の生産者が著しく少ない業界だからこそ、自らが次世代生産者となるべく、50坪の耕作放棄地を耕すことからスタートし、野菜の生産を開始。その後も耕作放棄地を復興を継続し、現在では500坪まで拡大。静岡県沼津市に約2,400坪を追加で確保できたことから創業を決意。高齢化先進国である日本で、若年層とシニア層が一致団結する仕組みを百姓イッキで創り出します。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card" style="text-align: center;">
+            <div class="member-name">
+                <span class="name-row">
+                    久保 裕太郎
+                    <a href="https://www.linkedin.com/in/yutaro-kubo-b78b67192/" target="_blank" class="inline-social" aria-label="LinkedIn">
+                        <svg class="social-icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                </span>
+            </div>
+            <span class="member-en">Yutaro KUBO</span>
+            <p class="member-role">取締役COO/CFO<span>Board Director, COO & CFO</span></p>
+          </div>
+          <div class="card" style="text-align: center;">
+            <div class="member-name">
+                <span class="name-row">
+                    鈴木 雄大
+                    <a href="https://www.linkedin.com/in/takehiro-suzuki-3a20a1394/" target="_blank" class="inline-social" aria-label="LinkedIn">
+                        <svg class="social-icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                </span>
+            </div>
+            <span class="member-en">Takehiro SUZUKI</span>
+            <p class="member-role">取締役CPO<span>Board Director, Chief Project Officer</span></p>
+          </div>
+        </div>
+        
+        <!-- Advisors -->
+        <div class="card" style="text-align: center; background:var(--soft); margin-top: 40px;">
+            <h4 style="margin-top:10px; font-size:14px;">技術アドバイザー</h4>
+            <ul class="bullet" style="font-size:13px; margin-bottom:0; list-style:none; padding:0;">
+              <li style="padding:0; margin-bottom:12px;">野口 政之<br><span style="font-size:11px; color:var(--muted);">（コスモファーム野口 代表取締役）</span></li>
+              <li style="padding:0;">南原 武博<br><span style="font-size:11px; color:var(--muted);">（南原農園 代表取締役）</span></li>
+            </ul>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section contact">
+      <div class="container two-col fade-up" style="position:relative; z-index:2;">
+        <div>
+          <span class="eyebrow" style="color:rgba(255,255,255,0.8); background:rgba(255,255,255,0.1);">CONTACT</span>
+          <!-- 改行崩れ防止 -->
+          <h2>
+            <span class="keep-all">一次産業を次世代へ継承する</span>
+            <span class="keep-all">仲間・パートナーを募集中。</span>
+          </h2>
+          <p style="opacity:0.9; margin-bottom:32px;">一次産業周辺での事業連携やオペレーション原価改善、サプライチェーンに関するご相談等、お気軽にご連絡ください。</p>
+          <!-- Gmail Link -->
+          <a class="btn btn-primary" style="background:#fff; color:var(--text)!important; padding:16px 40px; font-size:1rem;" href="https://mail.google.com/mail/?view=cm&fs=1&to=info@100ikki.com" target="_blank" rel="noopener noreferrer">メールで問い合わせる</a>
+        </div>
+        <div class="card" style="border:1px solid rgba(255,255,255,0.2);">
+          <h3 style="margin-top:0; font-size:1.25rem;">株式会社百姓イッキ</h3>
+          <p class="muted" style="font-family:var(--font-en);">HYAKUSHO IKKI, Inc.</p>
+          <div style="margin-top:24px; font-size:0.9rem; line-height:2;">
+            所在地：静岡県沼津市<br>
+            設立：2026年2月予定<br>
+            資本金：100万円<br>
+            E-mail: info@100ikki.com
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a href="#" class="logo">
+        <img src="logo_trans.png" alt="百姓イッキ | HYAKUSHO-IKKI" onerror="this.src='https://placehold.co/200x50?text=HYAKUSHO-IKKI'" loading="lazy">
+      </a>
+      <div class="footer-links">
+        <a href="#purpose">Purpose</a>
+        <a href="#solutions">Solutions</a>
+        <a href="#team">Leadership</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <p style="width:100%; margin-top:32px; text-align:center; font-size:0.75rem; opacity:0.6;">©2026 HYAKUSHO IKKI, Inc. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // --- Mobile Menu Toggle ---
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // リンククリック時に閉じる
+        document.querySelectorAll('.nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    }
+
+    // --- Scroll & Animation ---
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                if (entry.target.querySelector('#chartAge')) initSmallCharts();
+                if (entry.target.querySelector('#marketChart')) initBigCharts();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // --- Chart Configs ---
+    let smallChartsInit = false;
+    let bigChartsInit = false;
+
+    // 共通のチャートオプション
+    const commonOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+            x: { 
+                grid: { display: false }, 
+                ticks: { font: { family: "'Inter', sans-serif" }, color: '#6b7280' } 
+            },
+            y: { display: false }
+        }
+    };
+
+    function initSmallCharts() {
+        if (smallChartsInit) return;
+        smallChartsInit = true;
+
+        // 1. 年齢チャート
+        new Chart(document.getElementById('chartAge').getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: ['2015', '2020', '2025(概数)'],
+                datasets: [{
+                    label: '平均年齢',
+                    data: [67.1, 67.8, 67.6],
+                    borderColor: '#b93b3b',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    pointBackgroundColor: '#fff',
+                    pointBorderWidth: 2,
+                    pointRadius: 4
+                }]
+            },
+            options: { ...commonOptions, scales: { x:commonOptions.scales.x, y: {display:false, min:65} } }
+        });
+
+        // 2. 従事者数チャート
+        new Chart(document.getElementById('chartWorkers').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['2015', '2020', '2025(概数)'],
+                datasets: [{
+                    label: '人数(万人)',
+                    data: [175.7, 136.3, 102.1],
+                    backgroundColor: '#0f5a3a',
+                    borderRadius: 4
+                }]
+            },
+            options: commonOptions
+        });
+
+        // 3. 食料自給率 G7 (Labels restored with flags)
+        new Chart(document.getElementById('chartFoodG7').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['🇨🇦 カナダ', '🇦🇺 オーストラリア', '🇺🇸 アメリカ', '🇫🇷 フランス', '🇩🇪 ドイツ', '🇬🇧 イギリス', '🇮🇹 イタリア', '🇯🇵 日本'],
+                datasets: [{
+                    data: [233, 169, 121, 117, 84, 54, 58, 38],
+                    backgroundColor: (ctx) => ctx.dataIndex === 7 ? '#b93b3b' : '#e5e7eb',
+                    borderRadius: 3
+                }]
+            },
+            options: {
+                ...commonOptions,
+                plugins: { legend: { display: false }, tooltip: { enabled: true } },
+                scales: {
+                    x: { 
+                        grid: {display:false}, 
+                        ticks: {
+                            font: {size: 10},
+                            maxRotation: 45,
+                            minRotation: 45
+                        } 
+                    },
+                    y: { display: false }
+                }
+            }
+        });
+    }
+
+    function initBigCharts() {
+        if (bigChartsInit) return;
+        bigChartsInit = true;
+
+        // Market Chart
+        new Chart(document.getElementById('marketChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['2020年(実績)', '2050年予測(成り行き)', '2050年目標(維持)'],
+                datasets: [{
+                    label: '国内農業産出額',
+                    data: [8.9, 4.3, 8.0],
+                    backgroundColor: ['#9ca3af', '#b93b3b', '#0f5a3a'],
+                    borderRadius: 8,
+                    barPercentage: 0.5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    title: { display: true, text: '国内農業産出額 (兆円)', padding: {bottom:20}, font:{size:14, family:"'Noto Sans JP'"} },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    // 2050年目標(index 2)の場合は8.0兆円、それ以外は元のロジック
+                                    if(context.dataIndex === 2) {
+                                        label += '8.0 兆円';
+                                    } else {
+                                        label += context.parsed.y.toFixed(1) + ' 兆円';
+                                    }
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: { beginAtZero: true, grid: { color:'#f3f4f6' } },
+                    x: { grid: { display:false } }
+                }
+            }
+        });
+    }
+  </script>
+</body>
+</html>
