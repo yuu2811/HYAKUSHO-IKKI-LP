@@ -10,97 +10,37 @@
   <meta name="description" content="一次産業を次世代へ継承し、日本の未来を耕す農業スタートアップ「株式会社百姓イッキ」。静岡県沼津市を拠点に、テクノロジーを活用した高収益生産モデル(FARM)、サプライチェーン改革(SCM)、農業参入基盤(OS)の構築を通じて、若者が活躍する持続可能な食料生産インフラを創造します。">
   <meta name="keywords" content="百姓イッキ, 株式会社百姓イッキ, 農業, 一次産業, 農業スタートアップ, 農業ベンチャー, 事業承継, スマート農業, 農業DX, 食料安全保障, アグリテック, サプライチェーンマネジメント, 新規就農, 地方創生, 静岡県沼津市, 若手農家, 農業プラットフォーム, 生産性向上">
    
-  <!-- URL正規化 (SEO評価の分散防止) -->
+  <!-- URL正規化 -->
   <link rel="canonical" href="https://100ikki.com/">
    
-  <!-- セキュリティ対策: リファラポリシーの設定 -->
+  <!-- セキュリティ -->
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
-  <!-- === OGP (SNSシェア用) === -->
+  <!-- === OGP === -->
   <meta property="og:title" content="株式会社百姓イッキ | 次世代農業プラットフォーム">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://100ikki.com/"> <!-- 本番URL -->
-   
-  <!-- 重要: OGP画像設定
-       画像ファイル(OGP.png)がルートディレクトリにある前提です。 -->
+  <meta property="og:url" content="https://100ikki.com/">
   <meta property="og:image" content="https://100ikki.com/OGP.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-   
-  <meta property="og:description" content="一次産業を次世代へ継承し、日本の未来を耕す。中山間地域から農業の未来をつくる百姓イッキの会社紹介ページ。">
+  <meta property="og:description" content="一次産業を次世代へ継承し、日本の未来を耕す。">
   <meta property="og:site_name" content="株式会社百姓イッキ">
   <meta property="og:locale" content="ja_JP">
    
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="株式会社百姓イッキ | HYAKUSHO IKKI, Inc.">
-  <meta name="twitter:description" content="一次産業を次世代へ継承し、日本の未来を耕す。">
-  <meta name="twitter:image" content="https://100ikki.com/OGP.png">
 
   <!-- === Icons === -->
   <link rel="icon" href="logo_sq_trans.png" type="image/png">
-  <!-- スマホのホーム画面追加用アイコン -->
   <link rel="apple-touch-icon" href="logo_sq_trans.png">
    
-  <!-- === Performance Optimization === -->
-  <!-- 外部リソースへの事前接続 -->
+  <!-- === Fonts & Libraries === -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="dns-prefetch" href="https://images.unsplash.com">
-  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-   
-  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <!-- === Structured Data (JSON-LD) === -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Corporation",
-    "name": "株式会社百姓イッキ",
-    "alternateName": "HYAKUSHO IKKI, Inc.",
-    "url": "https://100ikki.com/",
-    "logo": "https://100ikki.com/logo_trans.png",
-    "description": "一次産業を次世代へ継承し、日本の未来を耕す農業スタートアップ。",
-    "foundingDate": "2026-02",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "沼津市",
-      "addressRegion": "静岡県",
-      "addressCountry": "JP"
-    },
-    "founder": {
-      "@type": "Person",
-      "name": "齋藤 禎紀",
-      "jobTitle": "代表取締役CEO"
-    },
-    "employee": [
-      {
-        "@type": "Person",
-        "name": "久保 裕太郎",
-        "jobTitle": "取締役COO&CFO"
-      },
-      {
-        "@type": "Person",
-        "name": "鈴木 雄大",
-        "jobTitle": "取締役CPO"
-      }
-    ],
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "email": "info@100ikki.com",
-      "contactType": "customer support"
-    }
-  }
-  </script>
 
   <style>
     /* === 統合スタイル (Universal & Responsive Optimized) === */
     :root {
-      /* カラーパレット */
       --bg: #f9f9f7;
       --surface: #ffffff;
       --text: #2c2521;
@@ -141,6 +81,13 @@
       overflow-x: hidden;
       letter-spacing: 0.04em;
       -webkit-text-size-adjust: 100%;
+      transition: font-family 0.3s ease;
+    }
+
+    /* English Mode Font Override */
+    body.is-en {
+        font-family: var(--font-en);
+        letter-spacing: 0em; /* 英語は字間狭め */
     }
 
     a {
@@ -161,8 +108,60 @@
     }
 
     .container {
-      width: min(1200px, 90%); /* スマホでは左右5%の余白 */
+      width: min(1200px, 90%);
       margin: 0 auto;
+    }
+
+    /* --- Language Switcher Logic --- */
+    /* デフォルト(JP)のとき、.lang-enは非表示 */
+    .lang-en { display: none !important; }
+    
+    /* 英語モード(.is-en)のとき、.lang-jaを非表示、.lang-enを表示 */
+    body.is-en .lang-ja { display: none !important; }
+    body.is-en .lang-en { display: block !important; }
+    /* インライン要素用の調整 */
+    body.is-en span.lang-en { display: inline !important; }
+
+    /* Language Switch Button Styles */
+    .lang-switch {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-en);
+        font-weight: 700;
+        font-size: 0.85rem;
+        cursor: pointer;
+        border: 1px solid var(--border);
+        padding: 6px 12px;
+        border-radius: 20px;
+        transition: all 0.3s;
+        background: #fff;
+        white-space: nowrap; /* 改行防止 */
+        flex-shrink: 0; /* 縮小防止 */
+    }
+    .lang-switch:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+    
+    /* PC用スイッチ（ナビ内） */
+    .nav-lang-switch {
+        /* margin-left: 24px; 不要なマージンを削除 */
+    }
+
+    /* モバイル用スイッチ（ヘッダー直下）- デフォルトは非表示 */
+    .mobile-lang-switch {
+        display: none !important; /* PC表示時に確実に隠す */
+    }
+
+    .lang-label {
+        opacity: 0.4;
+        transition: opacity 0.3s;
+    }
+    .lang-label.active {
+        opacity: 1;
+        color: var(--primary);
+        text-decoration: underline;
     }
 
     /* --- Typography --- */
@@ -208,7 +207,7 @@
     .eyebrow::after { right: -20px; }
 
     h2 {
-      font-size: clamp(1.5rem, 5vw, 2.75rem); /* スマホサイズ考慮して最小値を少し小さく */
+      font-size: clamp(1.5rem, 5vw, 2.75rem);
       font-weight: 700;
       color: var(--text);
       position: relative;
@@ -216,14 +215,20 @@
       word-break: keep-all; 
       overflow-wrap: break-word;
     }
+    body.is-en h2 {
+        word-break: normal;
+        overflow-wrap: normal;
+    }
      
-    /* 改行崩れ防止: 文節ごとにまとめる */
     h2 .keep-all {
         display: inline-block;
         white-space: nowrap;
     }
+    body.is-en h2 .keep-all {
+        white-space: normal; /* 英語では強制改行しない */
+        display: inline;
+    }
 
-    /* Background Watermark Text */
     .section-header::before {
       content: attr(data-title);
       position: absolute;
@@ -275,20 +280,17 @@
     .logo img {
         height: auto;
         max-height: 40px;
-        max-width: 180px; /* スマホでロゴが大きすぎないように */
+        max-width: 180px;
         width: auto;
         display: block;
     }
 
-    /* PC Navigation */
     .nav {
       display: flex;
       gap: 24px;
       align-items: center;
     }
      
-    /* Utility: Mobile Only Item */
-    /* デフォルト（PC）では非表示 */
     .mobile-only {
       display: none;
     }
@@ -301,9 +303,8 @@
         width: 30px;
         height: 21px;
         cursor: pointer;
-        z-index: 2000; /* ナビゲーション(z-index:1001)より確実に上にする */
+        z-index: 2000;
         margin-right: 4px;
-        /* Reset Button Styles */
         background: none;
         border: none;
         padding: 0;
@@ -319,32 +320,50 @@
 
     /* Mobile Styles for Nav */
     @media (max-width: 900px) {
+        /* ロゴが言語スイッチと被らないように少し縮小 */
+        .logo img {
+            max-width: 140px;
+        }
+
+        /* モバイル用言語スイッチの表示設定 */
+        .mobile-lang-switch {
+            display: flex !important; /* スマホ表示時は強制表示 */
+            position: fixed;
+            top: 21px; /* 高さに合わせて微調整 */
+            right: calc(5% + 50px); /* ハンバーガー(30px) + 余白(20px) = 50px以上離す */
+            z-index: 2000; /* ハンバーガーと同じ階層へ */
+            padding: 6px 12px; /* タップしやすいようパディング調整 */
+            font-size: 0.75rem;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.95); /* 背景をしっかり確保 */
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* 影をつけて浮き上がらせる */
+            white-space: nowrap; /* 折り返し防止 */
+        }
+
         .menu-toggle {
             display: flex;
-            /* Scroll時にも固定位置に表示し、メニュー展開時も隠れないようにする */
             position: fixed;
-            top: 24px; /* ヘッダー高さ中央付近 */
-            right: 5%; /* コンテナのマージンに合わせる */
+            top: 24px;
+            right: 5%;
         }
         .nav {
             position: fixed;
             top: 0;
             right: -100%;
-            width: 85%; /* 少し広めに */
+            width: 85%;
             max-width: 320px;
-            height: 100dvh; /* 100vh -> 100dvh (アドレスバー考慮) */
+            height: 100dvh;
             background: rgba(255, 255, 255, 0.98);
             flex-direction: column;
-             
-            /* 修正: 画面からはみ出す場合の対策 */
-            justify-content: flex-start; /* 中央寄せをやめて上詰めに */
-            padding-top: 90px; /* 閉じるボタンと重ならないよう上部に余白 */
-            padding-bottom: 40px; /* 下部にも余白 */
-            overflow-y: auto; /* 内容が多い場合はスクロール可能に */
-            -webkit-overflow-scrolling: touch; /* スクロールを滑らかに */
-             
-            gap: 20px; /* 間隔を少し詰めて収まりやすく */
-             
+            justify-content: flex-start;
+            padding-top: 90px;
+            padding-bottom: 40px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            gap: 20px;
             transition: right 0.4s cubic-bezier(0.22, 1, 0.36, 1);
             box-shadow: -5px 0 20px rgba(0,0,0,0.1);
             backdrop-filter: blur(10px);
@@ -353,12 +372,9 @@
         .nav.active {
             right: 0;
         }
-         
-        /* モバイルメニュー内では表示する */
         .mobile-only {
             display: block;
         }
-         
         .menu-toggle.active span:nth-child(1) {
             transform: translateY(9px) rotate(45deg);
         }
@@ -367,6 +383,11 @@
         }
         .menu-toggle.active span:nth-child(3) {
             transform: translateY(-9px) rotate(-45deg);
+        }
+        
+        /* PC用言語スイッチは隠す */
+        .nav .nav-lang-switch {
+            display: none;
         }
     }
 
@@ -377,7 +398,7 @@
       color: var(--text);
       position: relative;
       letter-spacing: 0.05em;
-      padding: 8px; /* タップ領域確保 */
+      padding: 8px;
     }
      
     .nav a:not(.btn)::after {
@@ -427,7 +448,7 @@
     /* --- Hero Section --- */
     .hero {
       position: relative;
-      height: 100dvh; /* スマホのアドレスバー対応 */
+      height: 100dvh;
       min-height: 500px;
       display: flex;
       align-items: center;
@@ -451,7 +472,7 @@
     }
 
     .hero-copy h1 {
-      font-size: clamp(1.6rem, 5vw, 4rem); /* スマホ最小値を1.6remに */
+      font-size: clamp(1.6rem, 5vw, 4rem);
       line-height: 1.3;
       font-weight: 900;
       margin: 0 0 32px;
@@ -465,8 +486,12 @@
         display: inline-block;
         white-space: nowrap;
     }
-     
-    /* 極小画面対応 */
+    /* 英語モードでのHeroスタイル調整 */
+    body.is-en .hero-copy h1 span {
+        white-space: normal;
+        display: inline;
+    }
+
     @media (max-width: 360px) {
         .hero-copy h1 span {
             white-space: normal;
@@ -477,7 +502,7 @@
       display: inline-block;
       margin-bottom: 24px;
       font-family: var(--font-en);
-      font-size: clamp(0.7rem, 1.5vw, 1.1rem); /* スマホで小さくなりすぎないように */
+      font-size: clamp(0.7rem, 1.5vw, 1.1rem);
       font-weight: 500;
       letter-spacing: 0.1em;
       color: rgba(255, 255, 255, 0.9);
@@ -544,10 +569,9 @@
 
     .grid-3 {
       display: grid;
-      gap: 32px; /* スマホ表示時の間隔を広げて見やすく */
+      gap: 32px;
       grid-template-columns: 1fr;
     }
-    /* ブレークポイントを900pxに変更し、タブレット縦持ち等でも縦並びを維持 */
     @media (min-width: 900px) {
         .grid-3 { grid-template-columns: repeat(3, 1fr); gap: 32px; }
     }
@@ -576,7 +600,7 @@
       background: var(--surface);
       border: 1px solid rgba(0,0,0,0.05);
       border-radius: 16px;
-      padding: clamp(20px, 5vw, 40px); /* パディングをスマホ最適化 */
+      padding: clamp(20px, 5vw, 40px);
       box-shadow: 0 4px 20px rgba(0,0,0,0.02);
       transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
       position: relative;
@@ -599,7 +623,6 @@
     }
     .card:hover::before { transform: scaleX(1); }
 
-    /* LinkedIn Icon Positioning */
     .card-social {
         position: absolute;
         top: 24px;
@@ -622,7 +645,6 @@
     #ikki.purpose-section {
         position: relative;
         color: #fff;
-        /* 静岡・沼津周辺のイメージに近い「茶畑と富士山」の画像に変更 */
         background: var(--primary) url('https://images.unsplash.com/photo-1589308078059-be1415eab4c3?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat fixed;
     }
     @supports (-webkit-touch-callout: none) {
@@ -683,7 +705,7 @@
     .ikki-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 12px; /* スマホでのgapを少し狭める */
+        gap: 12px;
         margin-bottom: 40px;
     }
     @media (min-width: 600px) { .ikki-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
@@ -693,7 +715,7 @@
         background: rgba(255,255,255,0.1);
         border: 1px solid rgba(255,255,255,0.3);
         border-radius: 8px;
-        padding: 16px 12px; /* 内部パディング微調整 */
+        padding: 16px 12px;
         text-align: center;
         backdrop-filter: blur(4px);
         transition: transform 0.3s, background 0.3s;
@@ -719,8 +741,14 @@
         color: rgba(255,255,255,0.9);
         line-height: 1.4;
     }
+    
+    /* 英語モードでの5つのイッキ調整 */
+    body.is-en .ikki-kanji {
+        font-family: var(--font-en);
+        font-size: 1.4rem;
+        letter-spacing: 0;
+    }
 
-    /* Purpose内の会社概要 (Definition List Mobile Fix) */
     #ikki.purpose-section .card {
         background: rgba(255,255,255,0.95);
         color: var(--text);
@@ -734,6 +762,7 @@
         border-bottom: 1px solid rgba(0,0,0,0.1); 
         display: flex;
         flex-wrap: wrap; 
+        align-items: baseline; /* テキストのベースラインを揃える */
     }
     .definition dt { 
         font-weight: 700; 
@@ -745,12 +774,18 @@
     .definition dd { 
         font-weight: 500; 
         font-size: 0.95rem; 
+        flex: 1; /* 残りの幅を埋める */
+    }
+    /* 英語モードの定義リスト調整 */
+    body.is-en .definition dt {
+        width: 200px; /* 英語表記用に幅を十分に拡張 */
     }
      
-    /* 完全縦積み（スマホ） */
     @media (max-width: 600px) {
         .definition div { display: block; }
         .definition dt { width: 100%; margin-bottom: 4px; display: block; font-size: 0.8rem; }
+        /* モバイル時は英語モードでも幅100%を強制 */
+        body.is-en .definition dt { width: 100%; }
     }
      
     .purpose-image {
@@ -799,14 +834,14 @@
         margin-bottom: 24px;
     }
     .stat-chart-container {
-        height: 200px; /* スマホで見やすい高さ確保 */
+        height: 200px;
         width: 100%;
         max-width: 100%;
         margin-top: auto;
         position: relative;
     }
     @media (min-width: 768px) {
-        .stat-chart-container { height: 150px; } /* PCでは少し低くてもOK */
+        .stat-chart-container { height: 150px; }
     }
      
     .source-note {
@@ -985,21 +1020,18 @@
         background: var(--accent);
     }
 
-    /* Solutions Card Styles with Background Images */
     .solution-card {
         color: #fff;
         border: none;
         overflow: hidden;
         position: relative;
         z-index: 1;
-        /* カード自体の背景色を透明に強制する */
         background-color: transparent !important; 
     }
     .solution-card::before {
-        display: none; /* アクセントバー無効化 */
+        display: none; 
     }
      
-    /* 背景画像のオーバーレイ */
     .solution-card::after {
         content: '';
         position: absolute;
@@ -1027,8 +1059,6 @@
         text-shadow: 0 1px 2px rgba(0,0,0,0.5);
     }
 
-    /* Updated Images */
-    /* 背景画像指定 - !important を追加して確実に上書き */
     .card.solution-card.solution-farm {
         background: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=800&auto=format&fit=crop') center/cover no-repeat !important;
     }
@@ -1042,14 +1072,12 @@
     /* --- Roadmap Refined --- */
     .roadmap-wrapper { position: relative; padding: 20px 0; }
      
-    /* New Roadmap Container */
     .roadmap-steps {
         display: flex;
         flex-direction: column;
         gap: 40px;
     }
      
-    /* Step Item */
     .step-item {
         position: relative;
         flex: 1;
@@ -1067,7 +1095,6 @@
         border-color: var(--primary);
     }
      
-    /* Background Number */
     .step-bg-num {
         position: absolute;
         top: -20px;
@@ -1081,7 +1108,6 @@
         z-index: 0;
     }
      
-    /* Step Content */
     .step-header {
         display: flex;
         align-items: center;
@@ -1132,7 +1158,6 @@
         z-index: 1;
     }
      
-    /* Connector Arrows */
     .step-connector {
         display: flex;
         justify-content: center;
@@ -1142,7 +1167,6 @@
         padding: 10px 0;
     }
      
-    /* PC Layout (Horizontal) */
     @media (min-width: 900px) {
         .roadmap-steps {
             flex-direction: row;
@@ -1154,15 +1178,13 @@
             flex-direction: column;
         }
         .step-connector {
-            transform: rotate(-90deg); /* Make arrow point right */
+            transform: rotate(-90deg);
             padding: 0;
             width: 40px;
             flex-shrink: 0;
         }
-         
-        /* Line connecting steps */
         .roadmap-steps::before {
-            display: none; /* Simplify to just cards for cleaner look */
+            display: none;
         }
     }
 
@@ -1194,7 +1216,8 @@
         margin-bottom: 0;
         text-align: center;
     }
-    .member-role span {
+    /* 修正: spanタグへの包括的な指定をやめ、特定のクラス(.role-sub)に限定 */
+    .member-role .role-sub {
         display: block;
         font-weight: 400;
         font-size: 0.8rem;
@@ -1209,7 +1232,6 @@
         gap: 8px;
     }
 
-    /* LinkedIn Icon */
     .inline-social {
         color: #d1d5db;
         transition: color 0.3s ease, transform 0.3s ease;
@@ -1220,11 +1242,6 @@
     .inline-social:hover {
         color: #0077b5;
         transform: scale(1.1);
-    }
-    .social-icon {
-        width: 20px;
-        height: 20px;
-        fill: currentColor;
     }
      
     .ceo-content p { text-align: justify; color: #4b5563; font-size: 0.95rem; line-height: 1.8; }
@@ -1251,7 +1268,6 @@
         display: inline-block;
         white-space: nowrap;
     }
-    /* スマホでの折り返し許可 */
     @media (max-width: 480px) {
         .contact h2 .keep-all {
             white-space: normal;
@@ -1280,7 +1296,6 @@
     .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
     .footer-links a { color: var(--text); font-weight: 500; font-size: 0.9rem; }
 
-    /* Footer Logo */
     .site-footer .logo img {
         max-height: 50px;
     }
@@ -1295,7 +1310,7 @@
 
   </style>
 </head>
-<body>
+<body class="lang-ja"> <!-- Default Language Class -->
 
   <header class="site-header">
     <div class="container header-inner">
@@ -1303,6 +1318,13 @@
         <img src="logo_trans.png" alt="百姓イッキ | HYAKUSHO-IKKI" onerror="this.src='https://placehold.co/200x50?text=HYAKUSHO-IKKI'">
       </a>
        
+      <!-- Mobile Language Switcher (スマホ表示時にハンバーガーの左に出る) -->
+      <div class="lang-switch mobile-lang-switch">
+          <span class="lang-label active" data-lang="ja">JP</span>
+          <span style="opacity:0.3">/</span>
+          <span class="lang-label" data-lang="en">EN</span>
+      </div>
+
       <!-- Hamburger Button (Mobile) - Button tag for accessibility -->
       <button class="menu-toggle" id="menuToggle" aria-label="メニューを開く" aria-expanded="false">
         <span></span>
@@ -1311,15 +1333,22 @@
       </button>
 
       <nav class="nav" id="navMenu">
-        <a href="#">Purpose</a> <!-- Link changed to TOP -->
-        <a href="#ikki" class="mobile-only">Ikki</a> <!-- Mobile Only Link -->
+        <a href="#">Purpose</a>
+        <a href="#ikki" class="mobile-only">Ikki</a>
         <a href="#issues">Issues</a>
-        <a href="#solutions">Solutions</a> <!-- メニュー順序変更: Issuesの次にSolutions -->
+        <a href="#solutions">Solutions</a>
         <a href="#trends">Trends</a>
         <a href="#market">Market</a>
         <a href="#roadmap">Roadmap</a>
         <a href="#team">Leadership</a>
         <a href="#contact" class="btn btn-primary">Contact</a>
+        
+        <!-- PC Language Switcher (ナビゲーション内) -->
+        <div class="lang-switch nav-lang-switch">
+            <span class="lang-label active" data-lang="ja">JP</span>
+            <span style="opacity:0.3">/</span>
+            <span class="lang-label" data-lang="en">EN</span>
+        </div>
       </nav>
     </div>
   </header>
@@ -1328,14 +1357,22 @@
     <!-- Hero -->
     <section class="hero">
       <div class="container hero-copy fade-up">
-        <p class="hero-purpose-en">To revitalize primary industries and cultivate the future of Japan.</p>
-        <!-- 改行崩れ防止: 文節ごとにspanで囲む -->
+        <!-- class="lang-ja" を追加して英語モード時に非表示にする -->
+        <p class="hero-purpose-en lang-ja">To revitalize primary industries and cultivate the future of Japan.</p>
+        
         <h1>
-            <span class="keep-all">一次産業を次世代へ継承し、</span><br>
-            <span class="keep-all">日本の未来を耕す。</span>
+            <!-- JA -->
+            <span class="lang-ja">
+                <span class="keep-all">一次産業を次世代へ継承し、</span><br>
+                <span class="keep-all">日本の未来を耕す。</span>
+            </span>
+            <!-- EN (変更箇所) -->
+            <span class="lang-en">
+                To revitalize primary industries and cultivate the future of Japan.
+            </span>
         </h1>
       </div>
-      <a href="#ikki" class="scroll-down"> <!-- Scroll down link to #ikki -->
+      <a href="#ikki" class="scroll-down">
           <span class="scroll-text">SCROLL</span>
           <div class="scroll-line"></div>
       </a>
@@ -1345,47 +1382,58 @@
     <section id="ikki" class="section purpose-section">
       <div class="container two-col">
         <div class="purpose-panel fade-up">
-          <span class="eyebrow">百姓イッキとは</span>
-          <h2>一次産業の構造を刷新し、<br>次世代の農業をつくる。</h2>
-          <p>日本の農業は高齢化・担い手不足に直面しながらも、国の根幹であり未来を耕す力があります。百姓イッキは、若者が先導して立ち上がり、農業を未来へ継承するムーブメントです。</p>
+          <span class="eyebrow lang-ja">百姓イッキとは</span>
+          <span class="eyebrow lang-en">About Us</span>
+          
+          <h2 class="lang-ja">一次産業の構造を刷新し、<br>次世代の農業をつくる。</h2>
+          <h2 class="lang-en">Innovating Primary Industry Structures,<br>Creating Next-Generation Agriculture.</h2>
+          
+          <p class="lang-ja">日本の農業は高齢化・担い手不足に直面しながらも、国の根幹であり未来を耕す力があります。百姓イッキは、若者が先導して立ち上がり、農業を未来へ継承するムーブメントです。</p>
+          <p class="lang-en">While facing aging demographics and labor shortages, Japanese agriculture remains the nation's foundation. HYAKUSHO-IKKI is a movement led by youth to inherit and cultivate the future of agriculture.</p>
            
-          <div class="ikki-title">5つのイッキ</div>
+          <div class="ikki-title lang-ja">5つのイッキ</div>
+          <div class="ikki-title lang-en">The 5 "IKKI" Spirits</div>
+          
           <div class="ikki-grid">
             <div class="ikki-item">
-                <span class="ikki-kanji">一揆</span>
-                <span class="ikki-desc">連帯して<br>立ち上がる力</span>
+                <span class="ikki-kanji lang-ja">一揆</span><span class="ikki-kanji lang-en">Uprising</span>
+                <span class="ikki-desc lang-ja">連帯して<br>立ち上がる力</span><span class="ikki-desc lang-en">United power to<br>stand up</span>
             </div>
             <div class="ikki-item">
-                <span class="ikki-kanji">一気</span>
-                <span class="ikki-desc">一気呵成に<br>変革を起こす</span>
+                <span class="ikki-kanji lang-ja">一気</span><span class="ikki-kanji lang-en">Momentum</span>
+                <span class="ikki-desc lang-ja">一気呵成に<br>変革を起こす</span><span class="ikki-desc lang-en">Driving rapid<br>transformation</span>
             </div>
             <div class="ikki-item">
-                <span class="ikki-kanji">一期</span>
-                <span class="ikki-desc">自然と人に<br>向き合う</span>
+                <span class="ikki-kanji lang-ja">一期</span><span class="ikki-kanji lang-en">Precious</span>
+                <span class="ikki-desc lang-ja">自然と人に<br>向き合う</span><span class="ikki-desc lang-en">Cherishing nature<br>& people</span>
             </div>
             <div class="ikki-item">
-                <span class="ikki-kanji">一喜</span>
-                <span class="ikki-desc">喜びを<br>共有する</span>
+                <span class="ikki-kanji lang-ja">一喜</span><span class="ikki-kanji lang-en">Joy</span>
+                <span class="ikki-desc lang-ja">喜びを<br>共有する</span><span class="ikki-desc lang-en">Sharing joy<br>together</span>
             </div>
             <div class="ikki-item">
-                <span class="ikki-kanji">一輝</span>
-                <span class="ikki-desc">一人ひとりが<br>輝く</span>
+                <span class="ikki-kanji lang-ja">一輝</span><span class="ikki-kanji lang-en">Shine</span>
+                <span class="ikki-desc lang-ja">一人ひとりが<br>輝く</span><span class="ikki-desc lang-en">Each individual<br>shining</span>
             </div>
           </div>
         </div>
         <div class="card fade-up" style="align-self: start;">
-          <h3 style="margin-bottom:24px; font-size:1.25rem;">会社概要</h3>
+          <h3 class="lang-ja" style="margin-bottom:24px; font-size:1.25rem;">会社概要</h3>
+          <h3 class="lang-en" style="margin-bottom:24px; font-size:1.25rem;">Company Profile</h3>
           <dl class="definition">
-            <div><dt>会社名</dt><dd>株式会社百姓イッキ</dd></div>
-            <div><dt>役員</dt><dd>齋藤 禎紀 | 代表取締役CEO<br>久保 裕太郎 | 取締役COO&CFO<br>鈴木 雄大 | 取締役CPO</dd></div>
-            <div><dt>所在地</dt><dd>静岡県沼津市</dd></div>
-            <div><dt>設立</dt><dd>2026年2月予定</dd></div>
-            <div><dt>資本金</dt><dd>100万円</dd></div>
+            <div><dt class="lang-ja">会社名</dt><dt class="lang-en">Company Name</dt><dd class="lang-ja">株式会社百姓イッキ</dd><dd class="lang-en">HYAKUSHO IKKI, Inc.</dd></div>
+            <div>
+                <dt class="lang-ja">役員</dt><dt class="lang-en">Board Members</dt>
+                <dd class="lang-ja">齋藤 禎紀 | 代表取締役CEO<br>久保 裕太郎 | 取締役COO&CFO<br>鈴木 雄大 | 取締役CPO</dd>
+                <dd class="lang-en">Yoshiki Saito (CEO)<br>Yutaro Kubo (COO & CFO)<br>Takehiro Suzuki (CPO)</dd>
+            </div>
+            <div><dt class="lang-ja">所在地</dt><dt class="lang-en">Location</dt><dd class="lang-ja">静岡県沼津市</dd><dd class="lang-en">Numazu City, Shizuoka Pref.</dd></div>
+            <div><dt class="lang-ja">設立</dt><dt class="lang-en">Founded</dt><dd class="lang-ja">2026年2月予定</dd><dd class="lang-en">Feb 2026 (Planned)</dd></div>
+            <div><dt class="lang-ja">資本金</dt><dt class="lang-en">Capital</dt><dd>1,000,000 JPY</dd></div>
           </dl>
         </div>
       </div>
       <div class="container fade-up" style="margin-top: 40px;">
-        <!-- Placeholder Image. Replace with 5IKKI.png in production -->
         <img src="5IKKI.png" alt="5つのイッキ" class="purpose-image" loading="lazy" onerror="this.src='https://placehold.co/800x400?text=5+IKKI+Image'">
       </div>
     </section>
@@ -1394,19 +1442,29 @@
     <section id="issues" class="section">
       <div class="container">
         <div class="section-header fade-up" data-title="ISSUES">
-          <span class="eyebrow">現状の課題</span>
-          <h2>
+          <span class="eyebrow lang-ja">現状の課題</span>
+          <span class="eyebrow lang-en">Current Issues</span>
+          
+          <h2 class="lang-ja">
             <span class="keep-all">上がる物価、減り続ける農家。</span><br>
             <span class="keep-all">日本の生産力は限界を迎えている。</span>
+          </h2>
+          <h2 class="lang-en">
+            Rising prices, disappearing farmers.<br>
+            Japan's production capacity is reaching its limit.
           </h2>
         </div>
          
         <div class="grid-3 fade-up">
           <div class="card stat-card">
             <div>
-              <p class="stat-label">基幹的農業従事者の平均年齢</p>
-              <p class="stat-value">67.6<span>歳</span></p>
-              <p class="stat-desc">高齢層の離農が加速</p>
+              <p class="stat-label lang-ja">基幹的農業従事者の平均年齢</p>
+              <p class="stat-label lang-en">Avg. Age of Core Farmers</p>
+              
+              <p class="stat-value">67.6<span class="lang-ja">歳</span><span class="lang-en">y.o.</span></p>
+              
+              <p class="stat-desc lang-ja">高齢層の離農が加速</p>
+              <p class="stat-desc lang-en">Accelerating retirement</p>
             </div>
             <div class="stat-chart-container">
                 <canvas id="chartAge"></canvas>
@@ -1414,9 +1472,13 @@
           </div>
           <div class="card stat-card">
             <div>
-              <p class="stat-label">基幹的農業従事者数</p>
-              <p class="stat-value">102.1<span>万人</span></p>
-              <p class="stat-desc">2015年比で4割減</p>
+              <p class="stat-label lang-ja">基幹的農業従事者数</p>
+              <p class="stat-label lang-en">Core Agricultural Workers</p>
+              
+              <p class="stat-value">102.1<span class="lang-ja">万人</span><span class="lang-en">0k</span></p>
+              
+              <p class="stat-desc lang-ja">2015年比で4割減</p>
+              <p class="stat-desc lang-en">40% Decrease since 2015</p>
             </div>
             <div class="stat-chart-container">
                 <canvas id="chartWorkers"></canvas>
@@ -1424,108 +1486,178 @@
           </div>
           <div class="card stat-card">
             <div>
-              <p class="stat-label">食料自給率 (先進国比較)</p>
+              <p class="stat-label lang-ja">食料自給率 (先進国比較)</p>
+              <p class="stat-label lang-en">Food Self-Sufficiency Rate</p>
+              
               <p class="stat-value">38<span>%</span></p>
-              <p class="stat-desc">G7中で最低水準</p>
+              
+              <p class="stat-desc lang-ja">G7中で最低水準</p>
+              <p class="stat-desc lang-en">Lowest level in G7</p>
             </div>
             <div class="stat-chart-container">
                 <canvas id="chartFoodG7"></canvas>
             </div>
           </div>
         </div>
-        <div class="source-note fade-up">
+        <div class="source-note fade-up lang-ja">
             出典：<a href="https://www.maff.go.jp/j/tokei/kouhyou/noucen/pdf/census_25.pdf" target="_blank" rel="noopener noreferrer">2025年農林業センサス結果の概要(概数値)</a>、<a href="https://www.maff.go.jp/j/zyukyu/zikyu_ritu/attach/pdf/012-19.pdf" target="_blank" rel="noopener noreferrer">農林水産省 令和6年度食料自給率</a>
+        </div>
+        <div class="source-note fade-up lang-en">
+            Source: 2025 Census of Agriculture and Forestry, MAFF FY2024 Food Self-Sufficiency Rate Report
         </div>
       </div>
     </section>
 
-    <!-- Solutions (Moved here) -->
+    <!-- Solutions -->
     <section id="solutions" class="section alt">
       <div class="container fade-up">
         <div class="section-header" data-title="SOLUTIONS">
-            <span class="eyebrow">取り組み方針</span>
-            <h2>
+            <span class="eyebrow lang-ja">取り組み方針</span>
+            <span class="eyebrow lang-en">Our Solutions</span>
+            
+            <h2 class="lang-ja">
                 <span class="keep-all">現場の成果を、</span>
                 <span class="keep-all">再現性ある事業モデルへ。</span><br>
                 <span class="keep-all">3つの事業基盤。</span>
             </h2>
+            <h2 class="lang-en">
+                Turning field results into<br>reproducible business models.<br>
+                Three Business Foundations.
+            </h2>
         </div>
         <div class="grid-3">
           <div class="card solution-card solution-farm">
-            <h3>生産事業 (FARM)</h3>
+            <h3 class="lang-ja">生産事業 (FARM)</h3>
+            <h3 class="lang-en">Farming Business</h3>
             <span class="solution-en">Farming Operation</span>
-            <p style="font-size: 0.9rem; margin-bottom: 16px; opacity: 0.9;">テクノロジー実装により「稼げる農業モデル」を確立し、労働生産性を最大化する。</p>
-            <ul class="bullet">
+            
+            <p class="lang-ja" style="font-size: 0.9rem; margin-bottom: 16px; opacity: 0.9;">テクノロジー実装により「稼げる農業モデル」を確立し、労働生産性を最大化する。</p>
+            <p class="lang-en" style="font-size: 0.9rem; margin-bottom: 16px; opacity: 0.9;">Establishing a "profitable farming model" through technology to maximize labor productivity.</p>
+            
+            <ul class="bullet lang-ja">
               <li><strong>超省力化:</strong> 専用機械とフィジカルAIの導入で、匠の技を自動化・標準化</li>
               <li><strong>高収益化:</strong> 露地野菜・お茶・きのこの複合経営で、1年目から黒字化を実現</li>
               <li><strong>データ栽培:</strong> センシングによる生育管理で、収量ブレと品質リスクを最小化</li>
             </ul>
+            <ul class="bullet lang-en">
+              <li><strong>Ultra Labor-Saving:</strong> Automating skills with specialized machinery and Physical AI.</li>
+              <li><strong>High Profitability:</strong> Profitable from year one via mixed farming (Vegetables, Tea, Mushrooms).</li>
+              <li><strong>Data Farming:</strong> Minimizing yield and quality risks through sensing and growth management.</li>
+            </ul>
           </div>
           <div class="card solution-card solution-scm">
-            <h3>サプライチェーン事業 (SCM)</h3>
+            <h3 class="lang-ja">サプライチェーン事業 (SCM)</h3>
+            <h3 class="lang-en">SCM Business</h3>
             <span class="solution-en">Supply Chain Management</span>
-            <p style="font-size: 0.9rem; margin-bottom: 16px; opacity: 0.9;">「作って終わり」からの脱却。流通過程のムダを排除し、農家の手取りを最大化する。</p>
-            <ul class="bullet">
+            
+            <p class="lang-ja" style="font-size: 0.9rem; margin-bottom: 16px; opacity: 0.9;">「作って終わり」からの脱却。流通過程のムダを排除し、農家の手取りを最大化する。</p>
+            <p class="lang-en" style="font-size: 0.9rem; margin-bottom: 16px; opacity: 0.9;">Breaking away from "Just Producing." Eliminating distribution waste to maximize farmer income.</p>
+            
+            <ul class="bullet lang-ja">
               <li><strong>原価低減:</strong> 地域を越えた資材の共同仕入れで、圧倒的なスケールメリットを創出</li>
               <li><strong>ロス削減:</strong> AI需給予測と検品自動化で、欠品・返品リスクをコントロール</li>
               <li><strong>販路直結:</strong> 市場・実需者との直接提携により、価格決定権を取り戻す</li>
             </ul>
+            <ul class="bullet lang-en">
+              <li><strong>Cost Reduction:</strong> Scale merits through joint procurement of materials across regions.</li>
+              <li><strong>Loss Reduction:</strong> Controlling shortages and returns via AI demand forecasting.</li>
+              <li><strong>Direct Sales:</strong> Regaining pricing power through direct partnerships with markets and retailers.</li>
+            </ul>
           </div>
           <div class="card solution-card solution-os">
-            <h3>運用基盤事業 (OS)</h3>
+            <h3 class="lang-ja">運用基盤事業 (OS)</h3>
+            <h3 class="lang-en">Platform Business (OS)</h3>
             <span class="solution-en">Operating System</span>
-            <p style="font-size: 0.9rem; margin-bottom: 16px; opacity: 0.9;">農業を「職人芸」から「産業」へ。新規参入のハードルを極限まで下げるインフラ。</p>
-            <ul class="bullet">
+            
+            <p class="lang-ja" style="font-size: 0.9rem; margin-bottom: 16px; opacity: 0.9;">農業を「職人芸」から「産業」へ。新規参入のハードルを極限まで下げるインフラ。</p>
+            <p class="lang-en" style="font-size: 0.9rem; margin-bottom: 16px; opacity: 0.9;">From "Craftsmanship" to "Industry." Infrastructure that drastically lowers barriers to entry.</p>
+            
+            <ul class="bullet lang-ja">
               <li><strong>パッケージ化:</strong> 「土地・資金・技術・販路」をセット提供し、即座に事業開始可能へ</li>
               <li><strong>リスク低減:</strong> 機材レンタルと遠隔指導により、初期投資と経験不足の不安を解消</li>
               <li><strong>モデル展開:</strong> 若手が地域の高齢農家を束ねる「百姓イッキモデル」を全国へ横展開</li>
+            </ul>
+            <ul class="bullet lang-en">
+              <li><strong>Packaging:</strong> Providing Land, Capital, Tech, and Sales channels as a set for immediate startup.</li>
+              <li><strong>Risk Reduction:</strong> Solving investment and experience issues via rental equipment and remote guidance.</li>
+              <li><strong>Expansion:</strong> Deploying the "HYAKUSHO-IKKI Model" nationwide, where youth lead regional agriculture.</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Trends (Class changed to 'section' to alternate backgrounds) -->
+    <!-- Trends -->
     <section id="trends" class="section">
       <div class="container">
         <div class="section-header fade-up" data-title="TRENDS">
-            <span class="eyebrow">外部環境</span>
-            <!-- 改行崩れ防止: 文節ごとにまとめる -->
-            <h2>
+            <span class="eyebrow lang-ja">外部環境</span>
+            <span class="eyebrow lang-en">Market Trends</span>
+            
+            <h2 class="lang-ja">
               <span class="keep-all">なぜ今、百姓イッキなのか。</span><br>
               <span class="keep-all">時代は「食料安保」と</span>
               <span class="keep-all">「構造転換」を求めている。</span>
+            </h2>
+            <h2 class="lang-en">
+              Why HYAKUSHO-IKKI Now?<br>
+              The era demands "Food Security"<br>
+              and "Structural Transformation".
             </h2>
         </div>
          
         <div class="why-grid fade-up">
             <div class="why-card">
-                <div class="why-title"><span>🌏</span>地政学リスクと食料安保</div>
-                <p class="why-desc">国際情勢の不安定化に伴い、食料・肥料の調達リスクが高まっている。経済安全保障の観点からも、国内生産基盤の強化は待ったなしの状況にある。</p>
+                <div class="why-title lang-ja"><span>🌏</span>地政学リスクと食料安保</div>
+                <div class="why-title lang-en"><span>🌏</span>Geopolitics & Food Security</div>
+                
+                <p class="why-desc lang-ja">国際情勢の不安定化に伴い、食料・肥料の調達リスクが高まっている。経済安全保障の観点からも、国内生産基盤の強化は待ったなしの状況にある。</p>
+                <p class="why-desc lang-en">With increasing global instability, risks in procuring food and fertilizers are rising. Strengthening the domestic production base is urgent for economic security.</p>
+                
                 <div class="citation">
-                    <ul>
+                    <ul class="lang-ja">
                         <li><a href="https://www.murc.jp/wp-content/uploads/2025/12/report_251219_01.pdf" target="_blank" rel="noopener noreferrer">三菱UFJリサーチ&コンサルティング「経済調査 地政学リスクの展望 (2025年12月)」</a></li>
                         <li><a href="https://www.mizuho-rt.co.jp/business/research/report/pdf/outlook251225.pdf" target="_blank" rel="noopener noreferrer">みずほリサーチ&テクノロジーズ「2026年 新春経済見通し (2025年12月)」</a></li>
                     </ul>
-                </div>
-            </div>
-            <div class="why-card">
-                <div class="why-title"><span>📉</span>2030年の需給逼迫</div>
-                <p class="why-desc">2026年〜2030年にかけて、労働力不足と供給制約がさらに深刻化する見通し。従来の労働集約型から、省人化・効率化された「新しい産業モデル」への転換が急務。</p>
-                <div class="citation">
-                    <ul>
-                        <li><a href="https://www.mizuhobank.co.jp/corporate/industry/sangyou/pdf/1079.pdf" target="_blank" rel="noopener noreferrer">みずほ銀行「日本産業の中期見通し (2025年11月)」</a></li>
-                        <li><a href="https://www.smbc.co.jp/hojin/report/investigationlecture/resources/pdf/3_00_CRSDReport147.pdf" target="_blank" rel="noopener noreferrer">三井住友銀行「2025年の回顧と2026年の展望 (2025年12月)」</a></li>
+                    <ul class="lang-en">
+                        <li>MURC "Geopolitical Risk Outlook (Dec 2025)"</li>
+                        <li>Mizuho RT "2026 New Year Economic Outlook (Dec 2025)"</li>
                     </ul>
                 </div>
             </div>
             <div class="why-card">
-                <div class="why-title"><span>🌱</span>GX・成長戦略の主役へ</div>
-                <p class="why-desc">政府の成長戦略においても、スマート農業やGXは重点投資分野。地域資源を活用した持続可能な農業は、次世代の成長産業として期待されている。</p>
+                <div class="why-title lang-ja"><span>📉</span>2030年の需給逼迫</div>
+                <div class="why-title lang-en"><span>📉</span>Supply Tightening by 2030</div>
+                
+                <p class="why-desc lang-ja">2026年〜2030年にかけて、労働力不足と供給制約がさらに深刻化する見通し。従来の労働集約型から、省人化・効率化された「新しい産業モデル」への転換が急務。</p>
+                <p class="why-desc lang-en">Labor shortages and supply constraints are expected to worsen from 2026 to 2030. Urgent shift needed from labor-intensive to "New Industrial Models".</p>
+                
                 <div class="citation">
-                    <ul>
+                    <ul class="lang-ja">
+                        <li><a href="https://www.mizuhobank.co.jp/corporate/industry/sangyou/pdf/1079.pdf" target="_blank" rel="noopener noreferrer">みずほ銀行「日本産業の中期見通し (2025年11月)」</a></li>
+                        <li><a href="https://www.smbc.co.jp/hojin/report/investigationlecture/resources/pdf/3_00_CRSDReport147.pdf" target="_blank" rel="noopener noreferrer">三井住友銀行「2025年の回顧と2026年の展望 (2025年12月)」</a></li>
+                    </ul>
+                    <ul class="lang-en">
+                        <li>Mizuho Bank "Medium-term Outlook for Japanese Industry (Nov 2025)"</li>
+                        <li>SMBC "Review of 2025 and Outlook for 2026 (Dec 2025)"</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="why-card">
+                <div class="why-title lang-ja"><span>🌱</span>GX・成長戦略の主役へ</div>
+                <div class="why-title lang-en"><span>🌱</span>Leading GX & Growth Strategy</div>
+                
+                <p class="why-desc lang-ja">政府の成長戦略においても、スマート農業やGXは重点投資分野。地域資源を活用した持続可能な農業は、次世代の成長産業として期待されている。</p>
+                <p class="why-desc lang-en">Smart agriculture and GX are key investment areas in government strategy. Sustainable agriculture using local resources is expected to be a next-gen growth industry.</p>
+                
+                <div class="citation">
+                    <ul class="lang-ja">
                         <li><a href="https://www.meti.go.jp/press/2025/12/20251226003/20251226003-1.pdf" target="_blank" rel="noopener noreferrer">経済産業省 GX実行会議「分野別投資戦略 (2025年12月)」</a></li>
                         <li><a href="https://www.cas.go.jp/jp/seisaku/nipponseichosenryaku/kaigi/dai2/shiryou1-2.pdf" target="_blank" rel="noopener noreferrer">内閣官房「成長戦略の検討体制 (2025年12月)」</a></li>
+                    </ul>
+                    <ul class="lang-en">
+                        <li>METI "Sectoral Investment Strategy for GX (Dec 2025)"</li>
+                        <li>Cabinet Secretariat "Growth Strategy Review (Dec 2025)"</li>
                     </ul>
                 </div>
             </div>
@@ -1534,86 +1666,134 @@
         <!-- Whitepaper Highlight Section -->
         <div class="whitepaper-highlight fade-up">
             <div class="wp-header">
-                <h3><span>📖</span>令和6年度 食料・農業・農村白書 ハイライト</h3>
+                <h3 class="lang-ja"><span>📖</span>令和6年度 食料・農業・農村白書 ハイライト</h3>
+                <h3 class="lang-en"><span>📖</span>FY2024 White Paper on Food, Agriculture, and Rural Areas</h3>
             </div>
             <div class="infographic-grid">
                 <div class="info-item">
                     <div class="info-icon">🌾</div>
-                    <div class="info-title">食料安全保障の強化</div>
-                    <div class="info-text">
+                    <div class="info-title lang-ja">食料安全保障の強化</div>
+                    <div class="info-title lang-en">Food Security</div>
+                    <div class="info-text lang-ja">
                         <ul>
                             <li>肥料原料(リン・カリ)の海外依存度ほぼ100%という脆弱性の克服。</li>
                             <li>「食料安全保障強化政策大綱」に基づき、国内生産の増大を推進。</li>
                         </ul>
                     </div>
+                    <div class="info-text lang-en">
+                        <ul>
+                            <li>Overcoming nearly 100% dependency on imported fertilizer raw materials.</li>
+                            <li>Promoting increased domestic production based on government policy outlines.</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="info-item">
                     <div class="info-icon">🌿</div>
-                    <div class="info-title">環境と調和(みどり戦略)</div>
-                    <div class="info-text">
+                    <div class="info-title lang-ja">環境と調和(みどり戦略)</div>
+                    <div class="info-title lang-en">Green Strategy</div>
+                    <div class="info-text lang-ja">
                         <ul>
                             <li>2050年までに化学農薬使用量50%低減、化学肥料30%低減を目指す。</li>
                             <li>有機農業の取組面積を全体の25%(100万ha)へ拡大する目標。</li>
                         </ul>
                     </div>
+                    <div class="info-text lang-en">
+                        <ul>
+                            <li>Aiming for 50% reduction in chemical pesticides and 30% in fertilizers by 2050.</li>
+                            <li>Targeting expansion of organic farming to 25% (1M ha) of total area.</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="info-item">
                     <div class="info-icon">🚜</div>
-                    <div class="info-title">スマート農業・DX</div>
-                    <div class="info-text">
+                    <div class="info-title lang-ja">スマート農業・DX</div>
+                    <div class="info-title lang-en">Smart Agri & DX</div>
+                    <div class="info-text lang-ja">
                         <ul>
                             <li>基幹的農業従事者数116万人(65歳以上7割超)という急速な減少に対応。</li>
                             <li>ロボット・AI・IoT等の先端技術活用による生産性の飛躍的向上。</li>
                         </ul>
                     </div>
+                    <div class="info-text lang-en">
+                        <ul>
+                            <li>Addressing rapid decline in core farmers (1.16M, over 70% are 65+).</li>
+                            <li>Dramatically improving productivity using Robotics, AI, and IoT.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div class="wp-source">
+            <div class="wp-source lang-ja">
                 出典：<a href="https://www.maff.go.jp/j/wpaper/w_maff/r6/pdf/zentaiban.pdf" target="_blank" rel="noopener noreferrer">農林水産省「令和6年度 食料・農業・農村白書(全体版)」</a>
+            </div>
+            <div class="wp-source lang-en">
+                Source: MAFF "FY2024 White Paper on Food, Agriculture, and Rural Areas"
             </div>
 
             <!-- Policy Outline -->
             <div class="policy-highlight">
-                <h3><span>🏛️</span>食料安全保障強化政策大綱 (改訂版)</h3>
+                <h3 class="lang-ja"><span>🏛️</span>食料安全保障強化政策大綱 (改訂版)</h3>
+                <h3 class="lang-en"><span>🏛️</span>Policy Outline for Strengthening Food Security</h3>
                 <div class="infographic-grid">
-                    <div class="info-text">
+                    <div class="info-text lang-ja">
                         <ul>
                             <li><strong>構造転換:</strong> 過度な輸入依存からの脱却と国内生産資源(肥料・飼料)の確保。</li>
                             <li><strong>適正価格:</strong> 生産資材高騰などのコスト上昇分を農産物価格に適正に転嫁できる仕組みの構築。</li>
                         </ul>
                     </div>
-                    <div class="info-text">
+                    <div class="info-text lang-en">
+                        <ul>
+                            <li><strong>Structural Shift:</strong> Breaking away from excessive import reliance and securing domestic resources.</li>
+                            <li><strong>Fair Pricing:</strong> Building mechanisms to pass on rising costs to agricultural product prices.</li>
+                        </ul>
+                    </div>
+                    <div class="info-text lang-ja">
                         <ul>
                             <li><strong>スマート化:</strong> 自動走行農機やドローン等の社会実装を加速し、労働力不足を補う。</li>
                             <li><strong>輸出拡大:</strong> 海外市場の開拓による農業所得の向上と生産基盤の維持。</li>
                         </ul>
                     </div>
-                </div>
-                <div class="wp-source">
-                    出典：<a href="https://www.kantei.go.jp/jp/singi/nousui/pdf/20231227honbun.pdf" target="_blank" rel="noopener noreferrer">食料安定供給・農林水産業基盤強化本部「食料安全保障強化政策大綱(改訂版)」</a>
+                    <div class="info-text lang-en">
+                        <ul>
+                            <li><strong>Smart Tech:</strong> Accelerating implementation of autonomous machinery and drones.</li>
+                            <li><strong>Export Expansion:</strong> Improving income and maintaining production bases by opening overseas markets.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
       </div>
     </section>
 
-    <!-- Market (Class changed to 'section alt' to alternate backgrounds) -->
+    <!-- Market -->
     <section id="market" class="section alt">
       <div class="container">
         <!-- 上部：テキスト情報 -->
         <div class="section-header fade-up" data-title="MARKET">
-            <span class="eyebrow">市場と目指す姿</span>
-            <h2>
+            <span class="eyebrow lang-ja">市場と目指す姿</span>
+            <span class="eyebrow lang-en">Market & Vision</span>
+            
+            <h2 class="lang-ja">
                 <span class="keep-all">2050年、食料生産は半減の危機。</span><br>
                 <span class="keep-all">8兆円産業を「維持・再生」する。</span>
             </h2>
+            <h2 class="lang-en">
+                By 2050, food production faces a 50% decline.<br>
+                We will "Maintain & Regenerate"<br>this 8 trillion yen industry.
+            </h2>
              
             <div style="max-width: 800px; margin: 32px auto 0; text-align: left;">
-                <p style="color:var(--muted); margin-bottom:24px;">現在のトレンドでは、2050年の国内農業生産額は4兆円台へ半減すると予測されています。百姓イッキは、テクノロジーと新しい生産体制により、この下落トレンドを逆転させ、8兆円規模の生産力を維持・再生することを目指します。</p>
-                <ul class="bullet">
+                <p class="lang-ja" style="color:var(--muted); margin-bottom:24px;">現在のトレンドでは、2050年の国内農業生産額は4兆円台へ半減すると予測されています。百姓イッキは、テクノロジーと新しい生産体制により、この下落トレンドを逆転させ、8兆円規模の生産力を維持・再生することを目指します。</p>
+                <p class="lang-en" style="color:var(--muted); margin-bottom:24px;">Current trends predict domestic agricultural output will halve to 4 trillion yen by 2050. HYAKUSHO-IKKI aims to reverse this trend through technology and new production systems, maintaining and regenerating the 8 trillion yen production capacity.</p>
+                
+                <ul class="bullet lang-ja">
                     <li><strong>2020年：</strong>約 8.9 兆円(実績)</li>
                     <li style="color:var(--muted);"><strong>2050年予測(成り行き)：</strong>約 4.3 兆円 <span style="font-size:0.75rem; color:var(--accent); font-weight:700; margin-left:8px;">(半減)</span></li>
                     <li style="color:var(--primary); font-weight:700;"><strong>2050年目標(百姓イッキ)：</strong>8.0 兆円規模を維持</li>
+                </ul>
+                <ul class="bullet lang-en">
+                    <li><strong>2020:</strong> ~8.9 Trillion JPY (Actual)</li>
+                    <li style="color:var(--muted);"><strong>2050 Forecast (Business as usual):</strong> ~4.3 Trillion JPY <span style="font-size:0.75rem; color:var(--accent); font-weight:700; margin-left:8px;">(Halved)</span></li>
+                    <li style="color:var(--primary); font-weight:700;"><strong>2050 Target (HYAKUSHO-IKKI):</strong> Maintain 8.0 Trillion JPY scale</li>
                 </ul>
             </div>
         </div>
@@ -1623,7 +1803,8 @@
             <div class="chart-wrapper" style="height:400px; padding:24px; background:#fff; border-radius:16px; border:1px solid var(--border); box-shadow:0 10px 30px rgba(0,0,0,0.05); max-width: 900px; margin: 0 auto;">
                 <canvas id="marketChart"></canvas>
             </div>
-            <p style="text-align:center; font-size:0.75rem; color:var(--muted); margin-top:16px;">出典：<a href="https://www.mri.co.jp/knowledge/insight/policy/i5inlu000000ito0-att/nr20240731pec-2.pdf" target="_blank" style="text-decoration:underline;" rel="noopener noreferrer">三菱総合研究所『食料安全保障の長期ビジョン』(2024年7月) 提言シナリオより加工</a></p>
+            <p class="lang-ja" style="text-align:center; font-size:0.75rem; color:var(--muted); margin-top:16px;">出典：<a href="https://www.mri.co.jp/knowledge/insight/policy/i5inlu000000ito0-att/nr20240731pec-2.pdf" target="_blank" style="text-decoration:underline;" rel="noopener noreferrer">三菱総合研究所『食料安全保障の長期ビジョン』(2024年7月) 提言シナリオより加工</a></p>
+            <p class="lang-en" style="text-align:center; font-size:0.75rem; color:var(--muted); margin-top:16px;">Source: Mitsubishi Research Institute "Long-term Vision for Food Security" (July 2024)</p>
         </div>
       </div>
     </section>
@@ -1632,10 +1813,16 @@
     <section id="roadmap" class="section">
       <div class="container fade-up">
         <div class="section-header" data-title="ROADMAP">
-            <span class="eyebrow">ロードマップ</span>
-            <h2>
+            <span class="eyebrow lang-ja">ロードマップ</span>
+            <span class="eyebrow lang-en">Roadmap</span>
+            
+            <h2 class="lang-ja">
                 <span class="keep-all">「稼げるモデル」を確立し、</span><br>
                 <span class="keep-all">日本の農業インフラになる。</span>
+            </h2>
+            <h2 class="lang-en">
+                Establishing a "Profitable Model"<br>
+                to become Japan's agricultural infrastructure.
             </h2>
         </div>
          
@@ -1648,12 +1835,21 @@
                     <span class="step-badge">Phase 1</span>
                     <span class="step-year">2026 - 2027</span>
                 </div>
-                <h3 class="step-title">モデル実証と基盤構築</h3>
-                <p class="step-desc">沼津・忍野エリアで「稼げる農業」を証明する。</p>
-                <ul class="bullet">
+                <h3 class="step-title lang-ja">モデル実証と基盤構築</h3>
+                <h3 class="step-title lang-en">Proof of Concept & Foundation</h3>
+                
+                <p class="step-desc lang-ja">沼津・忍野エリアで「稼げる農業」を証明する。</p>
+                <p class="step-desc lang-en">Proving "Profitable Agriculture" in Numazu/Oshino area.</p>
+                
+                <ul class="bullet lang-ja">
                   <li><strong>自社生産:</strong> 露地野菜・茶・きのこの複合経営で初年度黒字化</li>
                   <li><strong>DX推進:</strong> 栽培データの活用とスマート技術による生産効率化</li>
                   <li><strong>ブランド:</strong> 地域ブランド「百姓イッキ」の立ち上げとファン獲得</li>
+                </ul>
+                <ul class="bullet lang-en">
+                  <li><strong>Production:</strong> Profitable year one via mixed farming.</li>
+                  <li><strong>DX:</strong> Efficiency through data usage and smart tech.</li>
+                  <li><strong>Branding:</strong> Launching "HYAKUSHO-IKKI" brand.</li>
                 </ul>
               </div>
                
@@ -1669,12 +1865,21 @@
                     <span class="step-badge">Phase 2</span>
                     <span class="step-year">2028 - 2030</span>
                 </div>
-                <h3 class="step-title">地域展開とSCM統合</h3>
-                <p class="step-desc">事業承継と流通改革で、地域農業の核になる。</p>
-                <ul class="bullet">
+                <h3 class="step-title lang-ja">地域展開とSCM統合</h3>
+                <h3 class="step-title lang-en">Regional Expansion & SCM</h3>
+                
+                <p class="step-desc lang-ja">事業承継と流通改革で、地域農業の核になる。</p>
+                <p class="step-desc lang-en">Becoming the core of regional agriculture via succession and SCM reform.</p>
+                
+                <ul class="bullet lang-ja">
                   <li><strong>規模拡大:</strong> 耕作放棄地の再生と離農農家の事業承継（50ha規模へ）</li>
                   <li><strong>SCM内製:</strong> 自社集荷場・物流網の整備で中間コストを圧縮</li>
                   <li><strong>販路直結:</strong> 大手実需者・スーパーとの直接契約による価格安定化</li>
+                </ul>
+                <ul class="bullet lang-en">
+                  <li><strong>Scaling:</strong> Regenerating abandoned land and succession (to 50ha).</li>
+                  <li><strong>SCM:</strong> Compressing costs via in-house logistics.</li>
+                  <li><strong>Direct Sales:</strong> Stabilizing prices via direct contracts.</li>
                 </ul>
               </div>
 
@@ -1690,12 +1895,21 @@
                     <span class="step-badge">Phase 3</span>
                     <span class="step-year" style="background:var(--accent); color:#fff;">2031 -</span>
                 </div>
-                <h3 class="step-title">全国プラットフォーム化</h3>
-                <p class="step-desc">「百姓イッキOS」で日本の農業地図を書き換える。</p>
-                <ul class="bullet">
+                <h3 class="step-title lang-ja">全国プラットフォーム化</h3>
+                <h3 class="step-title lang-en">National Platform</h3>
+                
+                <p class="step-desc lang-ja">「百姓イッキOS」で日本の農業地図を書き換える。</p>
+                <p class="step-desc lang-en">Redrawing Japan's agricultural map with "HYAKUSHO-IKKI OS".</p>
+                
+                <ul class="bullet lang-ja">
                   <li><strong>OS提供:</strong> 成功モデルをパッケージ化し、若手参入障壁をゼロに</li>
                   <li><strong>全国展開:</strong> 20都道府県へ拠点を拡大、自律分散型ネットワーク構築</li>
                   <li><strong>業界再編:</strong> 日本最大の次世代農業グループとして産業構造を変革</li>
+                </ul>
+                <ul class="bullet lang-en">
+                  <li><strong>OS Provision:</strong> Packaging the model to lower entry barriers.</li>
+                  <li><strong>National Rollout:</strong> Expanding to 20 prefectures.</li>
+                  <li><strong>Restructuring:</strong> Transforming industry structure as Japan's largest next-gen agri-group.</li>
                 </ul>
               </div>
             </div>
@@ -1707,7 +1921,8 @@
     <section id="team" class="section alt">
       <div class="container fade-up">
         <div class="section-header" data-title="LEADERSHIP">
-            <span class="eyebrow">創業メンバー</span>
+            <span class="eyebrow lang-ja">創業メンバー</span>
+            <span class="eyebrow lang-en">Founders</span>
             <h2>Leadership</h2>
         </div>
          
@@ -1720,26 +1935,48 @@
                     </div>
                     <div class="member-name">
                         <span class="name-row">
-                            齋藤 禎紀
+                            <span class="lang-ja">齋藤 禎紀</span>
+                            <span class="lang-en">Yoshiki SAITO</span>
                             <a href="https://www.linkedin.com/in/yoshiki-saito-43bb40297/" target="_blank" class="inline-social" aria-label="LinkedIn" rel="noopener noreferrer">
                                 <svg class="social-icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                             </a>
                         </span>
                     </div>
-                    <span class="member-en">Yoshiki SAITO</span>
-                    <p class="member-role">代表取締役CEO<span>President & CEO</span></p>
-                    <p style="font-size:0.8rem; font-weight:700; color:var(--primary); margin-top:8px;">座右の銘：昼夜突貫</p>
+                    <!-- JAのみサブ英語名を表示 -->
+                    <span class="member-en lang-ja">Yoshiki SAITO</span>
+                    
+                    <p class="member-role">
+                        <!-- class="role-sub"を追加してスタイルを適用 -->
+                        <span class="lang-ja">代表取締役CEO<span class="role-sub">President & CEO</span></span>
+                        <span class="lang-en">President & CEO</span>
+                    </p>
+                    
+                    <p class="lang-ja" style="font-size:0.8rem; font-weight:700; color:var(--primary); margin-top:8px;">座右の銘：昼夜突貫</p>
+                    <p class="lang-en" style="font-size:0.8rem; font-weight:700; color:var(--primary); margin-top:8px;">Motto: Day and Night</p>
                 </div>
                 <div class="ceo-content">
-                    <h4 style="margin-bottom:12px; font-size:1.1rem; border-bottom:1px solid var(--border); padding-bottom:8px;">経歴</h4>
-                    <p style="margin-bottom:24px;">
+                    <h4 class="lang-ja" style="margin-bottom:12px; font-size:1.1rem; border-bottom:1px solid var(--border); padding-bottom:8px;">経歴</h4>
+                    <h4 class="lang-en" style="margin-bottom:12px; font-size:1.1rem; border-bottom:1px solid var(--border); padding-bottom:8px;">Biography</h4>
+                    
+                    <p class="lang-ja" style="margin-bottom:24px;">
                         1997年生まれ、神奈川県出身。関西学院大学総合政策学部で経営学を専攻。幼少期より阪神タイガースファンとして英才教育を受け、3度の優勝に貢献。<br><br>
                         花のサブスク/ギフト事業を展開するユーザーライク社に入社。ブーケの加工/出荷を行うオペレーション責任者として事業成長とユーザーさんのうれしいを両立する体制を構築し、SCMマネージャーへ就任。仕入れ・加工・物流等のサプライチェーン全体を統括。産地開発にも携わり、全国の花き生産者と関係性構築し、安定した調達網の構築と原価改善を実現。
                     </p>
-                    <h4 style="margin-bottom:12px; font-size:1.1rem; border-bottom:1px solid var(--border); padding-bottom:8px;">創業の経緯</h4>
-                    <p>
+                    <p class="lang-en" style="margin-bottom:24px;">
+                        Born in Kanagawa in 1997. Majored in Management at Kwansei Gakuin University. Raised as a passionate Hanshin Tigers fan.<br><br>
+                        Joined User Like Inc., a flower subscription/gift service. As Operations Manager, established a system balancing business growth with user satisfaction. Later became SCM Manager, overseeing the entire supply chain including procurement, processing, and logistics. Engaged in production area development, building relationships with flower growers nationwide, establishing stable procurement networks, and improving cost structures.
+                    </p>
+                    
+                    <h4 class="lang-ja" style="margin-bottom:12px; font-size:1.1rem; border-bottom:1px solid var(--border); padding-bottom:8px;">創業の経緯</h4>
+                    <h4 class="lang-en" style="margin-bottom:12px; font-size:1.1rem; border-bottom:1px solid var(--border); padding-bottom:8px;">Story of Founding</h4>
+                    
+                    <p class="lang-ja">
                         純粋に花が好きで入社したユーザーライク社にて、全国の生産者や卸売市場を取締役の久保と訪問する中で、生産者や市場関係者の熱い想いやモノづくりへの姿勢等、日本の一次産業を長年支えてこられた先輩方に感銘を受けました。同時に、日本の一次産業には現場レベルから業界全体まで課題が山積していることを知り、フラワーデジタルマーケティング協議会を設立し、生産者や市場関係者と農林水産省補助事業にて生産者の原価改善や構造的課題に踏み込んだ調査報告を行いました。<br><br>
                         若年層の生産者が著しく少ない業界だからこそ、自らが次世代生産者となるべく、50坪の耕作放棄地を耕すことからスタートし、野菜の生産を開始。その後も耕作放棄地を復興を継続し、現在では500坪まで拡大。静岡県沼津市に約2,400坪を追加で確保できたことから創業を決意。高齢化先進国である日本で、若年層とシニア層が一致団結する仕組みを百姓イッキで創り出します。
+                    </p>
+                    <p class="lang-en">
+                        While visiting growers and wholesale markets nationwide with Co-founder Kubo during my time at User Like, I was deeply impressed by the passion and craftsmanship of the seniors who have supported Japan's primary industries. At the same time, I realized the industry was piled with issues. We established the Flower Digital Marketing Consorthium and conducted research on cost improvement and structural issues with support from MAFF.<br><br>
+                        In an industry with remarkably few young producers, I decided to become a next-generation producer myself. I started by cultivating 50 tsubo of abandoned farmland. Continuing the restoration, we expanded to 500 tsubo. Securing an additional ~2,400 tsubo in Numazu City, Shizuoka, I decided to found HYAKUSHO-IKKI. In Japan, an advanced aging society, we will create a system where youth and seniors unite.
                     </p>
                 </div>
             </div>
@@ -1749,35 +1986,56 @@
           <div class="card" style="text-align: center;">
             <div class="member-name">
                 <span class="name-row">
-                    久保 裕太郎
+                    <span class="lang-ja">久保 裕太郎</span>
+                    <span class="lang-en">Yutaro KUBO</span>
                     <a href="https://www.linkedin.com/in/yutaro-kubo-b78b67192/" target="_blank" class="inline-social" aria-label="LinkedIn" rel="noopener noreferrer">
                         <svg class="social-icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     </a>
                 </span>
             </div>
-            <span class="member-en">Yutaro KUBO</span>
-            <p class="member-role">取締役COO&CFO<span>Board Director, COO & CFO</span></p>
+            <!-- JAのみサブ英語名を表示 -->
+            <span class="member-en lang-ja">Yutaro KUBO</span>
+            
+            <p class="member-role">
+                <!-- class="role-sub"を追加 -->
+                <span class="lang-ja">取締役COO&CFO<span class="role-sub">Board Director, COO & CFO</span></span>
+                <span class="lang-en">Board Director, COO & CFO</span>
+            </p>
           </div>
           <div class="card" style="text-align: center;">
             <div class="member-name">
                 <span class="name-row">
-                    鈴木 雄大
+                    <span class="lang-ja">鈴木 雄大</span>
+                    <span class="lang-en">Takehiro SUZUKI</span>
                     <a href="https://www.linkedin.com/in/takehiro-suzuki-3a20a1394/" target="_blank" class="inline-social" aria-label="LinkedIn" rel="noopener noreferrer">
                         <svg class="social-icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     </a>
                 </span>
             </div>
-            <span class="member-en">Takehiro SUZUKI</span>
-            <p class="member-role">取締役CPO<span>Board Director, Chief Project Officer</span></p>
+            <!-- JAのみサブ英語名を表示 -->
+            <span class="member-en lang-ja">Takehiro SUZUKI</span>
+            
+            <p class="member-role">
+                <!-- class="role-sub"を追加 -->
+                <span class="lang-ja">取締役CPO<span class="role-sub">Board Director, Chief Project Officer</span></span>
+                <span class="lang-en">Board Director, Chief Project Officer</span>
+            </p>
           </div>
         </div>
          
         <!-- Advisors -->
         <div class="card" style="text-align: center; background:var(--soft); margin-top: 40px;">
-            <h4 style="margin-top:10px; font-size:14px;">技術アドバイザー</h4>
+            <h4 class="lang-ja" style="margin-top:10px; font-size:14px;">技術アドバイザー</h4>
+            <h4 class="lang-en" style="margin-top:10px; font-size:14px;">Technical Advisors</h4>
             <ul class="bullet" style="font-size:13px; margin-bottom:0; list-style:none; padding:0;">
-              <li style="padding:0; margin-bottom:12px;">野口 政之<br><span style="font-size:11px; color:var(--muted);">（コスモファーム野口 代表取締役）</span></li>
-              <li style="padding:0;">南原 武博<br><span style="font-size:11px; color:var(--muted);">（南原農園 代表取締役）</span></li>
+              <li style="padding:0; margin-bottom:12px;">
+                  <span class="lang-ja">南原 武博<br><span style="font-size:11px; color:var(--muted);">（南原農園 代表取締役）</span></span>
+                  <span class="lang-en">Takehiro MINAMIHARA<br><span style="font-size:11px; color:var(--muted);">(CEO, MINAMIHARA Farm)</span></span>
+              </li>
+              <li style="padding:0;">
+                  <span class="lang-ja">野口 政之<br><span style="font-size:11px; color:var(--muted);">（コスモファーム野口 代表取締役）</span></span>
+                  <span class="lang-en">Masayuki NOGUCHI<br><span style="font-size:11px; color:var(--muted);">(CEO, Cosmo Farm NOGUCHI)</span></span>
+              </li>
             </ul>
         </div>
          
@@ -1790,21 +2048,37 @@
         <div>
           <span class="eyebrow" style="color:rgba(255,255,255,0.8); background:rgba(255,255,255,0.1);">CONTACT</span>
           <!-- 改行崩れ防止 -->
-          <h2>
+          <h2 class="lang-ja">
             <span class="keep-all">一次産業を次世代へ継承する</span>
             <span class="keep-all">仲間・パートナーを募集中。</span>
           </h2>
-          <p style="opacity:0.9; margin-bottom:32px;">一次産業周辺での事業連携やオペレーション原価改善、サプライチェーンに関するご相談等、お気軽にご連絡ください。</p>
+          <h2 class="lang-en">
+            Seeking Partners & Teammates<br>to Inherit Primary Industries.
+          </h2>
+          
+          <p class="lang-ja" style="opacity:0.9; margin-bottom:32px;">一次産業周辺での事業連携やオペレーション原価改善、サプライチェーンに関するご相談等、お気軽にご連絡ください。</p>
+          <p class="lang-en" style="opacity:0.9; margin-bottom:32px;">Please feel free to contact us regarding business partnerships, operation cost improvement, or supply chain consultation.</p>
+          
           <!-- Gmail Link -->
-          <a class="btn btn-primary" style="background:#fff; color:var(--text)!important; padding:16px 40px; font-size:1rem;" href="https://mail.google.com/mail/?view=cm&fs=1&to=info@100ikki.com" target="_blank" rel="noopener noreferrer">メールで問い合わせる</a>
+          <a class="btn btn-primary lang-ja" style="background:#fff; color:var(--text)!important; padding:16px 40px; font-size:1rem;" href="https://mail.google.com/mail/?view=cm&fs=1&to=info@100ikki.com" target="_blank" rel="noopener noreferrer">メールで問い合わせる</a>
+          <a class="btn btn-primary lang-en" style="background:#fff; color:var(--text)!important; padding:16px 40px; font-size:1rem;" href="https://mail.google.com/mail/?view=cm&fs=1&to=info@100ikki.com" target="_blank" rel="noopener noreferrer">Contact via Email</a>
         </div>
         <div class="card" style="border:1px solid rgba(255,255,255,0.2);">
-          <h3 style="margin-top:0; font-size:1.25rem;">株式会社百姓イッキ</h3>
-          <p class="muted" style="font-family:var(--font-en);">HYAKUSHO IKKI, Inc.</p>
-          <div style="margin-top:24px; font-size:0.9rem; line-height:2;">
+          <h3 style="margin-top:0; font-size:1.25rem;">
+            <span class="lang-ja">株式会社百姓イッキ</span>
+            <span class="lang-en">HYAKUSHO IKKI, Inc.</span>
+          </h3>
+          <p class="muted lang-ja" style="font-family:var(--font-en);">HYAKUSHO IKKI, Inc.</p>
+          <div class="lang-ja" style="margin-top:24px; font-size:0.9rem; line-height:2;">
             所在地：静岡県沼津市<br>
             設立：2026年2月予定<br>
             資本金：100万円<br>
+            E-mail: info@100ikki.com
+          </div>
+          <div class="lang-en" style="margin-top:24px; font-size:0.9rem; line-height:2;">
+            Location: Numazu City, Shizuoka<br>
+            Founded: Feb 2026 (Planned)<br>
+            Capital: 1,000,000 JPY<br>
             E-mail: info@100ikki.com
           </div>
         </div>
@@ -1847,6 +2121,49 @@
         });
     }
 
+    // --- Language Switcher Logic ---
+    // クラスですべてのスイッチを取得するように変更
+    const langSwitches = document.querySelectorAll('.lang-switch');
+    const langLabels = document.querySelectorAll('.lang-label');
+    const body = document.body;
+    let currentLang = 'ja';
+
+    // すべてのスイッチにイベントリスナーを設定
+    langSwitches.forEach(switchEl => {
+        switchEl.addEventListener('click', () => {
+            // Toggle Language
+            if (currentLang === 'ja') {
+                setLanguage('en');
+            } else {
+                setLanguage('ja');
+            }
+        });
+    });
+
+    function setLanguage(lang) {
+        currentLang = lang;
+        // Body class toggle
+        if (lang === 'en') {
+            body.classList.add('is-en');
+            body.classList.remove('lang-ja');
+        } else {
+            body.classList.remove('is-en');
+            body.classList.add('lang-ja');
+        }
+
+        // Active Label toggle
+        langLabels.forEach(label => {
+            if (label.dataset.lang === lang) {
+                label.classList.add('active');
+            } else {
+                label.classList.remove('active');
+            }
+        });
+
+        // Update Charts for new language
+        if (smallChartsInit) updateCharts(lang);
+    }
+
     // --- Scroll & Animation ---
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -1863,6 +2180,7 @@
     // --- Chart Configs ---
     let smallChartsInit = false;
     let bigChartsInit = false;
+    let chartInstances = {}; // Store instances to update later
 
     // 共通のチャートオプション
     const commonOptions = {
@@ -1883,12 +2201,13 @@
         smallChartsInit = true;
 
         // 1. 年齢チャート
-        new Chart(document.getElementById('chartAge').getContext('2d'), {
+        const ctxAge = document.getElementById('chartAge').getContext('2d');
+        chartInstances.age = new Chart(ctxAge, {
             type: 'line',
             data: {
-                labels: ['2015', '2020', '2025(概数)'],
+                labels: ['2015', '2020', '2025(Est)'],
                 datasets: [{
-                    label: '平均年齢',
+                    label: 'Avg Age',
                     data: [67.1, 67.8, 67.6],
                     borderColor: '#b93b3b',
                     borderWidth: 2,
@@ -1902,12 +2221,13 @@
         });
 
         // 2. 従事者数チャート
-        new Chart(document.getElementById('chartWorkers').getContext('2d'), {
+        const ctxWorkers = document.getElementById('chartWorkers').getContext('2d');
+        chartInstances.workers = new Chart(ctxWorkers, {
             type: 'bar',
             data: {
-                labels: ['2015', '2020', '2025(概数)'],
+                labels: ['2015', '2020', '2025(Est)'],
                 datasets: [{
-                    label: '人数(万人)',
+                    label: 'Workers',
                     data: [175.7, 136.3, 102.1],
                     backgroundColor: '#0f5a3a',
                     borderRadius: 4
@@ -1917,10 +2237,11 @@
         });
 
         // 3. 食料自給率 G7 (Labels restored with flags)
-        new Chart(document.getElementById('chartFoodG7').getContext('2d'), {
+        const ctxG7 = document.getElementById('chartFoodG7').getContext('2d');
+        chartInstances.g7 = new Chart(ctxG7, {
             type: 'bar',
             data: {
-                labels: ['🇨🇦 カナダ', '🇦🇺 オーストラリア', '🇺🇸 アメリカ', '🇫🇷 フランス', '🇩🇪 ドイツ', '🇬🇧 イギリス', '🇮🇹 イタリア', '🇯🇵 日本'],
+                labels: ['🇨🇦 CA', '🇦🇺 AU', '🇺🇸 US', '🇫🇷 FR', '🇩🇪 DE', '🇬🇧 UK', '🇮🇹 IT', '🇯🇵 JP'],
                 datasets: [{
                     data: [233, 169, 121, 117, 84, 54, 58, 38],
                     backgroundColor: (ctx) => ctx.dataIndex === 7 ? '#b93b3b' : '#e5e7eb',
@@ -1950,12 +2271,13 @@
         bigChartsInit = true;
 
         // Market Chart
-        new Chart(document.getElementById('marketChart').getContext('2d'), {
+        const ctxMarket = document.getElementById('marketChart').getContext('2d');
+        chartInstances.market = new Chart(ctxMarket, {
             type: 'bar',
             data: {
-                labels: ['2020年(実績)', '2050年予測(成り行き)', '2050年目標(維持)'],
+                labels: ['2020 (Actual)', '2050 (Trend)', '2050 (Target)'],
                 datasets: [{
-                    label: '国内農業産出額',
+                    label: 'Output (Trillion JPY)',
                     data: [8.9, 4.3, 8.0],
                     backgroundColor: ['#9ca3af', '#b93b3b', '#0f5a3a'],
                     borderRadius: 8,
@@ -1967,7 +2289,7 @@
                 maintainAspectRatio: false,
                 plugins: {
                     legend: { display: false },
-                    title: { display: true, text: '国内農業産出額 (兆円)', padding: {bottom:20}, font:{size:14, family:"'Noto Sans JP'"} },
+                    title: { display: true, text: 'Domestic Agricultural Output (Trillion JPY)', padding: {bottom:20}, font:{size:14, family:"'Noto Sans JP'"} },
                     tooltip: {
                         callbacks: {
                             label: function(context) {
@@ -1976,11 +2298,10 @@
                                     label += ': ';
                                 }
                                 if (context.parsed.y !== null) {
-                                    // 2050年目標(index 2)の場合は8.0兆円、それ以外は元のロジック
                                     if(context.dataIndex === 2) {
-                                        label += '8.0 兆円';
+                                        label += '8.0 Trillion';
                                     } else {
-                                        label += context.parsed.y.toFixed(1) + ' 兆円';
+                                        label += context.parsed.y.toFixed(1) + ' Trillion';
                                     }
                                 }
                                 return label;
@@ -1994,6 +2315,47 @@
                 }
             }
         });
+        
+        // Initial label update if loaded in EN (though default is JA)
+        if (currentLang === 'ja') updateCharts('ja');
+    }
+
+    // Chart Language Update Function
+    function updateCharts(lang) {
+        if (!chartInstances.market) return; // Not initialized yet
+
+        if (lang === 'ja') {
+            // Market Chart
+            chartInstances.market.data.labels = ['2020年(実績)', '2050年予測(成り行き)', '2050年目標(維持)'];
+            chartInstances.market.data.datasets[0].label = '国内農業産出額';
+            chartInstances.market.options.plugins.title.text = '国内農業産出額 (兆円)';
+            
+            // Age Chart
+            chartInstances.age.data.labels = ['2015', '2020', '2025(概数)'];
+            chartInstances.age.data.datasets[0].label = '平均年齢';
+            
+            // Workers Chart
+            chartInstances.workers.data.labels = ['2015', '2020', '2025(概数)'];
+            chartInstances.workers.data.datasets[0].label = '人数(万人)';
+            
+            // G7 Chart (Already symbols, maybe update tooltip logic if needed)
+        } else {
+            // Market Chart
+            chartInstances.market.data.labels = ['2020 (Actual)', '2050 (Trend)', '2050 (Target)'];
+            chartInstances.market.data.datasets[0].label = 'Domestic Agricultural Output';
+            chartInstances.market.options.plugins.title.text = 'Agricultural Output (Trillion JPY)';
+            
+            // Age Chart
+            chartInstances.age.data.labels = ['2015', '2020', '2025(Est)'];
+            chartInstances.age.data.datasets[0].label = 'Avg Age';
+            
+            // Workers Chart
+            chartInstances.workers.data.labels = ['2015', '2020', '2025(Est)'];
+            chartInstances.workers.data.datasets[0].label = 'Workers (10k)';
+        }
+
+        // Update all charts
+        Object.values(chartInstances).forEach(chart => chart.update());
     }
   </script>
 </body>
