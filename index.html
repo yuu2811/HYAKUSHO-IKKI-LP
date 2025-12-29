@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="format-detection" content="telephone=no">
   
-  <!-- 基本SEO設定 (Updated) -->
+  <!-- === SEO & Metadata === -->
   <title>株式会社百姓イッキ | HYAKUSHO IKKI, Inc. - 次世代農業プラットフォーム</title>
   <meta name="description" content="一次産業を次世代へ継承し、日本の未来を耕す「株式会社百姓イッキ」。中山間地域での高収益農業モデル確立、サプライチェーン改革、事業承継を通じて、持続可能な食料生産基盤と次世代農業インフラを構築します。">
   <meta name="keywords" content="百姓イッキ, 農業, 一次産業, 事業承継, スマート農業, 農業DX, 地方創生, 食料安全保障, アグリテック, 静岡県沼津市, 農業プラットフォーム">
   
-  <!-- OGP (SNSシェア用) -->
+  <!-- URL正規化 (SEO評価の分散防止) -->
+  <link rel="canonical" href="https://100ikki.com/">
+  
+  <!-- セキュリティ対策: リファラポリシーの設定 -->
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <!-- === OGP (SNSシェア用) === -->
   <meta property="og:title" content="株式会社百姓イッキ | 次世代農業プラットフォーム">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://100ikki.com/"> <!-- 本番URLに変更してください -->
-  <meta property="og:image" content="OGP.png">
+  <meta property="og:url" content="https://100ikki.com/">
+  <meta property="og:image" content="https://100ikki.com/OGP.png">
   <meta property="og:description" content="一次産業を次世代へ継承し、日本の未来を耕す。中山間地域から農業の未来をつくる百姓イッキの会社紹介ページ。">
   <meta property="og:site_name" content="株式会社百姓イッキ">
   <meta property="og:locale" content="ja_JP">
@@ -23,20 +29,27 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="株式会社百姓イッキ | HYAKUSHO IKKI, Inc.">
   <meta name="twitter:description" content="一次産業を次世代へ継承し、日本の未来を耕す。">
-  <meta name="twitter:image" content="OGP.png">
+  <meta name="twitter:image" content="https://100ikki.com/OGP.png">
 
-  <!-- Favicon -->
+  <!-- === Icons === -->
   <link rel="icon" href="logo_sq_trans.png" type="image/png">
+  <!-- スマホのホーム画面追加用アイコン -->
+  <link rel="apple-touch-icon" href="logo_sq_trans.png">
   
-  <!-- Google Fonts -->
+  <!-- === Performance Optimization === -->
+  <!-- 外部リソースへの事前接続 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://images.unsplash.com">
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <!-- 構造化データ (JSON-LD) Updated -->
+  <!-- === Structured Data (JSON-LD) === -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -278,6 +291,10 @@
         cursor: pointer;
         z-index: 1002;
         margin-right: 4px;
+        /* Reset Button Styles */
+        background: none;
+        border: none;
+        padding: 0;
     }
     .menu-toggle span {
         display: block;
@@ -1257,12 +1274,12 @@
         <img src="logo_trans.png" alt="百姓イッキ | HYAKUSHO-IKKI" onerror="this.src='https://placehold.co/200x50?text=HYAKUSHO-IKKI'">
       </a>
       
-      <!-- Hamburger Button (Mobile) -->
-      <div class="menu-toggle" id="menuToggle">
+      <!-- Hamburger Button (Mobile) - Button tag for accessibility -->
+      <button class="menu-toggle" id="menuToggle" aria-label="メニューを開く" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
-      </div>
+      </button>
 
       <nav class="nav" id="navMenu">
         <a href="#purpose">Purpose</a>
@@ -1387,7 +1404,7 @@
           </div>
         </div>
         <div class="source-note fade-up">
-            出典：<a href="https://www.maff.go.jp/j/tokei/kouhyou/noucen/pdf/census_25.pdf" target="_blank">2025年農林業センサス結果の概要(概数値)</a>、<a href="https://www.maff.go.jp/j/zyukyu/zikyu_ritu/attach/pdf/012-19.pdf" target="_blank">農林水産省 令和6年度食料自給率</a>
+            出典：<a href="https://www.maff.go.jp/j/tokei/kouhyou/noucen/pdf/census_25.pdf" target="_blank" rel="noopener noreferrer">2025年農林業センサス結果の概要(概数値)</a>、<a href="https://www.maff.go.jp/j/zyukyu/zikyu_ritu/attach/pdf/012-19.pdf" target="_blank" rel="noopener noreferrer">農林水産省 令和6年度食料自給率</a>
         </div>
       </div>
     </section>
@@ -1457,8 +1474,8 @@
                 <p class="why-desc">国際情勢の不安定化に伴い、食料・肥料の調達リスクが高まっている。経済安全保障の観点からも、国内生産基盤の強化は待ったなしの状況にある。</p>
                 <div class="citation">
                     <ul>
-                        <li><a href="https://www.murc.jp/wp-content/uploads/2025/12/report_251219_01.pdf" target="_blank">三菱UFJリサーチ&コンサルティング「経済調査 地政学リスクの展望 (2025年12月)」</a></li>
-                        <li><a href="https://www.mizuho-rt.co.jp/business/research/report/pdf/outlook251225.pdf" target="_blank">みずほリサーチ&テクノロジーズ「2026年 新春経済見通し (2025年12月)」</a></li>
+                        <li><a href="https://www.murc.jp/wp-content/uploads/2025/12/report_251219_01.pdf" target="_blank" rel="noopener noreferrer">三菱UFJリサーチ&コンサルティング「経済調査 地政学リスクの展望 (2025年12月)」</a></li>
+                        <li><a href="https://www.mizuho-rt.co.jp/business/research/report/pdf/outlook251225.pdf" target="_blank" rel="noopener noreferrer">みずほリサーチ&テクノロジーズ「2026年 新春経済見通し (2025年12月)」</a></li>
                     </ul>
                 </div>
             </div>
@@ -1467,8 +1484,8 @@
                 <p class="why-desc">2026年〜2030年にかけて、労働力不足と供給制約がさらに深刻化する見通し。従来の労働集約型から、省人化・効率化された「新しい産業モデル」への転換が急務。</p>
                 <div class="citation">
                     <ul>
-                        <li><a href="https://www.mizuhobank.co.jp/corporate/industry/sangyou/pdf/1079.pdf" target="_blank">みずほ銀行「日本産業の中期見通し (2025年11月)」</a></li>
-                        <li><a href="https://www.smbc.co.jp/hojin/report/investigationlecture/resources/pdf/3_00_CRSDReport147.pdf" target="_blank">三井住友銀行「2025年の回顧と2026年の展望 (2025年12月)」</a></li>
+                        <li><a href="https://www.mizuhobank.co.jp/corporate/industry/sangyou/pdf/1079.pdf" target="_blank" rel="noopener noreferrer">みずほ銀行「日本産業の中期見通し (2025年11月)」</a></li>
+                        <li><a href="https://www.smbc.co.jp/hojin/report/investigationlecture/resources/pdf/3_00_CRSDReport147.pdf" target="_blank" rel="noopener noreferrer">三井住友銀行「2025年の回顧と2026年の展望 (2025年12月)」</a></li>
                     </ul>
                 </div>
             </div>
@@ -1477,8 +1494,8 @@
                 <p class="why-desc">政府の成長戦略においても、スマート農業やGXは重点投資分野。地域資源を活用した持続可能な農業は、次世代の成長産業として期待されている。</p>
                 <div class="citation">
                     <ul>
-                        <li><a href="https://www.meti.go.jp/press/2025/12/20251226003/20251226003-1.pdf" target="_blank">経済産業省 GX実行会議「分野別投資戦略 (2025年12月)」</a></li>
-                        <li><a href="https://www.cas.go.jp/jp/seisaku/nipponseichosenryaku/kaigi/dai2/shiryou1-2.pdf" target="_blank">内閣官房「成長戦略の検討体制 (2025年12月)」</a></li>
+                        <li><a href="https://www.meti.go.jp/press/2025/12/20251226003/20251226003-1.pdf" target="_blank" rel="noopener noreferrer">経済産業省 GX実行会議「分野別投資戦略 (2025年12月)」</a></li>
+                        <li><a href="https://www.cas.go.jp/jp/seisaku/nipponseichosenryaku/kaigi/dai2/shiryou1-2.pdf" target="_blank" rel="noopener noreferrer">内閣官房「成長戦略の検討体制 (2025年12月)」</a></li>
                     </ul>
                 </div>
             </div>
@@ -1522,7 +1539,7 @@
                 </div>
             </div>
             <div class="wp-source">
-                出典：<a href="https://www.maff.go.jp/j/wpaper/w_maff/r6/pdf/zentaiban.pdf" target="_blank">農林水産省「令和6年度 食料・農業・農村白書(全体版)」</a>
+                出典：<a href="https://www.maff.go.jp/j/wpaper/w_maff/r6/pdf/zentaiban.pdf" target="_blank" rel="noopener noreferrer">農林水産省「令和6年度 食料・農業・農村白書(全体版)」</a>
             </div>
 
             <!-- Policy Outline -->
@@ -1543,7 +1560,7 @@
                     </div>
                 </div>
                 <div class="wp-source">
-                    出典：<a href="https://www.kantei.go.jp/jp/singi/nousui/pdf/20231227honbun.pdf" target="_blank">食料安定供給・農林水産業基盤強化本部「食料安全保障強化政策大綱(改訂版)」</a>
+                    出典：<a href="https://www.kantei.go.jp/jp/singi/nousui/pdf/20231227honbun.pdf" target="_blank" rel="noopener noreferrer">食料安定供給・農林水産業基盤強化本部「食料安全保障強化政策大綱(改訂版)」</a>
                 </div>
             </div>
         </div>
@@ -1576,7 +1593,7 @@
             <div class="chart-wrapper" style="height:400px; padding:24px; background:#fff; border-radius:16px; border:1px solid var(--border); box-shadow:0 10px 30px rgba(0,0,0,0.05); max-width: 900px; margin: 0 auto;">
                 <canvas id="marketChart"></canvas>
             </div>
-            <p style="text-align:center; font-size:0.75rem; color:var(--muted); margin-top:16px;">出典：<a href="https://www.mri.co.jp/knowledge/insight/policy/i5inlu000000ito0-att/nr20240731pec-2.pdf" target="_blank" style="text-decoration:underline;">三菱総合研究所『食料安全保障の長期ビジョン』(2024年7月) 提言シナリオより加工</a></p>
+            <p style="text-align:center; font-size:0.75rem; color:var(--muted); margin-top:16px;">出典：<a href="https://www.mri.co.jp/knowledge/insight/policy/i5inlu000000ito0-att/nr20240731pec-2.pdf" target="_blank" style="text-decoration:underline;" rel="noopener noreferrer">三菱総合研究所『食料安全保障の長期ビジョン』(2024年7月) 提言シナリオより加工</a></p>
         </div>
       </div>
     </section>
@@ -1674,7 +1691,7 @@
                     <div class="member-name">
                         <span class="name-row">
                             齋藤 禎紀
-                            <a href="https://www.linkedin.com/in/yoshiki-saito-43bb40297/" target="_blank" class="inline-social" aria-label="LinkedIn">
+                            <a href="https://www.linkedin.com/in/yoshiki-saito-43bb40297/" target="_blank" class="inline-social" aria-label="LinkedIn" rel="noopener noreferrer">
                                 <svg class="social-icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                             </a>
                         </span>
@@ -1703,7 +1720,7 @@
             <div class="member-name">
                 <span class="name-row">
                     久保 裕太郎
-                    <a href="https://www.linkedin.com/in/yutaro-kubo-b78b67192/" target="_blank" class="inline-social" aria-label="LinkedIn">
+                    <a href="https://www.linkedin.com/in/yutaro-kubo-b78b67192/" target="_blank" class="inline-social" aria-label="LinkedIn" rel="noopener noreferrer">
                         <svg class="social-icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     </a>
                 </span>
@@ -1715,7 +1732,7 @@
             <div class="member-name">
                 <span class="name-row">
                     鈴木 雄大
-                    <a href="https://www.linkedin.com/in/takehiro-suzuki-3a20a1394/" target="_blank" class="inline-social" aria-label="LinkedIn">
+                    <a href="https://www.linkedin.com/in/takehiro-suzuki-3a20a1394/" target="_blank" class="inline-social" aria-label="LinkedIn" rel="noopener noreferrer">
                         <svg class="social-icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     </a>
                 </span>
@@ -1787,6 +1804,8 @@
     
     if (menuToggle && navMenu) {
         menuToggle.addEventListener('click', () => {
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
             menuToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
@@ -1794,6 +1813,7 @@
         // リンククリック時に閉じる
         document.querySelectorAll('.nav a').forEach(link => {
             link.addEventListener('click', () => {
+                menuToggle.setAttribute('aria-expanded', 'false');
                 menuToggle.classList.remove('active');
                 navMenu.classList.remove('active');
             });
