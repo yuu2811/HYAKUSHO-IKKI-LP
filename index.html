@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="format-detection" content="telephone=no">
   
-  <!-- 基本SEO設定 -->
-  <title>株式会社百姓イッキ | HYAKUSHO IKKI, Inc. - 一次産業を次世代へ</title>
-  <meta name="description" content="一次産業を次世代へ継承し、日本の未来を耕す。株式会社百姓イッキは、中山間地域から農業の構造転換とスマート化を推進し、持続可能な食料生産基盤を構築します。">
-  <meta name="keywords" content="百姓イッキ, 農業, 一次産業, 事業承継, スマート農業, 地方創生, 食料安全保障, 静岡県沼津市">
+  <!-- 基本SEO設定 (Updated) -->
+  <title>株式会社百姓イッキ | HYAKUSHO IKKI, Inc. - 次世代農業プラットフォーム</title>
+  <meta name="description" content="一次産業を次世代へ継承し、日本の未来を耕す「株式会社百姓イッキ」。中山間地域での高収益農業モデル確立、サプライチェーン改革、事業承継を通じて、持続可能な食料生産基盤と次世代農業インフラを構築します。">
+  <meta name="keywords" content="百姓イッキ, 農業, 一次産業, 事業承継, スマート農業, 農業DX, 地方創生, 食料安全保障, アグリテック, 静岡県沼津市, 農業プラットフォーム">
   
   <!-- OGP (SNSシェア用) -->
-  <meta property="og:title" content="株式会社百姓イッキ | HYAKUSHO IKKI, Inc.">
+  <meta property="og:title" content="株式会社百姓イッキ | 次世代農業プラットフォーム">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://100ikki.com/"> <!-- 本番URLに変更してください -->
-  <meta property="og:image" content="https://images.unsplash.com/photo-1500964757637-c85e8a162699?q=80&w=1200&auto=format&fit=crop">
+  <meta property="og:image" content="OGP.png">
   <meta property="og:description" content="一次産業を次世代へ継承し、日本の未来を耕す。中山間地域から農業の未来をつくる百姓イッキの会社紹介ページ。">
   <meta property="og:site_name" content="株式会社百姓イッキ">
   <meta property="og:locale" content="ja_JP">
@@ -23,9 +23,9 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="株式会社百姓イッキ | HYAKUSHO IKKI, Inc.">
   <meta name="twitter:description" content="一次産業を次世代へ継承し、日本の未来を耕す。">
-  <meta name="twitter:image" content="https://images.unsplash.com/photo-1500964757637-c85e8a162699?q=80&w=1200&auto=format&fit=crop">
+  <meta name="twitter:image" content="OGP.png">
 
-  <!-- Favicon (スクエアロゴを使用) -->
+  <!-- Favicon -->
   <link rel="icon" href="logo_sq_trans.png" type="image/png">
   
   <!-- Google Fonts -->
@@ -36,7 +36,7 @@
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <!-- 構造化データ (JSON-LD) for AI Search & SEO -->
+  <!-- 構造化データ (JSON-LD) Updated -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -47,16 +47,29 @@
     "logo": "https://100ikki.com/logo_trans.png",
     "description": "一次産業を次世代へ継承し、日本の未来を耕す農業スタートアップ。",
     "foundingDate": "2026-02",
-    "founder": {
-      "@type": "Person",
-      "name": "齋藤 禎紀"
-    },
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "沼津市",
       "addressRegion": "静岡県",
       "addressCountry": "JP"
     },
+    "founder": {
+      "@type": "Person",
+      "name": "齋藤 禎紀",
+      "jobTitle": "CEO"
+    },
+    "employee": [
+      {
+        "@type": "Person",
+        "name": "久保 裕太郎",
+        "jobTitle": "COO/CFO"
+      },
+      {
+        "@type": "Person",
+        "name": "鈴木 雄大",
+        "jobTitle": "CPO"
+      }
+    ],
     "contactPoint": {
       "@type": "ContactPoint",
       "email": "info@100ikki.com",
@@ -980,64 +993,132 @@
         background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop') center/cover no-repeat !important;
     }
 
-    /* --- Roadmap --- */
+    /* --- Roadmap Refined --- */
     .roadmap-wrapper { position: relative; padding: 20px 0; }
-    .roadmap-grid { display: grid; gap: 40px; }
-    @media (min-width: 900px) {
-        .roadmap-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    }
     
-    .roadmap-card {
-        background: #fff;
-        border: 1px solid var(--border);
-        padding: 32px;
-        border-radius: 12px;
-        position: relative;
-        z-index: 2;
-    }
-    
-    /* 矢印 (PC) */
-    @media (min-width: 900px) {
-        .roadmap-card:not(:last-child)::after {
-            content: '';
-            position: absolute; right: -18px; top: 50%; transform: translateY(-50%);
-            width: 0; height: 0;
-            border-top: 8px solid transparent; border-bottom: 8px solid transparent;
-            border-left: 12px solid var(--border); z-index: 3;
-        }
-    }
-    /* 矢印 (Mobile - Gap調整) */
-    @media (max-width: 899px) {
-        .roadmap-grid { gap: 48px; }
-        .roadmap-card:not(:last-child)::after {
-            content: '';
-            position: absolute; bottom: -32px; left: 50%; transform: translateX(-50%);
-            width: 0; height: 0;
-            border-left: 10px solid transparent; border-right: 10px solid transparent;
-            border-top: 14px solid var(--border); z-index: 3;
-        }
-    }
-
-    .roadmap-header {
+    /* New Roadmap Container */
+    .roadmap-steps {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-        border-bottom: 1px solid var(--soft);
-        padding-bottom: 16px;
+        flex-direction: column;
+        gap: 40px;
     }
-    .phase-badge {
+    
+    /* Step Item */
+    .step-item {
+        position: relative;
+        flex: 1;
+        background: #fff;
+        border-radius: 16px;
+        border: 1px solid var(--border);
+        padding: 30px 24px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+    }
+    
+    .step-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        border-color: var(--primary);
+    }
+    
+    /* Background Number */
+    .step-bg-num {
+        position: absolute;
+        top: -20px;
+        right: -10px;
         font-family: var(--font-en);
-        background: var(--primary);
-        color: #fff;
-        padding: 4px 12px;
-        border-radius: 4px;
-        font-size: 0.75rem;
+        font-size: 8rem;
+        font-weight: 900;
+        color: rgba(0,0,0,0.03);
+        line-height: 1;
+        pointer-events: none;
+        z-index: 0;
+    }
+    
+    /* Step Content */
+    .step-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .step-year {
+        font-family: var(--font-en);
+        font-size: 0.9rem;
         font-weight: 700;
+        color: var(--primary);
+        background: rgba(15, 90, 58, 0.1);
+        padding: 4px 12px;
+        border-radius: 20px;
+    }
+    
+    .step-badge {
+        font-family: var(--font-en);
+        font-weight: 700;
+        font-size: 0.8rem;
+        color: var(--muted);
         letter-spacing: 0.05em;
     }
-    .phase-year { font-family: var(--font-en); font-size: 0.85rem; font-weight: 700; color: var(--muted); }
-    .roadmap-card:nth-child(3) .phase-badge { background: var(--accent); }
+    
+    .step-item.active .step-year {
+        background: var(--accent);
+        color: #fff;
+    }
+    
+    .step-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: var(--text);
+        position: relative;
+        z-index: 1;
+    }
+    
+    .step-desc {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-bottom: 20px;
+        font-weight: 500;
+        position: relative;
+        z-index: 1;
+    }
+    
+    /* Connector Arrows */
+    .step-connector {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--border);
+        font-size: 1.5rem;
+        padding: 10px 0;
+    }
+    
+    /* PC Layout (Horizontal) */
+    @media (min-width: 900px) {
+        .roadmap-steps {
+            flex-direction: row;
+            align-items: stretch;
+            gap: 20px;
+        }
+        .step-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .step-connector {
+            transform: rotate(-90deg); /* Make arrow point right */
+            padding: 0;
+            width: 40px;
+            flex-shrink: 0;
+        }
+        
+        /* Line connecting steps */
+        .roadmap-steps::before {
+            display: none; /* Simplify to just cards for cleaner look */
+        }
+    }
 
     /* --- Team --- */
     .profile-img-placeholder {
@@ -1258,7 +1339,7 @@
       </div>
       <div class="container fade-up" style="margin-top: 40px;">
         <!-- Placeholder Image. Replace with 5IKKI.png in production -->
-        <img src="5IKKI.png" alt="5つのイッキ" class="purpose-image" onerror="this.src='https://placehold.co/800x400?text=5+IKKI+Image'">
+        <img src="5IKKI.png" alt="5つのイッキ" class="purpose-image" loading="lazy" onerror="this.src='https://placehold.co/800x400?text=5+IKKI+Image'">
       </div>
     </section>
 
@@ -1326,7 +1407,7 @@
           <div class="card solution-card solution-farm">
             <h3>生産事業 (FARM)</h3>
             <span class="solution-en">Farming Operation</span>
-            <p style="font-size: 0.9rem; margin-bottom: 16px; opacity: 0.9;">中山間地域に特化した「稼げる農業モデル」を確立し、労働生産性を最大化する。</p>
+            <p style="font-size: 0.9rem; margin-bottom: 16px; opacity: 0.9;">テクノロジー実装により「稼げる農業モデル」を確立し、労働生産性を最大化する。</p>
             <ul class="bullet">
               <li><strong>超省力化:</strong> 専用機械とフィジカルAIの導入で、匠の技を自動化・標準化</li>
               <li><strong>高収益化:</strong> 露地野菜・お茶・きのこの複合経営で、1年目から黒字化を実現</li>
@@ -1500,49 +1581,74 @@
       </div>
     </section>
 
-    <!-- Roadmap -->
+    <!-- Roadmap (New Design) -->
     <section id="roadmap" class="section">
       <div class="container fade-up">
         <div class="section-header" data-title="ROADMAP">
             <span class="eyebrow">ロードマップ</span>
-            <h2>Phase 1 → 3 で全国展開へ。</h2>
+            <h2>
+                <span class="keep-all">「稼げるモデル」を確立し、</span><br>
+                <span class="keep-all">日本の農業インフラになる。</span>
+            </h2>
         </div>
         
         <div class="roadmap-wrapper">
-            <div class="roadmap-grid">
-              <div class="roadmap-card">
-                <div class="roadmap-header">
-                    <span class="phase-badge">Phase 1</span>
-                    <span class="phase-year">2026 -</span>
+            <div class="roadmap-steps">
+              <!-- Step 1 -->
+              <div class="step-item">
+                <span class="step-bg-num">01</span>
+                <div class="step-header">
+                    <span class="step-badge">Phase 1</span>
+                    <span class="step-year">2026 - 2027</span>
                 </div>
-                <h3>農業生産とナレッジ蓄積</h3>
+                <h3 class="step-title">モデル実証と基盤構築</h3>
+                <p class="step-desc">沼津・忍野エリアで「稼げる農業」を証明する。</p>
                 <ul class="bullet">
-                  <li>沼津・忍野エリアで露地野菜・きのこ・お茶を開始</li>
-                  <li>最新機器導入、少人数で大量生産</li>
+                  <li><strong>自社生産:</strong> 露地野菜・茶・きのこの複合経営で初年度黒字化</li>
+                  <li><strong>DX推進:</strong> 栽培データの活用とスマート技術による生産効率化</li>
+                  <li><strong>ブランド:</strong> 地域ブランド「百姓イッキ」の立ち上げとファン獲得</li>
                 </ul>
               </div>
-              <div class="roadmap-card">
-                <div class="roadmap-header">
-                    <span class="phase-badge">Phase 2</span>
-                    <span class="phase-year">2027 -</span>
+              
+              <!-- Connector -->
+              <div class="step-connector">
+                  ▼
+              </div>
+
+              <!-- Step 2 -->
+              <div class="step-item">
+                <span class="step-bg-num">02</span>
+                <div class="step-header">
+                    <span class="step-badge">Phase 2</span>
+                    <span class="step-year">2028 - 2030</span>
                 </div>
-                <h3>高齢農家とSCM統合</h3>
+                <h3 class="step-title">地域展開とSCM統合</h3>
+                <p class="step-desc">事業承継と流通改革で、地域農業の核になる。</p>
                 <ul class="bullet">
-                  <li>リモート栽培と事業継承で生産拡大</li>
-                  <li>取引農家50件獲得</li>
-                  <li>市場と協力した販路拡大</li>
+                  <li><strong>規模拡大:</strong> 耕作放棄地の再生と離農農家の事業承継（50ha規模へ）</li>
+                  <li><strong>SCM内製:</strong> 自社集荷場・物流網の整備で中間コストを圧縮</li>
+                  <li><strong>販路直結:</strong> 大手実需者・スーパーとの直接契約による価格安定化</li>
                 </ul>
               </div>
-              <div class="roadmap-card">
-                <div class="roadmap-header">
-                    <span class="phase-badge" style="background:var(--accent);">Phase 3</span>
-                    <span class="phase-year">2031 -</span>
+
+              <!-- Connector -->
+              <div class="step-connector">
+                  ▼
+              </div>
+
+              <!-- Step 3 -->
+              <div class="step-item active">
+                <span class="step-bg-num">03</span>
+                <div class="step-header">
+                    <span class="step-badge">Phase 3</span>
+                    <span class="step-year" style="background:var(--accent); color:#fff;">2031 -</span>
                 </div>
-                <h3>次世代参入インフラの構築</h3>
+                <h3 class="step-title">全国プラットフォーム化</h3>
+                <p class="step-desc">「百姓イッキOS」で日本の農業地図を書き換える。</p>
                 <ul class="bullet">
-                  <li>若手が安心して参入できる基盤整備</li>
-                  <li>全国20都道府県の自治体と連携</li>
-                  <li>他県にも農業法人を設立</li>
+                  <li><strong>OS提供:</strong> 成功モデルをパッケージ化し、若手参入障壁をゼロに</li>
+                  <li><strong>全国展開:</strong> 20都道府県へ拠点を拡大、自律分散型ネットワーク構築</li>
+                  <li><strong>業界再編:</strong> 日本最大の次世代農業グループとして産業構造を変革</li>
                 </ul>
               </div>
             </div>
@@ -1563,7 +1669,7 @@
             <div class="two-col" style="gap:40px; align-items:start;">
                 <div style="flex:0 0 240px; text-align:center;">
                     <div class="profile-img-placeholder">
-                        <img src="https://placehold.co/400x400/0f5a3a/ffffff?text=CEO" alt="CEO" style="width:100%; height:100%; object-fit:cover;">
+                        <img src="https://placehold.co/400x400/0f5a3a/ffffff?text=CEO" alt="CEO" style="width:100%; height:100%; object-fit:cover;" loading="lazy">
                     </div>
                     <div class="member-name">
                         <span class="name-row">
@@ -1620,7 +1726,7 @@
         </div>
         
         <!-- Advisors -->
-        <div class="card" style="text-align: center; background:var(--soft);">
+        <div class="card" style="text-align: center; background:var(--soft); margin-top: 40px;">
             <h4 style="margin-top:10px; font-size:14px;">技術アドバイザー</h4>
             <ul class="bullet" style="font-size:13px; margin-bottom:0; list-style:none; padding:0;">
               <li style="padding:0; margin-bottom:12px;">野口 政之<br><span style="font-size:11px; color:var(--muted);">（コスモファーム野口 代表取締役）</span></li>
@@ -1662,7 +1768,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <a href="#" class="logo">
-        <img src="logo_trans.png" alt="百姓イッキ | HYAKUSHO-IKKI" onerror="this.src='https://placehold.co/200x50?text=HYAKUSHO-IKKI'">
+        <img src="logo_trans.png" alt="百姓イッキ | HYAKUSHO-IKKI" onerror="this.src='https://placehold.co/200x50?text=HYAKUSHO-IKKI'" loading="lazy">
       </a>
       <div class="footer-links">
         <a href="#purpose">Purpose</a>
