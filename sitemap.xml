@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://100ikki.com/</loc>
     <lastmod>2025-12-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <!-- 多言語対応の記述（hreflang） -->
+    <xhtml:link rel="alternate" hreflang="ja" href="https://100ikki.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://100ikki.com/?lang=en" />
   </url>
 </urlset>
