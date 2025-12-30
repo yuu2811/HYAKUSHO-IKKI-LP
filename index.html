@@ -21,6 +21,8 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://100ikki.com/">
   <meta property="og:image" content="https://100ikki.com/OGP.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="株式会社百姓イッキ 公式サイト">
   <meta property="og:description" content="一次産業を次世代へ継承し、日本の未来を耕す。">
   <meta property="og:site_name" content="株式会社百姓イッキ">
   <meta property="og:locale" content="ja_JP">
@@ -33,6 +35,7 @@
   <meta name="twitter:title" content="株式会社百姓イッキ | 次世代農業プラットフォーム">
   <meta name="twitter:description" content="一次産業を次世代へ継承し、日本の未来を耕す。">
   <meta name="twitter:image" content="https://100ikki.com/OGP.png">
+  <meta name="twitter:image:alt" content="株式会社百姓イッキ 公式サイト">
 
   <!-- === Icons === -->
   <link rel="icon" href="logo_sq_trans.png" type="image/png">
@@ -42,7 +45,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Chart.js (Fixed: Version pinned for stability) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
   <!-- Smooth Scroll Library (Stable version) -->
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
@@ -81,7 +85,7 @@
       width: 100%;
       height: 100%;
       background-color: #083020; /* より深い緑 */
-      z-index: 9999;
+      z-index: 10000;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -233,6 +237,7 @@
         border-radius: 50%;
         z-index: 9999;
         pointer-events: none;
+        will-change: transform; /* Performance Optimization */
       }
 
       .cursor-dot {
@@ -246,6 +251,7 @@
         height: 40px;
         border: 1px solid rgba(15, 90, 58, 0.5);
         transition: width 0.2s, height 0.2s, background-color 0.2s;
+        /* left/top transitions removed for performance via JS transform */
       }
 
       /* Hover state for cursor */
@@ -1726,8 +1732,9 @@
         <span></span>
       </button>
 
-      <nav class="nav" id="navMenu">
-        <a href="#">Purpose</a>
+      <!-- 修正: data-lenis-prevent 属性を追加して、メニュー内のスクロールが阻害されないようにする -->
+      <nav class="nav" id="navMenu" data-lenis-prevent>
+        <a href="#purpose">Purpose</a>
         <a href="#ikki" class="mobile-only">Ikki</a>
         <a href="#issues">Issues</a>
         <a href="#solutions">Solutions</a>
@@ -1749,7 +1756,7 @@
 
   <main>
     <!-- Hero -->
-    <section class="hero">
+    <section id="purpose" class="hero">
       <div class="container hero-copy fade-up">
         <!-- class="lang-ja" を追加して英語モード時に非表示にする -->
         <p class="hero-purpose-en lang-ja">To revitalize primary industries and cultivate the future of Japan.</p>
@@ -1838,6 +1845,7 @@
         </div>
       </div>
       <div class="container fade-up" style="margin-top: 40px;">
+        <!-- 画像タグからクラスを外し、ラッパーでスタイル制御 -->
         <div class="reveal-image-wrap">
            <img src="5IKKI.png" alt="5つのイッキ" loading="lazy" onerror="this.src='https://placehold.co/800x400?text=5+IKKI+Image'">
         </div>
@@ -2492,6 +2500,9 @@
   </footer>
 
   <script>
+    // Global variable for Lenis instance to control scroll locking
+    let lenis;
+
     // --- Mobile Menu Toggle ---
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
@@ -2501,6 +2512,10 @@
         menuToggle.classList.remove('active');
         navMenu.classList.remove('active');
         menuToggle.setAttribute('aria-expanded', 'false');
+        
+        // 背景スクロールの再開
+        if (lenis) lenis.start();
+        document.body.style.overflow = '';
     }
 
     function openMenu() {
@@ -2508,6 +2523,10 @@
         menuToggle.classList.add('active');
         navMenu.classList.add('active');
         menuToggle.setAttribute('aria-expanded', 'true');
+        
+        // 背景スクロールの停止
+        if (lenis) lenis.stop();
+        document.body.style.overflow = 'hidden';
     }
       
     if (menuToggle && navMenu) {
@@ -2529,8 +2548,9 @@
             if (e.key === 'Escape') closeMenu();
         });
 
-        // メニュー外クリックで閉じる
+        // メニュー外クリックで閉じる (Optimized)
         document.addEventListener('click', (e) => {
+            if (!navMenu.classList.contains('active')) return; // 開いてなければ何もしない
             const clickedInside = navMenu.contains(e.target) || menuToggle.contains(e.target);
             if (!clickedInside) closeMenu();
         });
@@ -2695,6 +2715,9 @@
                 }
             }
         });
+        
+        // Initial update with current language
+        updateCharts(currentLang);
     }
 
     function initBigCharts() {
@@ -2747,8 +2770,8 @@
             }
         });
         
-        // Initial label update if loaded in EN (though default is JA)
-        if (currentLang === 'ja') updateCharts('ja');
+        // Initial update with current language
+        updateCharts(currentLang);
     }
 
     // Chart Language Update Function
@@ -2796,7 +2819,7 @@
     window.addEventListener('load', () => {
       // 1. Lenis Init
       if (typeof Lenis !== 'undefined') {
-          const lenis = new Lenis({
+          lenis = new Lenis({ // Assign to global variable
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             direction: 'vertical',
@@ -2859,25 +2882,38 @@
       }
     });
 
-    // --- Cursor Logic ---
+    // --- Cursor Logic (Optimized) ---
     const cursorDot = document.querySelector(".cursor-dot");
     const cursorOutline = document.querySelector(".cursor-outline");
 
     if (cursorDot && cursorOutline && window.matchMedia("(hover: hover)").matches) {
-      window.addEventListener("mousemove", (e) => {
-        const posX = e.clientX;
-        const posY = e.clientY;
+        let mouseX = 0;
+        let mouseY = 0;
+        let outlineX = 0;
+        let outlineY = 0;
 
-        // ドットは即座に追従
-        cursorDot.style.left = `${posX}px`;
-        cursorDot.style.top = `${posY}px`;
+        // Mouse move just updates target coordinates
+        window.addEventListener("mousemove", (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            // Dot follows instantly
+            cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+        });
 
-        // アウトラインはアニメーションで追従
-        cursorOutline.animate({
-          left: `${posX}px`,
-          top: `${posY}px`
-        }, { duration: 500, fill: "forwards" });
-      });
+        // Animation loop for smooth outline following
+        function animateCursor() {
+            // Lerp (Linear Interpolation) for smooth delay
+            const speed = 0.15;
+            outlineX += (mouseX - outlineX) * speed;
+            outlineY += (mouseY - outlineY) * speed;
+
+            cursorOutline.style.transform = `translate(${outlineX}px, ${outlineY}px) translate(-50%, -50%)`;
+
+            requestAnimationFrame(animateCursor);
+        }
+        
+        animateCursor();
 
       // Hover Effect for interactive elements
       const interactiveEls = document.querySelectorAll("a, button, .btn");
