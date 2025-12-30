@@ -37,6 +37,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Smooth Scroll Library (Fixed: Downgraded to stable version to fix syntax error) -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
   <style>
     /* === 統合スタイル (Universal & Responsive Optimized) === */
@@ -196,7 +198,6 @@
       width: 0%;
       height: 4px;
       background-color: var(--accent);
-      /* JS制御と競合するためCSS transitionは削除 */
     }
 
     @keyframes revealUp {
@@ -260,11 +261,81 @@
         cursor: none;
       }
     }
+    
+    /* Magnetic Button Class (Applied via JS to .nav a and .btn) */
+    .magnetic {
+      display: inline-block;
+      /* will-change: transform; Added in JS dynamically for performance */
+    }
 
     /* === Selection Color === */
     ::selection {
       background: var(--primary);
       color: #fff;
+    }
+    
+    /* === Grain Animation (Noise) === */
+    /* 背景ノイズを少し動かしてフィルムグレインのような質感にする */
+    @keyframes grain {
+      0%, 100% { transform: translate(0, 0); }
+      10% { transform: translate(-1%, -1%); }
+      20% { transform: translate(1%, 1%); }
+      30% { transform: translate(-2%, -2%); }
+      40% { transform: translate(2%, 2%); }
+      50% { transform: translate(-1%, 1%); }
+      60% { transform: translate(1%, -1%); }
+      70% { transform: translate(0, 2%); }
+      80% { transform: translate(2%, 0); }
+      90% { transform: translate(-1%, 2%); }
+    }
+    
+    /* body::beforeをノイズレイヤーとして再定義 */
+    body::before {
+      content: "";
+      position: fixed;
+      top: -10%;
+      left: -10%;
+      width: 120%;
+      height: 120%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9000;
+      animation: grain 8s steps(10) infinite;
+      opacity: 0.5;
+    }
+    
+    /* Remove original background noise to avoid duplication */
+    body {
+      background-image: none;
+    }
+
+    /* === Image Reveal Animation === */
+    .reveal-image-wrap {
+      overflow: hidden;
+      position: relative;
+      display: block;
+    }
+    .reveal-image-wrap img {
+      opacity: 0; /* JSで制御 */
+      transform: scale(1.1);
+      transition: opacity 0.8s ease, transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-image-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-color: #e5e7eb; /* Placeholder color */
+      transform: translateY(0);
+      transition: transform 0.8s cubic-bezier(0.76, 0, 0.24, 1);
+      z-index: 1;
+    }
+    
+    .reveal-image-wrap.is-revealed img {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .reveal-image-wrap.is-revealed::after {
+      transform: translateY(100%);
     }
 
     /* === End Opening Styles === */
@@ -277,12 +348,20 @@
       scroll-behavior: smooth;
       scroll-padding-top: var(--header-height);
     }
+    
+    /* Smooth Scroll (Lenis) requires auto height */
+    html.lenis {
+      height: auto;
+    }
+    .lenis.lenis-smooth {
+      scroll-behavior: auto;
+    }
 
     body {
       margin: 0;
       color: var(--text);
       background-color: var(--bg);
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+      /* background-image removed for grain animation */
       font-family: var(--font-jp);
       line-height: 1.8;
       overflow-x: hidden;
@@ -1714,7 +1793,7 @@
           <span class="eyebrow lang-en">About Us</span>
           
           <h2 class="lang-ja">一次産業の構造を刷新し、<br>次世代の農業をつくる。</h2>
-          <h2 class="lang-en">Innovating Primary Industry Structures,<br>Creating Next-Generation Agriculture.</h2>
+          <h2 class="lang-en"><span>Innovating Primary Industry Structures,</span><br><span>Creating Next-Generation Agriculture.</span></h2>
           
           <p class="lang-ja">日本の農業は高齢化・担い手不足に直面しながらも、国の根幹であり未来を耕す力があります。百姓イッキは、若者が先導して立ち上がり、農業を未来へ継承するムーブメントです。</p>
           <p class="lang-en">While facing aging demographics and labor shortages, Japanese agriculture remains the nation's foundation. HYAKUSHO-IKKI is a movement led by youth to inherit and cultivate the future of agriculture.</p>
@@ -1772,7 +1851,9 @@
         </div>
       </div>
       <div class="container fade-up" style="margin-top: 40px;">
-        <img src="5IKKI.png" alt="5つのイッキ" class="purpose-image" loading="lazy" onerror="this.src='https://placehold.co/800x400?text=5+IKKI+Image'">
+        <div class="reveal-image-wrap">
+           <img src="5IKKI.png" alt="5つのイッキ" class="purpose-image" loading="lazy" onerror="this.src='https://placehold.co/800x400?text=5+IKKI+Image'">
+        </div>
       </div>
     </section>
 
@@ -1787,10 +1868,7 @@
             <span class="keep-all">上がる物価、減り続ける農家。</span><br>
             <span class="keep-all">日本の生産力は限界を迎えている。</span>
           </h2>
-          <h2 class="lang-en">
-            Rising prices, disappearing farmers.<br>
-            Japan's production capacity is reaching its limit.
-          </h2>
+          <h2 class="lang-en"><span>Rising prices, disappearing farmers.</span><br><span>Japan's production capacity is reaching its limit.</span></h2>
         </div>
           
         <div class="grid-3 fade-up">
@@ -1858,10 +1936,7 @@
                 <span class="keep-all">再現性ある事業モデルへ。</span><br>
                 <span class="keep-all">3つの事業基盤。</span>
             </h2>
-            <h2 class="lang-en">
-                Turning field results into<br>reproducible business models.<br>
-                Three Business Foundations.
-            </h2>
+            <h2 class="lang-en"><span>Turning field results into</span><br><span>reproducible business models.</span><br><span>Three Business Foundations.</span></h2>
         </div>
         <div class="grid-3">
           <div class="card solution-card solution-farm">
@@ -1937,11 +2012,7 @@
               <span class="keep-all">時代は「食料安保」と</span>
               <span class="keep-all">「構造転換」を求めている。</span>
             </h2>
-            <h2 class="lang-en">
-              Why HYAKUSHO-IKKI Now?<br>
-              The era demands "Food Security"<br>
-              and "Structural Transformation".
-            </h2>
+            <h2 class="lang-en"><span>Why HYAKUSHO-IKKI Now?</span><br><span>The era demands "Food Security"</span><br><span>and "Structural Transformation".</span></h2>
         </div>
           
         <div class="why-grid fade-up">
@@ -2114,10 +2185,7 @@
                 <span class="keep-all">2050年、食料生産は半減の危機。</span><br>
                 <span class="keep-all">8兆円産業を「維持・再生」する。</span>
             </h2>
-            <h2 class="lang-en">
-                By 2050, food production faces a 50% decline.<br>
-                We will "Maintain & Regenerate"<br>this 8 trillion yen industry.
-            </h2>
+            <h2 class="lang-en"><span>By 2050, food production faces a 50% decline.</span><br><span>We will "Maintain & Regenerate"</span><br><span>this 8 trillion yen industry.</span></h2>
               
             <div style="max-width: 800px; margin: 32px auto 0; text-align: left;">
                 <p class="lang-ja" style="color:var(--muted); margin-bottom:24px;">現在のトレンドでは、2050年の国内農業生産額は4兆円台へ半減すると予測されています。百姓イッキは、テクノロジーと新しい生産体制により、この下落トレンドを逆転させ、8兆円規模の生産力を維持・再生することを目指します。</p>
@@ -2158,10 +2226,7 @@
                 <span class="keep-all">「稼げるモデル」を確立し、</span><br>
                 <span class="keep-all">日本の農業インフラになる。</span>
             </h2>
-            <h2 class="lang-en">
-                Establishing a "Profitable Model"<br>
-                to become Japan's agricultural infrastructure.
-            </h2>
+            <h2 class="lang-en"><span>Establishing a "Profitable Model"</span><br><span>to become Japan's agricultural infrastructure.</span></h2>
         </div>
           
         <div class="roadmap-wrapper">
@@ -2390,9 +2455,7 @@
             <span class="keep-all">一次産業を次世代へ継承する</span>
             <span class="keep-all">仲間・パートナーを募集中。</span>
           </h2>
-          <h2 class="lang-en">
-            Seeking Partners & Teammates<br>to Inherit Primary Industries.
-          </h2>
+          <h2 class="lang-en"><span>Seeking Partners & Teammates</span><br><span>to Inherit Primary Industries.</span></h2>
           
           <p class="lang-ja" style="opacity:0.9; margin-bottom:32px;">一次産業周辺での事業連携やオペレーション原価改善、サプライチェーンに関するご相談等、お気軽にご連絡ください。</p>
           <p class="lang-en" style="opacity:0.9; margin-bottom:32px;">Please feel free to contact us regarding business partnerships, operation cost improvement, or supply chain consultation.</p>
@@ -2511,12 +2574,18 @@
                 if (entry.target.querySelector('#marketChart')) initBigCharts();
                 
                 // H2 Text Stagger Effect
-                const h2 = entry.target.querySelector('h2');
-                if (h2) {
+                const h2s = entry.target.querySelectorAll('h2');
+                h2s.forEach(h2 => {
                     const spans = h2.querySelectorAll('span, .keep-all');
                     spans.forEach((span, index) => {
                         span.style.transitionDelay = `${index * 0.1 + 0.2}s`; // 0.2s is base delay
                     });
+                });
+
+                // Image Reveal Trigger
+                const revealImage = entry.target.querySelector('.reveal-image-wrap');
+                if (revealImage) {
+                  revealImage.classList.add('is-revealed');
                 }
                 
                 observer.unobserve(entry.target);
@@ -2706,8 +2775,34 @@
         Object.values(chartInstances).forEach(chart => chart.update());
     }
 
-    // --- Opening Animation Script ---
+    // --- Opening Animation & Lenis Init Script ---
     window.addEventListener('load', () => {
+      // 1. Lenis Init
+      if (typeof Lenis !== 'undefined') {
+          const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+          });
+
+          function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+          }
+          requestAnimationFrame(raf);
+          
+          // Add class for auto-height requirement
+          document.documentElement.classList.add('lenis');
+      } else {
+          console.warn('Lenis not loaded');
+      }
+
+      // 2. Opening Animation
       const overlay = document.getElementById('openingOverlay');
       const counterEl = document.getElementById('loadingCounter');
       const lineEl = document.getElementById('loadingLine');
@@ -2777,6 +2872,28 @@
           document.body.classList.remove("cursor-hover");
         });
       });
+    }
+    
+    // --- Magnetic Button Logic ---
+    if(window.matchMedia("(hover: hover)").matches) {
+        const magneticBtns = document.querySelectorAll('.nav a, .btn');
+        
+        magneticBtns.forEach(btn => {
+            btn.addEventListener('mousemove', function(e) {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                // 軽い磁力（移動量の半分）
+                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+                btn.style.transition = 'transform 0.1s ease-out';
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                btn.style.transform = 'translate(0px, 0px)';
+                btn.style.transition = 'transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
+            });
+        });
     }
 
     // --- Parallax Effect ---
