@@ -37,7 +37,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <!-- Smooth Scroll Library (Fixed: Downgraded to stable version to fix syntax error) -->
+  <!-- Smooth Scroll Library (Stable version) -->
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
   <style>
@@ -80,10 +80,9 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      /* カーテンのような動きのための設定 */
       transform-origin: top;
       transition: transform 1.2s var(--ease-in-out-quart);
-      will-change: transform; /* パフォーマンス最適化 */
+      will-change: transform;
     }
 
     .opening-overlay.hidden {
@@ -113,12 +112,10 @@
       margin-bottom: 30px;
     }
     
-    /* タイポグラフィロゴのスタイル */
     .opening-logo .logo-text-wrap {
         display: flex;
         flex-direction: column;
         align-items: center;
-        /* アニメーション用 */
         opacity: 0;
         transform: translateY(100%);
         animation: revealUp 1s var(--ease-out-expo) 0.2s forwards;
@@ -176,9 +173,9 @@
       bottom: 40px;
       right: 40px;
       font-family: var(--font-en);
-      font-size: 4rem; /* 大きな数字 */
+      font-size: 4rem;
       font-weight: 900;
-      color: rgba(255, 255, 255, 0.15); /* 背景に溶け込ませる */
+      color: rgba(255, 255, 255, 0.15);
       line-height: 1;
       letter-spacing: -0.02em;
       overflow: hidden;
@@ -208,10 +205,10 @@
     /* Hero Image Zoom Effect on Load */
     .hero {
       transition: transform 1.5s var(--ease-out-expo);
-      transform: scale(1.1); /* 初期は少し拡大 */
+      transform: scale(1.1);
     }
     body.loaded .hero {
-      transform: scale(1); /* ロード完了で通常サイズへ */
+      transform: scale(1);
     }
 
     /* Prevent scrolling while loading */
@@ -249,7 +246,7 @@
       body.cursor-hover .cursor-outline {
         width: 70px;
         height: 70px;
-        background-color: rgba(185, 59, 59, 0.1); /* Accent with opacity */
+        background-color: rgba(185, 59, 59, 0.1);
         border-color: var(--accent);
       }
       
@@ -262,10 +259,9 @@
       }
     }
     
-    /* Magnetic Button Class (Applied via JS to .nav a and .btn) */
+    /* Magnetic Button Class */
     .magnetic {
       display: inline-block;
-      /* will-change: transform; Added in JS dynamically for performance */
     }
 
     /* === Selection Color === */
@@ -275,7 +271,6 @@
     }
     
     /* === Grain Animation (Noise) === */
-    /* 背景ノイズを少し動かしてフィルムグレインのような質感にする */
     @keyframes grain {
       0%, 100% { transform: translate(0, 0); }
       10% { transform: translate(-1%, -1%); }
@@ -289,7 +284,6 @@
       90% { transform: translate(-1%, 2%); }
     }
     
-    /* body::beforeをノイズレイヤーとして再定義 */
     body::before {
       content: "";
       position: fixed;
@@ -304,7 +298,6 @@
       opacity: 0.5;
     }
     
-    /* Remove original background noise to avoid duplication */
     body {
       background-image: none;
     }
@@ -314,15 +307,12 @@
       overflow: hidden;
       position: relative;
       display: block;
-      /* ここに .purpose-image のスタイルを移植して枠として機能させる */
       width: 100%;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.2);
       margin-top: 20px;
-      /* スマホ等のデフォルト */
     }
     
-    /* PC表示時の幅制限と中央寄せ */
     @media (min-width: 900px) {
         .reveal-image-wrap {
             max-width: 800px;
@@ -335,7 +325,7 @@
       width: 100%;
       height: auto;
       display: block;
-      opacity: 0; /* JSで制御 */
+      opacity: 0;
       transform: scale(1.1);
       transition: opacity 0.8s ease, transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -343,7 +333,7 @@
       content: '';
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
-      background-color: #e5e7eb; /* Placeholder color */
+      background-color: #e5e7eb;
       transform: translateY(0);
       transition: transform 0.8s cubic-bezier(0.76, 0, 0.24, 1);
       z-index: 1;
@@ -357,10 +347,6 @@
       transform: translateY(100%);
     }
 
-    /* 旧クラスのスタイルは削除または無効化 */
-    /* .purpose-image { ... } の定義は .reveal-image-wrap に統合したため不要だが、
-       念のため他の影響が出ないよう削除扱いとする */
-
     /* === End Opening Styles === */
 
     *, *::before, *::after {
@@ -372,7 +358,6 @@
       scroll-padding-top: var(--header-height);
     }
     
-    /* Smooth Scroll (Lenis) requires auto height */
     html.lenis {
       height: auto;
     }
@@ -384,7 +369,6 @@
       margin: 0;
       color: var(--text);
       background-color: var(--bg);
-      /* background-image removed for grain animation */
       font-family: var(--font-jp);
       line-height: 1.8;
       overflow-x: hidden;
@@ -393,10 +377,9 @@
       transition: font-family 0.3s ease;
     }
 
-    /* English Mode Font Override */
     body.is-en {
         font-family: var(--font-en);
-        letter-spacing: 0em; /* 英語は字間狭め */
+        letter-spacing: 0em;
     }
 
     a {
@@ -422,22 +405,17 @@
     }
 
     /* --- Language Switcher Logic --- */
-    /* デフォルト(JP)のとき、.lang-enは非表示 */
     .lang-en { display: none !important; }
      
-    /* 英語モード(.is-en)のとき、.lang-jaを非表示、.lang-enを表示 */
     body.is-en .lang-ja { display: none !important; }
     body.is-en .lang-en { display: block !important; }
-    /* インライン要素用の調整（基本はinlineだが、特定の要素は除く） */
     body.is-en span.lang-en { display: inline !important; }
 
-    /* ★修正: 5つのイッキ内などのspanはブロック要素として改行させる */
     body.is-en span.ikki-kanji.lang-en,
     body.is-en span.ikki-desc.lang-en {
         display: block !important;
     }
 
-    /* Language Switch Button Styles */
     .lang-switch {
         display: flex;
         align-items: center;
@@ -451,22 +429,16 @@
         border-radius: 20px;
         transition: all 0.3s;
         background: #fff;
-        white-space: nowrap; /* 改行防止 */
-        flex-shrink: 0; /* 縮小防止 */
+        white-space: nowrap;
+        flex-shrink: 0;
     }
     .lang-switch:hover {
         border-color: var(--primary);
         color: var(--primary);
     }
      
-    /* PC用スイッチ（ナビ内） */
-    .nav-lang-switch {
-        /* margin-left: 24px; 不要なマージンを削除 */
-    }
-
-    /* モバイル用スイッチ（ヘッダー直下）- デフォルトは非表示 */
     .mobile-lang-switch {
-        display: none !important; /* PC表示時に確実に隠す */
+        display: none !important;
     }
 
     .lang-label {
@@ -479,7 +451,6 @@
         text-decoration: underline;
     }
 
-    /* --- Typography --- */
     h1, h2, h3, h4 {
       margin-top: 0;
       line-height: 1.4;
@@ -489,7 +460,6 @@
       font-family: var(--font-en);
     }
 
-    /* Section Headers */
     .section-header {
       text-align: center;
       margin-bottom: clamp(40px, 8vw, 80px);
@@ -540,7 +510,7 @@
         white-space: nowrap;
     }
     body.is-en h2 .keep-all {
-        white-space: normal; /* 英語では強制改行しない */
+        white-space: normal;
         display: inline;
     }
     
@@ -549,10 +519,9 @@
         opacity: 0;
         transform: translateY(20px);
         transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-        display: inline-block; /* アニメーションのために必要 */
+        display: inline-block;
     }
 
-    /* 親要素がvisibleになったら表示 */
     .visible h2 span, .visible h2 .keep-all,
     h2.visible span, h2.visible .keep-all {
         opacity: 1;
@@ -573,7 +542,6 @@
       z-index: 0;
       pointer-events: none;
       letter-spacing: 0.05em;
-      /* パララックス効果のためwill-change */
       will-change: transform;
     }
 
@@ -652,27 +620,25 @@
 
     /* Mobile Styles for Nav */
     @media (max-width: 900px) {
-        /* ロゴが言語スイッチと被らないように少し縮小 */
         .logo img {
             max-width: 140px;
         }
 
-        /* モバイル用言語スイッチの表示設定 */
         .mobile-lang-switch {
-            display: flex !important; /* スマホ表示時は強制表示 */
+            display: flex !important;
             position: fixed;
-            top: 21px; /* 高さに合わせて微調整 */
-            right: calc(5% + 50px); /* ハンバーガー(30px) + 余白(20px) = 50px以上離す */
-            z-index: 2000; /* ハンバーガーと同じ階層へ */
-            padding: 6px 12px; /* タップしやすいようパディング調整 */
+            top: 21px;
+            right: calc(5% + 50px);
+            z-index: 2000;
+            padding: 6px 12px;
             font-size: 0.75rem;
             font-weight: 700;
-            background: rgba(255, 255, 255, 0.95); /* 背景をしっかり確保 */
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(4px);
             border: 1px solid rgba(0,0,0,0.1);
             border-radius: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* 影をつけて浮き上がらせる */
-            white-space: nowrap; /* 折り返し防止 */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            white-space: nowrap;
         }
 
         .menu-toggle {
@@ -717,7 +683,6 @@
             transform: translateY(-9px) rotate(-45deg);
         }
          
-        /* PC用言語スイッチは隠す */
         .nav .nav-lang-switch {
             display: none;
         }
@@ -818,7 +783,6 @@
         display: inline-block;
         white-space: nowrap;
     }
-    /* 英語モードでのHeroスタイル調整 */
     body.is-en .hero-copy h1 span {
         white-space: normal;
         display: inline;
@@ -1074,13 +1038,12 @@
         line-height: 1.4;
     }
      
-    /* 英語モードでの5つのイッキ調整 */
     body.is-en .ikki-kanji {
         font-family: var(--font-en);
         font-size: 1.4rem;
         letter-spacing: 0.05em;
-        text-transform: uppercase; /* 大文字強調 */
-        margin-bottom: 4px; /* 下に余白を追加して分離感を出す */
+        text-transform: uppercase;
+        margin-bottom: 4px;
     }
     
     body.is-en .ikki-desc {
@@ -1114,23 +1077,20 @@
     }
 
     /* --- JP Mode: Purpose Section Layout Adjustment --- */
-    /* 日本語PC表示時に左カラム（イッキ説明）を広く、右カラム（会社概要）を狭く調整 */
     @media (min-width: 900px) {
         body:not(.is-en) #ikki .container.two-col {
-            grid-template-columns: 1.45fr 0.9fr; /* 左を広く確保 */
+            grid-template-columns: 1.45fr 0.9fr;
             gap: 40px;
         }
     }
 
     /* --- English Mode: Purpose Section Layout Override --- */
     @media (min-width: 900px) {
-        /* Force single column layout for #ikki section in English mode */
         body.is-en #ikki .container.two-col {
             grid-template-columns: 1fr;
             gap: 60px;
         }
         
-        /* Center the company profile card */
         body.is-en #ikki .card {
             max-width: 800px;
             margin: 0 auto;
@@ -1139,7 +1099,6 @@
     }
 
     /* Definition List Styles (Company Profile) */
-    /* 常に縦積みレイアウト（スマホ/PC/JP/EN共通）にしてレイアウト崩れを防止 */
     .definition div { 
         padding: 14px 0; 
         border-bottom: 1px solid rgba(0,0,0,0.1); 
@@ -1157,19 +1116,19 @@
         font-weight: 500; 
         font-size: 0.95rem; 
         margin-left: 0;
-        padding-left: 16px; /* 内容を少し右にずらす */
+        padding-left: 16px;
         line-height: 1.6;
     }
 
-    /* モバイル英語表示時の役員名スタイル（横スクロール廃止、自然な折り返しへ変更） */
+    /* Mobile English Fix */
     @media (max-width: 600px) {
         body.is-en .definition dd {
-            white-space: normal;       /* 折り返しを許可 */
-            overflow-x: visible;       /* 横スクロールを廃止 */
-            font-size: 0.8rem;         /* フォントサイズを調整して収まりやすく */
-            line-height: 1.5;          /* 折り返しても読みやすい行間 */
-            padding-bottom: 8px;       /* 次の項目との余白 */
-            word-wrap: break-word;     /* 画面幅に合わせて単語の途中でも折り返す場合がある設定 */
+            white-space: normal;
+            overflow-x: visible;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            padding-bottom: 8px;
+            word-wrap: break-word;
             overflow-wrap: break-word; 
             max-width: 100%;
             display: block;
@@ -1177,7 +1136,6 @@
     }
       
     @media (max-width: 600px) {
-        /* 旧設定の上書き用（念のため残すが基本は上の設定が優先） */
         .definition div { display: block; }
         .definition dt { width: 100%; margin-bottom: 4px; display: block; font-size: 0.8rem; }
     }
@@ -1198,7 +1156,7 @@
     }
     .ikki-note dt {
         font-weight: 700;
-        color: var(--accent-light); /* アクセントカラーを使って見出しを目立たせる */
+        color: var(--accent-light);
         margin-top: 12px;
         font-family: var(--font-en);
     }
@@ -1874,7 +1832,6 @@
         </div>
       </div>
       <div class="container fade-up" style="margin-top: 40px;">
-        <!-- 画像タグからクラスを外し、ラッパーでスタイル制御 -->
         <div class="reveal-image-wrap">
            <img src="5IKKI.png" alt="5つのイッキ" loading="lazy" onerror="this.src='https://placehold.co/800x400?text=5+IKKI+Image'">
         </div>
@@ -1915,7 +1872,7 @@
               <p class="stat-label lang-ja">基幹的農業従事者数</p>
               <p class="stat-label lang-en">Core Agricultural Workers</p>
               
-              <p class="stat-value">102.1<span class="lang-ja">万人</span><span class="lang-en">0k</span></p>
+              <p class="stat-value"><span class="lang-ja">102.1<span>万人</span></span><span class="lang-en">1.02<span>M</span></span></p>
               
               <p class="stat-desc lang-ja">2015年比で4割減</p>
               <p class="stat-desc lang-en">40% Decrease since 2015</p>
@@ -2479,7 +2436,9 @@
             <span class="keep-all">一次産業を次世代へ継承する</span>
             <span class="keep-all">仲間・パートナーを募集中。</span>
           </h2>
-          <h2 class="lang-en"><span>Seeking Partners & Teammates</span><br><span>to Inherit Primary Industries.</span></h2>
+          <h2 class="lang-en">
+            Seeking Partners & Teammates<br>to Inherit Primary Industries.
+          </h2>
           
           <p class="lang-ja" style="opacity:0.9; margin-bottom:32px;">一次産業周辺での事業連携やオペレーション原価改善、サプライチェーンに関するご相談等、お気軽にご連絡ください。</p>
           <p class="lang-en" style="opacity:0.9; margin-bottom:32px;">Please feel free to contact us regarding business partnerships, operation cost improvement, or supply chain consultation.</p>
@@ -2530,19 +2489,44 @@
     // --- Mobile Menu Toggle ---
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
+
+    function closeMenu() {
+        if (!menuToggle || !navMenu) return;
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    function openMenu() {
+        if (!menuToggle || !navMenu) return;
+        menuToggle.classList.add('active');
+        navMenu.classList.add('active');
+        menuToggle.setAttribute('aria-expanded', 'true');
+    }
       
     if (menuToggle && navMenu) {
         menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
+            const isOpen = navMenu.classList.contains('active');
+            if (isOpen) closeMenu();
+            else openMenu();
         });
 
         // リンククリック時に閉じる
         document.querySelectorAll('.nav a').forEach(link => {
             link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                navMenu.classList.remove('active');
+                closeMenu();
             });
+        });
+
+        // Escキーで閉じる
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeMenu();
+        });
+
+        // メニュー外クリックで閉じる
+        document.addEventListener('click', (e) => {
+            const clickedInside = navMenu.contains(e.target) || menuToggle.contains(e.target);
+            if (!clickedInside) closeMenu();
         });
     }
 
@@ -2567,6 +2551,10 @@
 
     function setLanguage(lang) {
         currentLang = lang;
+
+        // htmlタグのlang属性を切り替え
+        document.documentElement.lang = (lang === 'en') ? 'en' : 'ja';
+
         // Body class toggle
         if (lang === 'en') {
             body.classList.add('is-en');
@@ -2578,15 +2566,11 @@
 
         // Active Label toggle
         langLabels.forEach(label => {
-            if (label.dataset.lang === lang) {
-                label.classList.add('active');
-            } else {
-                label.classList.remove('active');
-            }
+            label.classList.toggle('active', label.dataset.lang === lang);
         });
 
         // Update Charts for new language
-        if (smallChartsInit) updateCharts(lang);
+        updateCharts(lang);
     }
 
     // --- Scroll & Animation ---
@@ -2763,40 +2747,43 @@
 
     // Chart Language Update Function
     function updateCharts(lang) {
-        if (!chartInstances.market) return; // Not initialized yet
-
-        if (lang === 'ja') {
-            // Market Chart
-            chartInstances.market.data.labels = ['2020年(実績)', '2050年予測(成り行き)', '2050年目標(維持)'];
-            chartInstances.market.data.datasets[0].label = '国内農業産出額';
-            chartInstances.market.options.plugins.title.text = '国内農業産出額 (兆円)';
-            
-            // Age Chart
-            chartInstances.age.data.labels = ['2015', '2020', '2025(概数)'];
-            chartInstances.age.data.datasets[0].label = '平均年齢';
-            
-            // Workers Chart
-            chartInstances.workers.data.labels = ['2015', '2020', '2025(概数)'];
-            chartInstances.workers.data.datasets[0].label = '人数(万人)';
-            
-            // G7 Chart (Already symbols, maybe update tooltip logic if needed)
-        } else {
-            // Market Chart
-            chartInstances.market.data.labels = ['2020 (Actual)', '2050 (Trend)', '2050 (Target)'];
-            chartInstances.market.data.datasets[0].label = 'Domestic Agricultural Output';
-            chartInstances.market.options.plugins.title.text = 'Agricultural Output (Trillion JPY)';
-            
-            // Age Chart
-            chartInstances.age.data.labels = ['2015', '2020', '2025(Est)'];
-            chartInstances.age.data.datasets[0].label = 'Avg Age';
-            
-            // Workers Chart
-            chartInstances.workers.data.labels = ['2015', '2020', '2025(Est)'];
-            chartInstances.workers.data.datasets[0].label = 'Workers (10k)';
+        // Market Chart Update
+        if (chartInstances.market) {
+            if (lang === 'ja') {
+                chartInstances.market.data.labels = ['2020年(実績)', '2050年予測(成り行き)', '2050年目標(維持)'];
+                chartInstances.market.data.datasets[0].label = '国内農業産出額';
+                chartInstances.market.options.plugins.title.text = '国内農業産出額 (兆円)';
+            } else {
+                chartInstances.market.data.labels = ['2020 (Actual)', '2050 (Trend)', '2050 (Target)'];
+                chartInstances.market.data.datasets[0].label = 'Domestic Agricultural Output';
+                chartInstances.market.options.plugins.title.text = 'Agricultural Output (Trillion JPY)';
+            }
+            chartInstances.market.update();
         }
 
-        // Update all charts
-        Object.values(chartInstances).forEach(chart => chart.update());
+        // Age Chart Update
+        if (chartInstances.age) {
+             if (lang === 'ja') {
+                chartInstances.age.data.labels = ['2015', '2020', '2025(概数)'];
+                chartInstances.age.data.datasets[0].label = '平均年齢';
+             } else {
+                chartInstances.age.data.labels = ['2015', '2020', '2025(Est)'];
+                chartInstances.age.data.datasets[0].label = 'Avg Age';
+             }
+             chartInstances.age.update();
+        }
+
+        // Workers Chart Update
+        if (chartInstances.workers) {
+             if (lang === 'ja') {
+                chartInstances.workers.data.labels = ['2015', '2020', '2025(概数)'];
+                chartInstances.workers.data.datasets[0].label = '人数(万人)';
+             } else {
+                chartInstances.workers.data.labels = ['2015', '2020', '2025(Est)'];
+                chartInstances.workers.data.datasets[0].label = 'Workers (10k)';
+             }
+             chartInstances.workers.update();
+        }
     }
 
     // --- Opening Animation & Lenis Init Script ---
