@@ -29,8 +29,8 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- === Icons === -->
-  <!-- プレビュー用に仮のアイコンを設定 -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌾</text></svg>">
+  <link rel="icon" href="logo_sq_trans.png" type="image/png">
+  <link rel="apple-touch-icon" href="logo_sq_trans.png">
     
   <!-- === Fonts & Libraries === -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -81,6 +81,7 @@
       /* カーテンのような動きのための設定 */
       transform-origin: top;
       transition: transform 1.2s var(--ease-in-out-quart);
+      will-change: transform; /* パフォーマンス最適化 */
     }
 
     .opening-overlay.hidden {
@@ -110,13 +111,50 @@
       margin-bottom: 30px;
     }
     
-    .opening-logo img {
-      max-width: 220px;
-      height: auto;
-      filter: brightness(0) invert(1);
-      opacity: 0;
-      transform: translateY(100%);
-      animation: revealUp 1s var(--ease-out-expo) 0.2s forwards;
+    /* タイポグラフィロゴのスタイル */
+    .opening-logo .logo-text-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* アニメーション用 */
+        opacity: 0;
+        transform: translateY(100%);
+        animation: revealUp 1s var(--ease-out-expo) 0.2s forwards;
+    }
+    
+    @media (min-width: 600px) {
+        .opening-logo .logo-text-wrap {
+            flex-direction: row;
+            align-items: baseline;
+            gap: 16px;
+        }
+    }
+
+    .logo-jp {
+        font-family: var(--font-jp);
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 900;
+        color: #fff;
+        letter-spacing: 0.05em;
+        line-height: 1;
+    }
+
+    .logo-divider {
+        display: none;
+        color: rgba(255,255,255,0.3);
+        font-weight: 300;
+        font-size: 2.5rem;
+    }
+    @media (min-width: 600px) {
+        .logo-divider { display: block; transform: translateY(4px); }
+    }
+
+    .logo-en {
+        font-family: var(--font-en);
+        font-size: clamp(1rem, 3vw, 1.25rem);
+        font-weight: 700;
+        color: rgba(255,255,255,0.9);
+        letter-spacing: 0.15em;
     }
 
     .opening-text {
@@ -158,7 +196,7 @@
       width: 0%;
       height: 4px;
       background-color: var(--accent);
-      transition: width 0.2s linear;
+      /* JS制御と競合するためCSS transitionは削除 */
     }
 
     @keyframes revealUp {
@@ -1436,7 +1474,11 @@
   <div id="openingOverlay" class="opening-overlay">
     <div class="opening-content">
       <div class="reveal-wrap opening-logo">
-        <img src="https://placehold.co/200x50/ffffff/0f5a3a?text=HYAKUSHO-IKKI" alt="百姓イッキ | HYAKUSHO-IKKI">
+        <div class="logo-text-wrap">
+            <span class="logo-jp">百姓イッキ</span>
+            <span class="logo-divider">|</span>
+            <span class="logo-en">HYAKUSHO-IKKI</span>
+        </div>
       </div>
       <div class="reveal-wrap">
         <div class="opening-text">日本の未来を耕す。</div>
@@ -1451,7 +1493,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="#" class="logo">
-        <img src="https://placehold.co/200x50/ffffff/0f5a3a?text=HYAKUSHO-IKKI" alt="百姓イッキ | HYAKUSHO-IKKI" onerror="this.src='https://placehold.co/200x50?text=HYAKUSHO-IKKI'">
+        <img src="logo_trans.png" alt="百姓イッキ | HYAKUSHO-IKKI" onerror="this.src='https://placehold.co/200x50/ffffff/0f5a3a?text=HYAKUSHO-IKKI'">
       </a>
         
       <!-- Mobile Language Switcher (スマホ表示時にハンバーガーの左に出る) -->
@@ -1570,7 +1612,7 @@
         </div>
       </div>
       <div class="container fade-up" style="margin-top: 40px;">
-        <img src="https://placehold.co/800x400/0f5a3a/ffffff?text=5+IKKI+Image" alt="5つのイッキ" class="purpose-image" loading="lazy" onerror="this.src='https://placehold.co/800x400?text=5+IKKI+Image'">
+        <img src="5IKKI.png" alt="5つのイッキ" class="purpose-image" loading="lazy" onerror="this.src='https://placehold.co/800x400?text=5+IKKI+Image'">
       </div>
     </section>
 
@@ -2225,7 +2267,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <a href="#" class="logo">
-        <img src="https://placehold.co/200x50/ffffff/0f5a3a?text=HYAKUSHO-IKKI" alt="百姓イッキ | HYAKUSHO-IKKI" onerror="this.src='https://placehold.co/200x50?text=HYAKUSHO-IKKI'" loading="lazy">
+        <img src="logo_trans.png" alt="百姓イッキ | HYAKUSHO-IKKI" onerror="this.src='https://placehold.co/200x50/ffffff/0f5a3a?text=HYAKUSHO-IKKI'" loading="lazy">
       </a>
       <div class="footer-links">
         <a href="#purpose">Purpose</a>
@@ -2501,25 +2543,27 @@
       const lineEl = document.getElementById('loadingLine');
       const body = document.body;
       
-      let count = 0;
-      const duration = 2000; // 2 seconds total loading
-      const interval = 20;
-      const steps = duration / interval;
-      const increment = 100 / steps;
+      const duration = 2000; // 2 seconds
+      const startTime = performance.now();
 
-      const timer = setInterval(() => {
-        count += increment;
-        if (count >= 100) {
-          count = 100;
-          clearInterval(timer);
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // カウントアップ
+        const count = Math.floor(progress * 100);
+        
+        counterEl.textContent = count;
+        lineEl.style.width = (progress * 100) + '%';
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
           finishLoading();
         }
-        
-        // Update DOM
-        counterEl.textContent = Math.floor(count);
-        lineEl.style.width = Math.floor(count) + '%';
-        
-      }, interval);
+      }
+
+      requestAnimationFrame(update);
 
       function finishLoading() {
         // Wait a bit after reaching 100%
@@ -2529,7 +2573,7 @@
           body.classList.add('loaded'); // Trigger hero zoom
           
           window.scrollTo(0, 0);
-        }, 500);
+        }, 200);
       }
     });
   </script>
