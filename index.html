@@ -277,8 +277,14 @@
     /* 英語モード(.is-en)のとき、.lang-jaを非表示、.lang-enを表示 */
     body.is-en .lang-ja { display: none !important; }
     body.is-en .lang-en { display: block !important; }
-    /* インライン要素用の調整 */
+    /* インライン要素用の調整（基本はinlineだが、特定の要素は除く） */
     body.is-en span.lang-en { display: inline !important; }
+
+    /* ★修正: 5つのイッキ内などのspanはブロック要素として改行させる */
+    body.is-en span.ikki-kanji.lang-en,
+    body.is-en span.ikki-desc.lang-en {
+        display: block !important;
+    }
 
     /* Language Switch Button Styles */
     .lang-switch {
@@ -904,7 +910,15 @@
     body.is-en .ikki-kanji {
         font-family: var(--font-en);
         font-size: 1.4rem;
-        letter-spacing: 0;
+        letter-spacing: 0.05em;
+        text-transform: uppercase; /* 大文字強調 */
+        margin-bottom: 4px; /* 下に余白を追加して分離感を出す */
+    }
+    
+    body.is-en .ikki-desc {
+        font-size: 0.75rem;
+        line-height: 1.4;
+        opacity: 0.9;
     }
 
     #ikki.purpose-section .card {
@@ -943,6 +957,21 @@
         width: 100%;
         margin-bottom: 4px;
         display: block;
+    }
+    
+    /* モバイル英語表示時の役員名スタイル（横スクロール廃止、自然な折り返しへ変更） */
+    @media (max-width: 600px) {
+        body.is-en .definition dd {
+            white-space: normal;       /* 折り返しを許可 */
+            overflow-x: visible;       /* 横スクロールを廃止 */
+            font-size: 0.8rem;         /* フォントサイズを調整して収まりやすく */
+            line-height: 1.5;          /* 折り返しても読みやすい行間 */
+            padding-bottom: 8px;       /* 次の項目との余白 */
+            word-wrap: break-word;     /* 画面幅に合わせて単語の途中でも折り返す場合がある設定 */
+            overflow-wrap: break-word; 
+            max-width: 100%;
+            display: block;
+        }
     }
       
     @media (max-width: 600px) {
@@ -1597,23 +1626,23 @@
           <div class="ikki-grid">
             <div class="ikki-item">
                 <span class="ikki-kanji lang-ja">一揆</span><span class="ikki-kanji lang-en">Uprising</span>
-                <span class="ikki-desc lang-ja">連帯して<br>立ち上がる力</span><span class="ikki-desc lang-en">United power to<br>stand up</span>
+                <span class="ikki-desc lang-ja">連帯して<br>立ち上がる力</span><span class="ikki-desc lang-en">United power to stand up</span>
             </div>
             <div class="ikki-item">
                 <span class="ikki-kanji lang-ja">一気</span><span class="ikki-kanji lang-en">Momentum</span>
-                <span class="ikki-desc lang-ja">一気呵成に<br>変革を起こす</span><span class="ikki-desc lang-en">Driving rapid<br>transformation</span>
+                <span class="ikki-desc lang-ja">一気呵成に<br>変革を起こす</span><span class="ikki-desc lang-en">Driving rapid transformation</span>
             </div>
             <div class="ikki-item">
                 <span class="ikki-kanji lang-ja">一期</span><span class="ikki-kanji lang-en">Precious</span>
-                <span class="ikki-desc lang-ja">自然と人に<br>向き合う</span><span class="ikki-desc lang-en">Cherishing nature<br>& people</span>
+                <span class="ikki-desc lang-ja">自然と人に<br>向き合う</span><span class="ikki-desc lang-en">Cherishing nature & people</span>
             </div>
             <div class="ikki-item">
                 <span class="ikki-kanji lang-ja">一喜</span><span class="ikki-kanji lang-en">Joy</span>
-                <span class="ikki-desc lang-ja">喜びを<br>共有する</span><span class="ikki-desc lang-en">Sharing joy<br>together</span>
+                <span class="ikki-desc lang-ja">喜びを<br>共有する</span><span class="ikki-desc lang-en">Sharing joy together</span>
             </div>
             <div class="ikki-item">
                 <span class="ikki-kanji lang-ja">一輝</span><span class="ikki-kanji lang-en">Shine</span>
-                <span class="ikki-desc lang-ja">一人ひとりが<br>輝く</span><span class="ikki-desc lang-en">Each individual<br>shining</span>
+                <span class="ikki-desc lang-ja">一人ひとりが<br>輝く</span><span class="ikki-desc lang-en">Each individual shining</span>
             </div>
           </div>
         </div>
