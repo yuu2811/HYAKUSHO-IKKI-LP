@@ -441,6 +441,21 @@
         white-space: normal; /* 英語では強制改行しない */
         display: inline;
     }
+    
+    /* H2 Text Reveal Effect */
+    h2 span, h2 .keep-all {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        display: inline-block; /* アニメーションのために必要 */
+    }
+
+    /* 親要素がvisibleになったら表示 */
+    .visible h2 span, .visible h2 .keep-all,
+    h2.visible span, h2.visible .keep-all {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
     .section-header::before {
       content: attr(data-title);
@@ -2494,6 +2509,16 @@
                 entry.target.classList.add('visible');
                 if (entry.target.querySelector('#chartAge')) initSmallCharts();
                 if (entry.target.querySelector('#marketChart')) initBigCharts();
+                
+                // H2 Text Stagger Effect
+                const h2 = entry.target.querySelector('h2');
+                if (h2) {
+                    const spans = h2.querySelectorAll('span, .keep-all');
+                    spans.forEach((span, index) => {
+                        span.style.transitionDelay = `${index * 0.1 + 0.2}s`; // 0.2s is base delay
+                    });
+                }
+                
                 observer.unobserve(entry.target);
             }
         });
