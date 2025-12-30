@@ -218,6 +218,55 @@
       overflow: hidden;
     }
 
+    /* === Custom Cursor (Desktop Only) === */
+    @media (hover: hover) and (pointer: fine) {
+      .cursor-dot,
+      .cursor-outline {
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        z-index: 9999;
+        pointer-events: none;
+      }
+
+      .cursor-dot {
+        width: 8px;
+        height: 8px;
+        background-color: var(--accent);
+      }
+
+      .cursor-outline {
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(15, 90, 58, 0.5);
+        transition: width 0.2s, height 0.2s, background-color 0.2s;
+      }
+
+      /* Hover state for cursor */
+      body.cursor-hover .cursor-outline {
+        width: 70px;
+        height: 70px;
+        background-color: rgba(185, 59, 59, 0.1); /* Accent with opacity */
+        border-color: var(--accent);
+      }
+      
+      /* Hide default cursor */
+      body {
+        cursor: none;
+      }
+      a, button, .btn {
+        cursor: none;
+      }
+    }
+
+    /* === Selection Color === */
+    ::selection {
+      background: var(--primary);
+      color: #fff;
+    }
+
     /* === End Opening Styles === */
 
     *, *::before, *::after {
@@ -407,6 +456,8 @@
       z-index: 0;
       pointer-events: none;
       letter-spacing: 0.05em;
+      /* パララックス効果のためwill-change */
+      will-change: transform;
     }
 
     /* --- Header & Navigation --- */
@@ -928,58 +979,6 @@
         border: none;
     }
     #ikki.purpose-section .card h3 { color: var(--text); }
-      
-    .definition div { 
-        padding: 14px 0; 
-        border-bottom: 1px solid rgba(0,0,0,0.1); 
-        display: flex;
-        flex-wrap: wrap; 
-        align-items: baseline; /* テキストのベースラインを揃える */
-    }
-    .definition dt { 
-        font-weight: 700; 
-        width: 100px; 
-        color: var(--muted); 
-        font-size: 0.9rem; 
-        flex-shrink: 0; 
-    }
-    .definition dd { 
-        font-weight: 500; 
-        font-size: 0.95rem; 
-        flex: 1; /* 残りの幅を埋める */
-    }
-    /* 英語モードの定義リスト調整 */
-    /* 英語テキストが長いため、PCでもスマホ同様の縦並びレイアウトを適用 */
-    body.is-en .definition div {
-        display: block;
-    }
-    body.is-en .definition dt {
-        width: 100%;
-        margin-bottom: 4px;
-        display: block;
-    }
-    
-    /* モバイル英語表示時の役員名スタイル（横スクロール廃止、自然な折り返しへ変更） */
-    @media (max-width: 600px) {
-        body.is-en .definition dd {
-            white-space: normal;       /* 折り返しを許可 */
-            overflow-x: visible;       /* 横スクロールを廃止 */
-            font-size: 0.8rem;         /* フォントサイズを調整して収まりやすく */
-            line-height: 1.5;          /* 折り返しても読みやすい行間 */
-            padding-bottom: 8px;       /* 次の項目との余白 */
-            word-wrap: break-word;     /* 画面幅に合わせて単語の途中でも折り返す場合がある設定 */
-            overflow-wrap: break-word; 
-            max-width: 100%;
-            display: block;
-        }
-    }
-      
-    @media (max-width: 600px) {
-        .definition div { display: block; }
-        .definition dt { width: 100%; margin-bottom: 4px; display: block; font-size: 0.8rem; }
-        /* モバイル時は英語モードでも幅100%を強制 */
-        body.is-en .definition dt { width: 100%; }
-    }
       
     .purpose-image {
         width: 100%;
@@ -1621,6 +1620,10 @@
       <div class="opening-line" id="loadingLine"></div>
     </div>
   </div>
+
+  <!-- Custom Cursor Elements -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
 
   <header class="site-header">
     <div class="container header-inner">
@@ -2716,6 +2719,61 @@
           
           window.scrollTo(0, 0);
         }, 200);
+      }
+    });
+
+    // --- Cursor Logic ---
+    const cursorDot = document.querySelector(".cursor-dot");
+    const cursorOutline = document.querySelector(".cursor-outline");
+
+    if (cursorDot && cursorOutline && window.matchMedia("(hover: hover)").matches) {
+      window.addEventListener("mousemove", (e) => {
+        const posX = e.clientX;
+        const posY = e.clientY;
+
+        // ドットは即座に追従
+        cursorDot.style.left = `${posX}px`;
+        cursorDot.style.top = `${posY}px`;
+
+        // アウトラインはアニメーションで追従
+        cursorOutline.animate({
+          left: `${posX}px`,
+          top: `${posY}px`
+        }, { duration: 500, fill: "forwards" });
+      });
+
+      // Hover Effect for interactive elements
+      const interactiveEls = document.querySelectorAll("a, button, .btn");
+      interactiveEls.forEach(el => {
+        el.addEventListener("mouseenter", () => {
+          document.body.classList.add("cursor-hover");
+        });
+        el.addEventListener("mouseleave", () => {
+          document.body.classList.remove("cursor-hover");
+        });
+      });
+    }
+
+    // --- Parallax Effect ---
+    window.addEventListener("scroll", () => {
+      const scrollY = window.scrollY;
+      
+      // Parallax for Section Headers
+      const headers = document.querySelectorAll(".section-header");
+      headers.forEach(header => {
+        const speed = 0.2;
+        // 擬似要素は直接JSでいじれないので、カスタムプロパティ経由などで制御するか
+        // ここでは簡易的にheader全体ではなく、特定の装飾要素があればそれを動かすが、
+        // ::beforeのパララックスはCSS変数で行うのがモダン。
+        // 今回はシンプルに、画像に対してパララックスを適用
+      });
+
+      // Parallax for Purpose Image
+      const pImage = document.querySelector(".purpose-image");
+      if (pImage) {
+        const speed = 0.05;
+        // 画面内に入っているときのみ計算（簡易版）
+        pImage.style.transform = `translateY(${scrollY * speed}px)`;
       }
     });
   </script>
