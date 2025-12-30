@@ -935,8 +935,14 @@
         flex: 1; /* 残りの幅を埋める */
     }
     /* 英語モードの定義リスト調整 */
+    /* 英語テキストが長いため、PCでもスマホ同様の縦並びレイアウトを適用 */
+    body.is-en .definition div {
+        display: block;
+    }
     body.is-en .definition dt {
-        width: 200px; /* 英語表記用に幅を十分に拡張 */
+        width: 100%;
+        margin-bottom: 4px;
+        display: block;
     }
       
     @media (max-width: 600px) {
@@ -959,6 +965,22 @@
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+        }
+    }
+
+    /* --- English Mode: Purpose Section Layout Override --- */
+    @media (min-width: 900px) {
+        /* Force single column layout for #ikki section in English mode */
+        body.is-en #ikki .container.two-col {
+            grid-template-columns: 1fr;
+            gap: 60px;
+        }
+        
+        /* Center the company profile card */
+        body.is-en #ikki .card {
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
         }
     }
 
@@ -1603,7 +1625,7 @@
             <div>
                 <dt class="lang-ja">役員</dt><dt class="lang-en">Board Members</dt>
                 <dd class="lang-ja">齋藤 禎紀 | 代表取締役CEO<br>久保 裕太郎 | 取締役COO&CFO<br>鈴木 雄大 | 取締役CPO</dd>
-                <dd class="lang-en">Yoshiki Saito (CEO)<br>Yutaro Kubo (COO & CFO)<br>Takehiro Suzuki (CPO)</dd>
+                <dd class="lang-en">Yoshiki SAITO | President & CEO<br>Yutaro KUBO | Board Director, COO & CFO<br>Takehiro SUZUKI | Board Director, CPO</dd>
             </div>
             <div><dt class="lang-ja">所在地</dt><dt class="lang-en">Location</dt><dd class="lang-ja">静岡県沼津市</dd><dd class="lang-en">Numazu City, Shizuoka Pref.</dd></div>
             <div><dt class="lang-ja">設立</dt><dt class="lang-en">Founded</dt><dd class="lang-ja">2026年2月予定</dd><dd class="lang-en">Feb 2026 (Planned)</dd></div>
