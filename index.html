@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="format-detection" content="telephone=no">
-   
+    
   <!-- === SEO & Metadata === -->
   <title>株式会社百姓イッキ | HYAKUSHO IKKI, Inc. - 次世代農業プラットフォーム</title>
   <meta name="description" content="一次産業を次世代へ継承し、日本の未来を耕す農業スタートアップ「株式会社百姓イッキ」。静岡県沼津市を拠点に、テクノロジーを活用した高収益生産モデル(FARM)、サプライチェーン改革(SCM)、農業参入基盤(OS)の構築を通じて、若者が活躍する持続可能な食料生産インフラを創造します。">
   <meta name="keywords" content="百姓イッキ, 株式会社百姓イッキ, 農業, 一次産業, 農業スタートアップ, 農業ベンチャー, 事業承継, スマート農業, 農業DX, 食料安全保障, アグリテック, サプライチェーンマネジメント, 新規就農, 地方創生, 静岡県沼津市, 若手農家, 農業プラットフォーム, 生産性向上">
-   
+    
   <!-- URL正規化 -->
   <link rel="canonical" href="https://100ikki.com/">
-   
+    
   <!-- セキュリティ -->
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
@@ -24,14 +24,14 @@
   <meta property="og:description" content="一次産業を次世代へ継承し、日本の未来を耕す。">
   <meta property="og:site_name" content="株式会社百姓イッキ">
   <meta property="og:locale" content="ja_JP">
-   
+    
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- === Icons === -->
-  <link rel="icon" href="logo_sq_trans.png" type="image/png">
-  <link rel="apple-touch-icon" href="logo_sq_trans.png">
-   
+  <!-- プレビュー用に仮のアイコンを設定 -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌾</text></svg>">
+    
   <!-- === Fonts & Libraries === -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,16 +51,136 @@
       --accent-light: #d66a6a;
       --soft: #f0f4f2;
       --border: #e5e7eb;
-       
+        
       --header-bg: rgba(255, 255, 255, 0.95);
       --header-height: 70px;
-       
+        
       --gradient-hero: linear-gradient(rgba(15, 40, 25, 0.3), rgba(10, 20, 15, 0.6));
       --gradient-purpose: linear-gradient(to right, rgba(10, 63, 42, 0.85), rgba(44, 37, 33, 0.7));
-       
+        
       --font-jp: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
       --font-en: "Inter", -apple-system, sans-serif;
+      
+      /* アニメーション用イージング */
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
     }
+
+    /* === Award-Winning Style Opening === */
+    .opening-overlay {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #083020; /* より深い緑 */
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      /* カーテンのような動きのための設定 */
+      transform-origin: top;
+      transition: transform 1.2s var(--ease-in-out-quart);
+    }
+
+    .opening-overlay.hidden {
+      transform: translateY(-100%);
+      pointer-events: none;
+    }
+
+    .opening-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Reveal Text Animation Wrapper */
+    .reveal-wrap {
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 8px;
+    }
+
+    .opening-logo {
+      margin-bottom: 30px;
+    }
+    
+    .opening-logo img {
+      max-width: 220px;
+      height: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0;
+      transform: translateY(100%);
+      animation: revealUp 1s var(--ease-out-expo) 0.2s forwards;
+    }
+
+    .opening-text {
+      font-family: var(--font-jp);
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      color: rgba(255, 255, 255, 0.9);
+      opacity: 0;
+      transform: translateY(100%);
+      animation: revealUp 1s var(--ease-out-expo) 0.4s forwards;
+    }
+
+    /* Progress Counter */
+    .opening-counter {
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      font-family: var(--font-en);
+      font-size: 4rem; /* 大きな数字 */
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.15); /* 背景に溶け込ませる */
+      line-height: 1;
+      letter-spacing: -0.02em;
+      overflow: hidden;
+    }
+    
+    .counter-val {
+      display: block;
+      transform: translateY(100%);
+      animation: revealUp 0.8s var(--ease-out-expo) forwards;
+    }
+
+    /* Loading Line */
+    .opening-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 4px;
+      background-color: var(--accent);
+      transition: width 0.2s linear;
+    }
+
+    @keyframes revealUp {
+      from { opacity: 0; transform: translateY(100%); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hero Image Zoom Effect on Load */
+    .hero {
+      transition: transform 1.5s var(--ease-out-expo);
+      transform: scale(1.1); /* 初期は少し拡大 */
+    }
+    body.loaded .hero {
+      transform: scale(1); /* ロード完了で通常サイズへ */
+    }
+
+    /* Prevent scrolling while loading */
+    body.loading {
+      overflow: hidden;
+    }
+
+    /* === End Opening Styles === */
 
     *, *::before, *::after {
       box-sizing: border-box;
@@ -115,7 +235,7 @@
     /* --- Language Switcher Logic --- */
     /* デフォルト(JP)のとき、.lang-enは非表示 */
     .lang-en { display: none !important; }
-    
+     
     /* 英語モード(.is-en)のとき、.lang-jaを非表示、.lang-enを表示 */
     body.is-en .lang-ja { display: none !important; }
     body.is-en .lang-en { display: block !important; }
@@ -143,7 +263,7 @@
         border-color: var(--primary);
         color: var(--primary);
     }
-    
+     
     /* PC用スイッチ（ナビ内） */
     .nav-lang-switch {
         /* margin-left: 24px; 不要なマージンを削除 */
@@ -193,7 +313,7 @@
       position: relative;
       padding: 0 12px;
     }
-     
+      
     .eyebrow::before, .eyebrow::after {
         content: '';
         position: absolute;
@@ -219,7 +339,7 @@
         word-break: normal;
         overflow-wrap: normal;
     }
-     
+      
     h2 .keep-all {
         display: inline-block;
         white-space: nowrap;
@@ -290,7 +410,7 @@
       gap: 24px;
       align-items: center;
     }
-     
+      
     .mobile-only {
       display: none;
     }
@@ -384,7 +504,7 @@
         .menu-toggle.active span:nth-child(3) {
             transform: translateY(-9px) rotate(-45deg);
         }
-        
+         
         /* PC用言語スイッチは隠す */
         .nav .nav-lang-switch {
             display: none;
@@ -400,7 +520,7 @@
       letter-spacing: 0.05em;
       padding: 8px;
     }
-     
+      
     .nav a:not(.btn)::after {
       content: '';
       position: absolute;
@@ -481,7 +601,7 @@
       word-break: auto-phrase;
       overflow-wrap: break-word;
     }
-     
+      
     .hero-copy h1 span {
         display: inline-block;
         white-space: nowrap;
@@ -575,7 +695,7 @@
     @media (min-width: 900px) {
         .grid-3 { grid-template-columns: repeat(3, 1fr); gap: 32px; }
     }
-     
+      
     .grid-2 {
       display: grid;
       gap: 24px;
@@ -584,7 +704,7 @@
     @media (min-width: 768px) {
         .grid-2 { grid-template-columns: 1fr 1fr; gap: 32px; }
     }
-     
+      
     .two-col {
       display: grid;
       grid-template-columns: 1fr;
@@ -606,7 +726,7 @@
       position: relative;
       overflow: hidden;
     }
-     
+      
     .card::before {
         content: '';
         position: absolute;
@@ -650,7 +770,7 @@
     @supports (-webkit-touch-callout: none) {
         #ikki.purpose-section { background-attachment: scroll; }
     }
-     
+      
     #ikki.purpose-section::before {
         content: '';
         position: absolute;
@@ -658,7 +778,7 @@
         background: var(--gradient-purpose);
         z-index: 1;
     }
-     
+      
     #ikki.purpose-section .container { z-index: 2; position: relative; }
 
     #ikki.purpose-section .eyebrow {
@@ -675,7 +795,7 @@
         color: #fff;
         text-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-     
+      
     #ikki.purpose-section p {
         color: #fff;
         text-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -710,7 +830,7 @@
     }
     @media (min-width: 600px) { .ikki-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
     @media (min-width: 900px) { .ikki-grid { grid-template-columns: repeat(5, 1fr); } }
-     
+      
     .ikki-item {
         background: rgba(255,255,255,0.1);
         border: 1px solid rgba(255,255,255,0.3);
@@ -741,7 +861,7 @@
         color: rgba(255,255,255,0.9);
         line-height: 1.4;
     }
-    
+     
     /* 英語モードでの5つのイッキ調整 */
     body.is-en .ikki-kanji {
         font-family: var(--font-en);
@@ -756,7 +876,7 @@
         border: none;
     }
     #ikki.purpose-section .card h3 { color: var(--text); }
-     
+      
     .definition div { 
         padding: 14px 0; 
         border-bottom: 1px solid rgba(0,0,0,0.1); 
@@ -780,14 +900,14 @@
     body.is-en .definition dt {
         width: 200px; /* 英語表記用に幅を十分に拡張 */
     }
-     
+      
     @media (max-width: 600px) {
         .definition div { display: block; }
         .definition dt { width: 100%; margin-bottom: 4px; display: block; font-size: 0.8rem; }
         /* モバイル時は英語モードでも幅100%を強制 */
         body.is-en .definition dt { width: 100%; }
     }
-     
+      
     .purpose-image {
         width: 100%;
         height: auto;
@@ -843,7 +963,7 @@
     @media (min-width: 768px) {
         .stat-chart-container { height: 150px; }
     }
-     
+      
     .source-note {
         font-size: 0.75rem;
         color: var(--muted);
@@ -860,7 +980,7 @@
         margin-top: 40px;
     }
     @media (min-width: 900px) { .why-grid { grid-template-columns: repeat(3, 1fr); } }
-     
+      
     .why-card {
         background: #fff;
         padding: 32px;
@@ -989,7 +1109,7 @@
         align-items: center;
         gap: 8px;
     }
-     
+      
     .wp-source {
         margin-top: 24px;
         text-align: right;
@@ -1031,7 +1151,7 @@
     .solution-card::before {
         display: none; 
     }
-     
+      
     .solution-card::after {
         content: '';
         position: absolute;
@@ -1071,13 +1191,13 @@
 
     /* --- Roadmap Refined --- */
     .roadmap-wrapper { position: relative; padding: 20px 0; }
-     
+      
     .roadmap-steps {
         display: flex;
         flex-direction: column;
         gap: 40px;
     }
-     
+      
     .step-item {
         position: relative;
         flex: 1;
@@ -1088,13 +1208,13 @@
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         overflow: hidden;
     }
-     
+      
     .step-item:hover {
         transform: translateY(-5px);
         box-shadow: 0 15px 30px rgba(0,0,0,0.08);
         border-color: var(--primary);
     }
-     
+      
     .step-bg-num {
         position: absolute;
         top: -20px;
@@ -1107,7 +1227,7 @@
         pointer-events: none;
         z-index: 0;
     }
-     
+      
     .step-header {
         display: flex;
         align-items: center;
@@ -1116,7 +1236,7 @@
         position: relative;
         z-index: 1;
     }
-     
+      
     .step-year {
         font-family: var(--font-en);
         font-size: 0.9rem;
@@ -1126,7 +1246,7 @@
         padding: 4px 12px;
         border-radius: 20px;
     }
-     
+      
     .step-badge {
         font-family: var(--font-en);
         font-weight: 700;
@@ -1134,12 +1254,12 @@
         color: var(--muted);
         letter-spacing: 0.05em;
     }
-     
+      
     .step-item.active .step-year {
         background: var(--accent);
         color: #fff;
     }
-     
+      
     .step-title {
         font-size: 1.25rem;
         font-weight: 700;
@@ -1148,7 +1268,7 @@
         position: relative;
         z-index: 1;
     }
-     
+      
     .step-desc {
         font-size: 0.9rem;
         color: var(--muted);
@@ -1157,7 +1277,7 @@
         position: relative;
         z-index: 1;
     }
-     
+      
     .step-connector {
         display: flex;
         justify-content: center;
@@ -1166,7 +1286,7 @@
         font-size: 1.5rem;
         padding: 10px 0;
     }
-     
+      
     @media (min-width: 900px) {
         .roadmap-steps {
             flex-direction: row;
@@ -1201,7 +1321,7 @@
     }
     .member-name { margin-bottom: 8px; font-size: 1.25rem; font-weight: 700; display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; }
     .member-en { display: block; font-family: var(--font-en); font-weight: 400; font-size: 0.85rem; color: var(--muted); margin-top: 4px; width: 100%; }
-     
+      
     .role-wrapper {
         display: flex;
         justify-content: center;
@@ -1224,7 +1344,7 @@
         color: var(--muted);
         margin-top: 2px;
     }
-     
+      
     .name-row {
         display: flex;
         justify-content: center;
@@ -1243,7 +1363,7 @@
         color: #0077b5;
         transform: scale(1.1);
     }
-     
+      
     .ceo-content p { text-align: justify; color: #4b5563; font-size: 0.95rem; line-height: 1.8; }
     .ceo-content h4 { color: var(--text); margin-top: 24px; }
     .ceo-content h4:first-child { margin-top: 0; }
@@ -1263,7 +1383,7 @@
         border-radius: 50%;
     }
     .contact h2 { color: #fff; }
-     
+      
     .contact h2 .keep-all {
         display: inline-block;
         white-space: nowrap;
@@ -1310,14 +1430,30 @@
 
   </style>
 </head>
-<body class="lang-ja"> <!-- Default Language Class -->
+<body class="lang-ja loading"> <!-- Added loading class -->
+
+  <!-- Award-Winning Style Opening Overlay -->
+  <div id="openingOverlay" class="opening-overlay">
+    <div class="opening-content">
+      <div class="reveal-wrap opening-logo">
+        <img src="https://placehold.co/200x50/ffffff/0f5a3a?text=HYAKUSHO-IKKI" alt="百姓イッキ | HYAKUSHO-IKKI">
+      </div>
+      <div class="reveal-wrap">
+        <div class="opening-text">日本の未来を耕す。</div>
+      </div>
+      <div class="opening-counter">
+        <span class="counter-val" id="loadingCounter">0</span>
+      </div>
+      <div class="opening-line" id="loadingLine"></div>
+    </div>
+  </div>
 
   <header class="site-header">
     <div class="container header-inner">
       <a href="#" class="logo">
-        <img src="logo_trans.png" alt="百姓イッキ | HYAKUSHO-IKKI" onerror="this.src='https://placehold.co/200x50?text=HYAKUSHO-IKKI'">
+        <img src="https://placehold.co/200x50/ffffff/0f5a3a?text=HYAKUSHO-IKKI" alt="百姓イッキ | HYAKUSHO-IKKI" onerror="this.src='https://placehold.co/200x50?text=HYAKUSHO-IKKI'">
       </a>
-       
+        
       <!-- Mobile Language Switcher (スマホ表示時にハンバーガーの左に出る) -->
       <div class="lang-switch mobile-lang-switch">
           <span class="lang-label active" data-lang="ja">JP</span>
@@ -1342,7 +1478,7 @@
         <a href="#roadmap">Roadmap</a>
         <a href="#team">Leadership</a>
         <a href="#contact" class="btn btn-primary">Contact</a>
-        
+         
         <!-- PC Language Switcher (ナビゲーション内) -->
         <div class="lang-switch nav-lang-switch">
             <span class="lang-label active" data-lang="ja">JP</span>
@@ -1359,7 +1495,7 @@
       <div class="container hero-copy fade-up">
         <!-- class="lang-ja" を追加して英語モード時に非表示にする -->
         <p class="hero-purpose-en lang-ja">To revitalize primary industries and cultivate the future of Japan.</p>
-        
+         
         <h1>
             <!-- JA -->
             <span class="lang-ja">
@@ -1390,7 +1526,7 @@
           
           <p class="lang-ja">日本の農業は高齢化・担い手不足に直面しながらも、国の根幹であり未来を耕す力があります。百姓イッキは、若者が先導して立ち上がり、農業を未来へ継承するムーブメントです。</p>
           <p class="lang-en">While facing aging demographics and labor shortages, Japanese agriculture remains the nation's foundation. HYAKUSHO-IKKI is a movement led by youth to inherit and cultivate the future of agriculture.</p>
-           
+            
           <div class="ikki-title lang-ja">5つのイッキ</div>
           <div class="ikki-title lang-en">The 5 "IKKI" Spirits</div>
           
@@ -1434,7 +1570,7 @@
         </div>
       </div>
       <div class="container fade-up" style="margin-top: 40px;">
-        <img src="5IKKI.png" alt="5つのイッキ" class="purpose-image" loading="lazy" onerror="this.src='https://placehold.co/800x400?text=5+IKKI+Image'">
+        <img src="https://placehold.co/800x400/0f5a3a/ffffff?text=5+IKKI+Image" alt="5つのイッキ" class="purpose-image" loading="lazy" onerror="this.src='https://placehold.co/800x400?text=5+IKKI+Image'">
       </div>
     </section>
 
@@ -1454,7 +1590,7 @@
             Japan's production capacity is reaching its limit.
           </h2>
         </div>
-         
+          
         <div class="grid-3 fade-up">
           <div class="card stat-card">
             <div>
@@ -1605,7 +1741,7 @@
               and "Structural Transformation".
             </h2>
         </div>
-         
+          
         <div class="why-grid fade-up">
             <div class="why-card">
                 <div class="why-title lang-ja"><span>🌏</span>地政学リスクと食料安保</div>
@@ -1780,7 +1916,7 @@
                 By 2050, food production faces a 50% decline.<br>
                 We will "Maintain & Regenerate"<br>this 8 trillion yen industry.
             </h2>
-             
+              
             <div style="max-width: 800px; margin: 32px auto 0; text-align: left;">
                 <p class="lang-ja" style="color:var(--muted); margin-bottom:24px;">現在のトレンドでは、2050年の国内農業生産額は4兆円台へ半減すると予測されています。百姓イッキは、テクノロジーと新しい生産体制により、この下落トレンドを逆転させ、8兆円規模の生産力を維持・再生することを目指します。</p>
                 <p class="lang-en" style="color:var(--muted); margin-bottom:24px;">Current trends predict domestic agricultural output will halve to 4 trillion yen by 2050. HYAKUSHO-IKKI aims to reverse this trend through technology and new production systems, maintaining and regenerating the 8 trillion yen production capacity.</p>
@@ -1825,7 +1961,7 @@
                 to become Japan's agricultural infrastructure.
             </h2>
         </div>
-         
+          
         <div class="roadmap-wrapper">
             <div class="roadmap-steps">
               <!-- Step 1 -->
@@ -1852,7 +1988,7 @@
                   <li><strong>Branding:</strong> Launching "HYAKUSHO-IKKI" brand.</li>
                 </ul>
               </div>
-               
+                
               <!-- Connector -->
               <div class="step-connector">
                   ▼
@@ -1925,7 +2061,7 @@
             <span class="eyebrow lang-en">Founders</span>
             <h2>Leadership</h2>
         </div>
-         
+          
         <!-- CEO -->
         <div class="card ceo-card" style="margin-bottom:40px;">
             <div class="two-col" style="gap:40px; align-items:start;">
@@ -2022,7 +2158,7 @@
             </p>
           </div>
         </div>
-         
+          
         <!-- Advisors -->
         <div class="card" style="text-align: center; background:var(--soft); margin-top: 40px;">
             <h4 class="lang-ja" style="margin-top:10px; font-size:14px;">技術アドバイザー</h4>
@@ -2038,7 +2174,7 @@
               </li>
             </ul>
         </div>
-         
+          
       </div>
     </section>
 
@@ -2089,7 +2225,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <a href="#" class="logo">
-        <img src="logo_trans.png" alt="百姓イッキ | HYAKUSHO-IKKI" onerror="this.src='https://placehold.co/200x50?text=HYAKUSHO-IKKI'" loading="lazy">
+        <img src="https://placehold.co/200x50/ffffff/0f5a3a?text=HYAKUSHO-IKKI" alt="百姓イッキ | HYAKUSHO-IKKI" onerror="this.src='https://placehold.co/200x50?text=HYAKUSHO-IKKI'" loading="lazy">
       </a>
       <div class="footer-links">
         <a href="#purpose">Purpose</a>
@@ -2105,7 +2241,7 @@
     // --- Mobile Menu Toggle ---
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
-     
+      
     if (menuToggle && navMenu) {
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('active');
@@ -2357,6 +2493,45 @@
         // Update all charts
         Object.values(chartInstances).forEach(chart => chart.update());
     }
+
+    // --- Opening Animation Script ---
+    window.addEventListener('load', () => {
+      const overlay = document.getElementById('openingOverlay');
+      const counterEl = document.getElementById('loadingCounter');
+      const lineEl = document.getElementById('loadingLine');
+      const body = document.body;
+      
+      let count = 0;
+      const duration = 2000; // 2 seconds total loading
+      const interval = 20;
+      const steps = duration / interval;
+      const increment = 100 / steps;
+
+      const timer = setInterval(() => {
+        count += increment;
+        if (count >= 100) {
+          count = 100;
+          clearInterval(timer);
+          finishLoading();
+        }
+        
+        // Update DOM
+        counterEl.textContent = Math.floor(count);
+        lineEl.style.width = Math.floor(count) + '%';
+        
+      }, interval);
+
+      function finishLoading() {
+        // Wait a bit after reaching 100%
+        setTimeout(() => {
+          overlay.classList.add('hidden');
+          body.classList.remove('loading');
+          body.classList.add('loaded'); // Trigger hero zoom
+          
+          window.scrollTo(0, 0);
+        }, 500);
+      }
+    });
   </script>
 </body>
 </html>
