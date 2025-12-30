@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#0f5a3a">
     
   <!-- === SEO & Metadata === -->
   <title>株式会社百姓イッキ | HYAKUSHO IKKI, Inc. - 次世代農業プラットフォーム</title>
@@ -38,16 +39,17 @@
   <meta name="twitter:image:alt" content="株式会社百姓イッキ 公式サイト">
 
   <!-- === Icons === -->
-  <link rel="icon" href="logo_sq_trans.png" type="image/png">
-  <link rel="apple-touch-icon" href="logo_sq_trans.png">
+  <link rel="icon" href="/logo_sq_trans.png" type="image/png">
+  <link rel="apple-touch-icon" href="/logo_sq_trans.png">
     
   <!-- === Fonts & Libraries === -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-  <!-- Chart.js (Fixed: Version pinned for stability) -->
+  
+  <!-- Chart.js (Fixed: Version pinned for stability, defer loading) -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
-  <!-- Smooth Scroll Library (Stable version) -->
+  <!-- Smooth Scroll Library (Fixed: Stable version, defer loading) -->
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
   <style>
@@ -227,7 +229,6 @@
     }
 
     /* === Custom Cursor (Desktop Only) === */
-    /* 修正: 視差効果を減らす設定(prefers-reduced-motion)が有効な場合はカスタムカーソルを無効化 */
     @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
       .cursor-dot,
       .cursor-outline {
@@ -238,7 +239,7 @@
         border-radius: 50%;
         z-index: 9999;
         pointer-events: none;
-        will-change: transform; /* Performance Optimization */
+        will-change: transform;
       }
 
       .cursor-dot {
@@ -252,7 +253,6 @@
         height: 40px;
         border: 1px solid rgba(15, 90, 58, 0.5);
         transition: width 0.2s, height 0.2s, background-color 0.2s;
-        /* left/top transitions removed for performance via JS transform */
       }
 
       /* Hover state for cursor */
@@ -1686,6 +1686,12 @@
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
   </style>
+  <noscript>
+    <style>
+      .opening-overlay { display: none !important; }
+      body { overflow: auto !important; }
+    </style>
+  </noscript>
 </head>
 <body class="lang-ja loading"> <!-- Added loading class -->
 
@@ -1716,7 +1722,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="#" class="logo">
-        <img src="logo_trans.png" alt="百姓イッキ | HYAKUSHO-IKKI" onerror="this.src='https://placehold.co/200x50/ffffff/0f5a3a?text=HYAKUSHO-IKKI'">
+        <img src="/logo_trans.png" alt="百姓イッキ | HYAKUSHO-IKKI" onerror="this.src='https://placehold.co/200x50/ffffff/0f5a3a?text=HYAKUSHO-IKKI'">
       </a>
         
       <!-- Mobile Language Switcher (スマホ表示時にハンバーガーの左に出る) -->
@@ -1847,8 +1853,9 @@
         </div>
       </div>
       <div class="container fade-up" style="margin-top: 40px;">
+        <!-- 画像タグからクラスを外し、ラッパーでスタイル制御 -->
         <div class="reveal-image-wrap">
-           <img src="5IKKI.png" alt="5つのイッキ" loading="lazy" onerror="this.src='https://placehold.co/800x400?text=5+IKKI+Image'">
+           <img src="/5IKKI.png" alt="5つのイッキ" loading="lazy" onerror="this.src='https://placehold.co/800x400?text=5+IKKI+Image'">
         </div>
       </div>
     </section>
@@ -2375,7 +2382,7 @@
                     </p>
                     <p class="lang-en">
                         While visiting growers and wholesale markets nationwide with co-founder Kubo during my time at User Like, I was deeply impressed by the passion and craftsmanship of the veterans who have long supported Japan’s primary industries. At the same time, I realized the industry was riddled with challenges. We established the Flower Digital Marketing Consortium and conducted research on cost improvement and structural issues with support from Japan’s Ministry of Agriculture, Forestry and Fisheries (MAFF).<br><br>
-                        In an industry with remarkably few young producers, I decided to become a next-generation producer myself. I started by cultivating 50 tsubo (approx. 165 m²) of abandoned farmland. Continuing the restoration, we expanded to 500 tsubo (approx. 1,650 m², 0.17 ha). Securing an additional ~2,400 tsubo (approx. 7,900 m², 0.79 ha) in Numazu City, Shizuoka, I decided to found HYAKUSHO-IKKI. In Japan, an advanced aging society, we will create a system where youth and seniors unite.
+                        In an industry with remarkably few young producers, I decided to become a next-generation producer myself. I started by cultivating 50 tsubo (approx. 165 m²) of abandoned farmland. Continuing the restoration, we expanded to 500 tsubo (approx. 1,650 m², 0.17 ha). Securing an additional ~2,400 tsubo (approx. 7,900 m², 0.79 ha) in Numazu City, Shizuoka, I decided to found HYAKUSHO-IKKI. In Japan’s rapidly aging society, we will build a system where youth and seniors unite.
                     </p>
                 </div>
             </div>
@@ -2576,6 +2583,11 @@
         });
     });
 
+    function setMeta(selector, value) {
+        const el = document.querySelector(selector);
+        if (el) el.setAttribute('content', value);
+    }
+
     function setLanguage(lang) {
         currentLang = lang;
 
@@ -2590,17 +2602,37 @@
             body.classList.add('is-en');
             body.classList.remove('lang-ja');
             
+            const t = 'HYAKUSHO IKKI, Inc. - Next-Generation Agriculture Platform';
+            const d = 'HYAKUSHO IKKI is an agri startup based in Numazu, building profitable farming models, SCM transformation, and an operating platform to cultivate Japan’s future.';
+
             // Update Title & Description for EN
-            if (titleEl) titleEl.textContent = 'HYAKUSHO IKKI, Inc. - Next-Generation Agriculture Platform';
-            if (descEl) descEl.setAttribute('content', 'HYAKUSHO IKKI is an agri startup based in Numazu, building profitable farming models, SCM transformation, and an operating platform to cultivate Japan’s future.');
+            if (titleEl) titleEl.textContent = t;
+            if (descEl) descEl.setAttribute('content', d);
+            
+            // OGP & Twitter Update
+            setMeta('meta[property="og:title"]', 'HYAKUSHO IKKI, Inc.');
+            setMeta('meta[property="og:description"]', d);
+            setMeta('meta[property="og:locale"]', 'en_US');
+            setMeta('meta[name="twitter:title"]', 'HYAKUSHO IKKI, Inc.');
+            setMeta('meta[name="twitter:description"]', d);
 
         } else {
             body.classList.remove('is-en');
             body.classList.add('lang-ja');
 
+            const t = '株式会社百姓イッキ | HYAKUSHO IKKI, Inc. - 次世代農業プラットフォーム';
+            const d = '一次産業を次世代へ継承し、日本の未来を耕す農業スタートアップ「株式会社百姓イッキ」。静岡県沼津市を拠点に、テクノロジーを活用した高収益生産モデル(FARM)、サプライチェーン改革(SCM)、農業参入基盤(OS)の構築を通じて、若者が活躍する持続可能な食料生産インフラを創造します。';
+
             // Update Title & Description for JA
-            if (titleEl) titleEl.textContent = '株式会社百姓イッキ | HYAKUSHO IKKI, Inc. - 次世代農業プラットフォーム';
-            if (descEl) descEl.setAttribute('content', '一次産業を次世代へ継承し、日本の未来を耕す農業スタートアップ「株式会社百姓イッキ」。静岡県沼津市を拠点に、テクノロジーを活用した高収益生産モデル(FARM)、サプライチェーン改革(SCM)、農業参入基盤(OS)の構築を通じて、若者が活躍する持続可能な食料生産インフラを創造します。');
+            if (titleEl) titleEl.textContent = t;
+            if (descEl) descEl.setAttribute('content', d);
+            
+            // OGP & Twitter Update
+            setMeta('meta[property="og:title"]', '株式会社百姓イッキ | 次世代農業プラットフォーム');
+            setMeta('meta[property="og:description"]', '一次産業を次世代へ継承し、日本の未来を耕す。');
+            setMeta('meta[property="og:locale"]', 'ja_JP');
+            setMeta('meta[name="twitter:title"]', '株式会社百姓イッキ | 次世代農業プラットフォーム');
+            setMeta('meta[name="twitter:description"]', '一次産業を次世代へ継承し、日本の未来を耕す。');
         }
 
         // Active Label toggle
