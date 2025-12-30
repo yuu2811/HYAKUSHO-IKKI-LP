@@ -314,8 +314,27 @@
       overflow: hidden;
       position: relative;
       display: block;
+      /* ここに .purpose-image のスタイルを移植して枠として機能させる */
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      margin-top: 20px;
+      /* スマホ等のデフォルト */
     }
+    
+    /* PC表示時の幅制限と中央寄せ */
+    @media (min-width: 900px) {
+        .reveal-image-wrap {
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
     .reveal-image-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
       opacity: 0; /* JSで制御 */
       transform: scale(1.1);
       transition: opacity 0.8s ease, transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -337,6 +356,10 @@
     .reveal-image-wrap.is-revealed::after {
       transform: translateY(100%);
     }
+
+    /* 旧クラスのスタイルは削除または無効化 */
+    /* .purpose-image { ... } の定義は .reveal-image-wrap に統合したため不要だが、
+       念のため他の影響が出ないよう削除扱いとする */
 
     /* === End Opening Styles === */
 
@@ -1851,8 +1874,9 @@
         </div>
       </div>
       <div class="container fade-up" style="margin-top: 40px;">
+        <!-- 画像タグからクラスを外し、ラッパーでスタイル制御 -->
         <div class="reveal-image-wrap">
-           <img src="5IKKI.png" alt="5つのイッキ" class="purpose-image" loading="lazy" onerror="this.src='https://placehold.co/800x400?text=5+IKKI+Image'">
+           <img src="5IKKI.png" alt="5つのイッキ" loading="lazy" onerror="this.src='https://placehold.co/800x400?text=5+IKKI+Image'">
         </div>
       </div>
     </section>
@@ -2910,13 +2934,9 @@
         // 今回はシンプルに、画像に対してパララックスを適用
       });
 
-      // Parallax for Purpose Image
-      const pImage = document.querySelector(".purpose-image");
-      if (pImage) {
-        const speed = 0.05;
-        // 画面内に入っているときのみ計算（簡易版）
-        pImage.style.transform = `translateY(${scrollY * speed}px)`;
-      }
+      /* Image Reveal Animationとの競合を防ぐため、
+         画像のJSパララックス処理は削除しました。
+      */
     });
   </script>
 </body>
