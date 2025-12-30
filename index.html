@@ -2237,7 +2237,7 @@
                 <h3 class="step-title lang-en">Proof of Concept & Foundation</h3>
                 
                 <p class="step-desc lang-ja">沼津・忍野エリアで「稼げる農業」を証明する。</p>
-                <p class="step-desc lang-en">Proving profitable agriculture in the Numazu and Oshino areas.</p>
+                <p class="step-desc lang-en">Proving a “profitable agriculture” model in the Numazu and Oshino area.</p>
                 
                 <ul class="bullet lang-ja">
                   <li><strong>自社生産:</strong> 露地野菜・茶・きのこの複合経営で初年度黒字化</li>
@@ -2276,7 +2276,7 @@
                 </ul>
                 <ul class="bullet lang-en">
                   <li><strong>Scaling:</strong> Restoring abandoned farmland and taking over retiring farms (to 50 ha).</li>
-                  <li><strong>SCM:</strong> Compressing costs via in-house logistics.</li>
+                  <li><strong>SCM:</strong> Reducing intermediated costs through in-house logistics.</li>
                   <li><strong>Direct Sales:</strong> Stabilizing prices via direct contracts.</li>
                 </ul>
               </div>
@@ -2350,7 +2350,7 @@
                     </p>
                     
                     <p class="lang-ja" style="font-size:0.8rem; font-weight:700; color:var(--primary); margin-top:8px;">座右の銘：昼夜突貫</p>
-                    <p class="lang-en" style="font-size:0.8rem; font-weight:700; color:var(--primary); margin-top:8px;">Motto: All-out, day and night</p>
+                    <p class="lang-en" style="font-size:0.8rem; font-weight:700; color:var(--primary); margin-top:8px;">Motto: Relentless, day and night.</p>
                 </div>
                 <div class="ceo-content">
                     <h4 class="lang-ja" style="margin-bottom:12px; font-size:1.1rem; border-bottom:1px solid var(--border); padding-bottom:8px;">経歴</h4>
@@ -2361,8 +2361,8 @@
                         花のサブスク/ギフト事業を展開するユーザーライク社に入社。ブーケの加工/出荷を行うオペレーション責任者として事業成長とユーザーさんのうれしいを両立する体制を構築し、SCMマネージャーへ就任。仕入れ・加工・物流等のサプライチェーン全体を統括。産地開発にも携わり、全国の花き生産者と関係性構築し、安定した調達網の構築と原価改善を実現。
                     </p>
                     <p class="lang-en" style="margin-bottom:24px;">
-                        Born in Kanagawa in 1997. Majored in Management at Kwansei Gakuin University. Raised as a passionate Hanshin Tigers fan.<br><br>
-                        Joined User Like Inc., a flower subscription and gifting company. As Operations Manager, built an operating model that balanced business growth with customer satisfaction. Later became SCM Manager, overseeing the entire supply chain including procurement, processing, and logistics. Engaged in production area development, building relationships with flower growers nationwide, establishing stable procurement networks, and improving cost structures.
+                        Born in Kanagawa in 1997. Majored in Management at Kwansei Gakuin University. Grew up as a passionate Hanshin Tigers fan.<br><br>
+                        Joined User Like Inc., a flower subscription and gifting company. As Operations Manager, built an operating model that balanced business growth with customer satisfaction. Later became SCM Manager, overseeing the entire supply chain including procurement, processing, and logistics. Engaged in production area development, building relationships with flower growers nationwide, establishing stable procurement networks, and reducing costs and improving unit economics.
                     </p>
                     
                     <h4 class="lang-ja" style="margin-bottom:12px; font-size:1.1rem; border-bottom:1px solid var(--border); padding-bottom:8px;">創業の経緯</h4>
@@ -2374,7 +2374,7 @@
                     </p>
                     <p class="lang-en">
                         While visiting growers and wholesale markets nationwide with co-founder Kubo during my time at User Like, I was deeply impressed by the passion and craftsmanship of the veterans who have long supported Japan’s primary industries. At the same time, I realized the industry was riddled with challenges. We established the Flower Digital Marketing Consortium and conducted research on cost improvement and structural issues with support from Japan’s Ministry of Agriculture, Forestry and Fisheries (MAFF).<br><br>
-                        In an industry with remarkably few young producers, I decided to become a next-generation producer myself. I started by cultivating 50 tsubo of abandoned farmland. Continuing the restoration, we expanded to 500 tsubo. Securing an additional ~2,400 tsubo in Numazu City, Shizuoka, I decided to found HYAKUSHO-IKKI. In Japan’s rapidly aging society, we will build a system where younger and older generations unite.
+                        In an industry with remarkably few young producers, I decided to become a next-generation producer myself. I started by cultivating 50 tsubo (approx. 165 m²) of abandoned farmland. Continuing the restoration, we expanded to 500 tsubo (approx. 1,650 m², 0.17 ha). Securing an additional ~2,400 tsubo (approx. 7,900 m², 0.79 ha) in Numazu City, Shizuoka, I decided to found HYAKUSHO-IKKI. In Japan, an advanced aging society, we will create a system where youth and seniors unite.
                     </p>
                 </div>
             </div>
@@ -2455,7 +2455,7 @@
           </h2>
           
           <p class="lang-ja" style="opacity:0.9; margin-bottom:32px;">一次産業周辺での事業連携やオペレーション原価改善、サプライチェーンに関するご相談等、お気軽にご連絡ください。</p>
-          <p class="lang-en" style="opacity:0.9; margin-bottom:32px;">Please feel free to contact us regarding business partnerships, operational cost improvement, or supply chain consulting.</p>
+          <p class="lang-en" style="opacity:0.9; margin-bottom:32px;">Please feel free to contact us about partnerships, operational improvement and cost reduction, or supply chain consulting.</p>
           
           <!-- Gmail Link -->
           <a class="btn btn-primary lang-ja" style="background:#fff; color:var(--text)!important; padding:16px 40px; font-size:1rem;" href="https://mail.google.com/mail/?view=cm&fs=1&to=info@100ikki.com" target="_blank" rel="noopener noreferrer">メールで問い合わせる</a>
@@ -2948,25 +2948,6 @@
             });
         });
     }
-
-    // --- Parallax Effect ---
-    window.addEventListener("scroll", () => {
-      const scrollY = window.scrollY;
-      
-      // Parallax for Section Headers
-      const headers = document.querySelectorAll(".section-header");
-      headers.forEach(header => {
-        const speed = 0.2;
-        // 擬似要素は直接JSでいじれないので、カスタムプロパティ経由などで制御するか
-        // ここでは簡易的にheader全体ではなく、特定の装飾要素があればそれを動かすが、
-        // ::beforeのパララックスはCSS変数で行うのがモダン。
-        // 今回はシンプルに、画像に対してパララックスを適用
-      });
-
-      /* Image Reveal Animationとの競合を防ぐため、
-         画像のJSパララックス処理は削除しました。
-      */
-    });
   </script>
 </body>
 </html>
