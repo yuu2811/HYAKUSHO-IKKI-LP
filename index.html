@@ -369,8 +369,10 @@
     html {
       scroll-behavior: smooth;
       scroll-padding-top: var(--header-height);
+      overflow-x: hidden; /* 追加：横スクロール防止 */
     }
     
+    /* Smooth Scroll (Lenis) requires auto height */
     html.lenis {
       height: auto;
     }
@@ -868,6 +870,7 @@
     .section {
       padding: clamp(60px, 10vw, 120px) 0;
       position: relative;
+      overflow: hidden; /* 追加：背景の巨大文字等がはみ出さないようにする */
     }
 
     .section.alt {
@@ -1199,6 +1202,16 @@
         letter-spacing: -0.02em;
     }
     .stat-value span { font-size: 1.25rem; color: var(--muted); font-weight: 700; margin-left: 4px; }
+    
+    /* 追加: 数値と言語を切り替えるラッパー用のスタイル修正 */
+    /* 単位用のspanスタイルを打ち消して親のフォントサイズを継承する */
+    .stat-value .stat-value-wrapper {
+        font-size: inherit;
+        color: inherit;
+        font-weight: inherit;
+        margin-left: 0;
+    }
+
     .stat-label { font-weight: 700; color: var(--primary); font-size: 0.95rem; }
     .stat-desc {
         font-size: 0.8rem;
@@ -1894,7 +1907,11 @@
               <p class="stat-label lang-ja">基幹的農業従事者数</p>
               <p class="stat-label lang-en">Core Agricultural Workers</p>
               
-              <p class="stat-value"><span class="lang-ja">102.1<span>万人</span></span><span class="lang-en">1.02<span>M</span></span></p>
+              <!-- 修正: stat-value-wrapper クラスを追加して文字サイズを正常化 -->
+              <p class="stat-value">
+                <span class="lang-ja stat-value-wrapper">102.1<span>万人</span></span>
+                <span class="lang-en stat-value-wrapper">1.02<span>M</span></span>
+              </p>
               
               <p class="stat-desc lang-ja">2015年比で4割減</p>
               <p class="stat-desc lang-en">40% Decrease since 2015</p>
@@ -2729,7 +2746,34 @@
                     borderRadius: 4
                 }]
             },
-            options: commonOptions
+            // 修正: ツールチップの表示フォーマットをカスタマイズ
+            options: {
+                ...commonOptions,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    // 言語設定に応じて単位と数値を調整
+                                    if (currentLang === 'en') {
+                                        // 102.1(万人) -> 1.02 M
+                                        const valM = (context.parsed.y / 100).toFixed(2);
+                                        label += valM + 'M';
+                                    } else {
+                                        label += context.parsed.y + '万人';
+                                    }
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
         });
 
         // 3. 食料自給率 G7 (Labels restored with flags)
@@ -2739,6 +2783,7 @@
             data: {
                 labels: ['🇨🇦 CA', '🇦🇺 AU', '🇺🇸 US', '🇫🇷 FR', '🇩🇪 DE', '🇬🇧 UK', '🇮🇹 IT', '🇯🇵 JP'],
                 datasets: [{
+                    label: 'Self-sufficiency', // 初期ラベル
                     data: [233, 169, 121, 117, 84, 54, 58, 38],
                     backgroundColor: (ctx) => ctx.dataIndex === 7 ? '#b93b3b' : '#e5e7eb',
                     borderRadius: 3
@@ -2746,12 +2791,29 @@
             },
             options: {
                 ...commonOptions,
-                plugins: { legend: { display: false }, tooltip: { enabled: true } },
+                plugins: { 
+                    legend: { display: false }, 
+                    tooltip: { 
+                        enabled: true,
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += context.parsed.y + '%';
+                                }
+                                return label;
+                            }
+                        }
+                    } 
+                },
                 scales: {
                     x: { 
                         grid: {display:false}, 
                         ticks: {
-                            font: {size: 10},
+                            font: {size: 9}, // 日本語（カタカナ）が入ると長くなるので少し小さく調整
                             maxRotation: 45,
                             minRotation: 45
                         } 
@@ -2851,12 +2913,27 @@
         if (chartInstances.workers) {
              if (lang === 'ja') {
                 chartInstances.workers.data.labels = ['2015', '2020', '2025(概数)'];
-                chartInstances.workers.data.datasets[0].label = '人数(万人)';
+                // 修正: ツールチップで単位を付けるため、ここでの単位表記は削除してシンプルに
+                chartInstances.workers.data.datasets[0].label = '人数'; 
              } else {
                 chartInstances.workers.data.labels = ['2015', '2020', '2025(Est)'];
-                chartInstances.workers.data.datasets[0].label = 'Workers (10k)';
+                // 修正: ツールチップで単位を付けるため、ここでの単位表記は削除してシンプルに
+                chartInstances.workers.data.datasets[0].label = 'Workers'; 
              }
              chartInstances.workers.update();
+        }
+
+        // G7 Chart Update
+        if (chartInstances.g7) {
+             if (lang === 'ja') {
+                // カタカナ表記に変更
+                chartInstances.g7.data.labels = ['🇨🇦 カナダ', '🇦🇺 オーストラリア', '🇺🇸 アメリカ', '🇫🇷 フランス', '🇩🇪 ドイツ', '🇬🇧 イギリス', '🇮🇹 イタリア', '🇯🇵 日本'];
+                chartInstances.g7.data.datasets[0].label = '食料自給率';
+             } else {
+                chartInstances.g7.data.labels = ['🇨🇦 CA', '🇦🇺 AU', '🇺🇸 US', '🇫🇷 FR', '🇩🇪 DE', '🇬🇧 UK', '🇮🇹 IT', '🇯🇵 JP'];
+                chartInstances.g7.data.datasets[0].label = 'Self-sufficiency';
+             }
+             chartInstances.g7.update();
         }
     }
 
