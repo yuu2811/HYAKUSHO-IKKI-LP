@@ -185,7 +185,7 @@
       bottom: 40px;
       right: 40px;
       font-family: var(--font-en);
-      font-size: 4rem;
+      font-size: 4rem; /* 大きな数字 */
       font-weight: 900;
       color: rgba(255, 255, 255, 0.15);
       line-height: 1;
@@ -515,6 +515,35 @@
       word-break: keep-all; 
       overflow-wrap: break-word;
     }
+    
+    /* 修正: モバイル端末では keep-all を解除してはみ出しを防止 */
+    @media (max-width: 768px) {
+        /* body.is-en h2 を追加して、英語モードのPC用設定を確実に上書きする */
+        h2, body.is-en h2 {
+            word-break: break-word;
+            overflow-wrap: anywhere;
+            /* 修正: 全セクションのh2に対して、画面幅に応じたサイズ調整を適用 */
+            font-size: clamp(1.1rem, 5vw, 1.5rem);
+            line-height: 1.3;
+        }
+        
+        /* 追加: Purposeセクション(百姓イッキとは)のh2内改行をモバイルで無効化 */
+        #ikki h2 br {
+            display: none;
+        }
+
+        /* 追加: 英語タイトルのspan要素をインライン化して自然な折り返しを実現（アニメーションよりレイアウト優先） */
+        #ikki h2 span {
+            display: inline;
+        }
+
+        /* 追加: Marketセクションのh2は文節ごとの改行を維持 */
+        #market h2 .keep-all {
+            white-space: nowrap;
+            display: inline-block;
+        }
+    }
+
     body.is-en h2 {
         word-break: normal;
         overflow-wrap: normal;
@@ -991,6 +1020,10 @@
     #ikki.purpose-section p {
         color: #fff;
         text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        /* 修正: モバイルでのはみ出しを確実に防ぐ設定 */
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
     }
 
     /* 5つのイッキ (Responsive Grid) */
@@ -1021,49 +1054,77 @@
         margin-bottom: 40px;
     }
     @media (min-width: 600px) { .ikki-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
-    @media (min-width: 900px) { .ikki-grid { grid-template-columns: repeat(5, 1fr); } }
+    
+    /* 修正: 900px以上で強制5列にしていたのをやめ、幅に合わせて柔軟に折り返すように変更 */
+    @media (min-width: 900px) { 
+        .ikki-grid { 
+            /* 最小110pxを確保し、入る分だけ並べる（5つ並ばない場合は改行される） */
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); 
+        } 
+    }
       
     .ikki-item {
-        background: rgba(255,255,255,0.1);
-        border: 1px solid rgba(255,255,255,0.3);
-        border-radius: 8px;
-        padding: 16px 12px;
+        /* デザイン強化: 透明感と立体感のあるグラスモーフィズム */
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-top: 1px solid rgba(255, 255, 255, 0.4); /* 上部を明るくして立体感 */
+        border-radius: 12px;
+        padding: 24px 12px;
         text-align: center;
-        backdrop-filter: blur(4px);
-        transition: transform 0.3s, background 0.3s;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
+        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        position: relative;
+        overflow: hidden;
     }
+    
+    /* 微細な光沢を追加 */
+    .ikki-item::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 60%);
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
     .ikki-item:hover {
-        transform: translateY(-3px);
-        background: rgba(255,255,255,0.2);
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.6);
+        box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.3);
     }
+
     .ikki-kanji {
         display: block;
         font-size: clamp(1.8rem, 4vw, 2rem);
         font-weight: 900;
         color: #fff;
-        margin-bottom: 8px;
+        margin-bottom: 12px;
         line-height: 1;
-        text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        /* 文字の視認性を高めるドロップシャドウ */
+        text-shadow: 0 4px 12px rgba(0,0,0,0.3);
         font-family: serif;
     }
     .ikki-desc {
         display: block;
         font-size: 0.75rem;
         font-weight: 700;
-        color: rgba(255,255,255,0.9);
-        line-height: 1.4;
+        color: rgba(255,255,255,0.95);
+        line-height: 1.5;
+        letter-spacing: 0.05em;
     }
      
     body.is-en .ikki-kanji {
         font-family: var(--font-en);
-        font-size: 1.4rem;
+        font-size: 1.2rem; /* 英語は少し小さめに調整してバランスを取る */
         letter-spacing: 0.05em;
         text-transform: uppercase;
-        margin-bottom: 4px;
+        margin-bottom: 8px;
     }
     
     body.is-en .ikki-desc {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         line-height: 1.4;
         opacity: 0.9;
     }
@@ -1144,10 +1205,18 @@
             font-size: 0.8rem;
             line-height: 1.5;
             padding-bottom: 8px;
-            word-wrap: break-word;
-            overflow-wrap: break-word; 
+            /* 修正: 強制的に折り返す設定を強化 */
+            word-break: break-word;
+            overflow-wrap: anywhere; 
             max-width: 100%;
             display: block;
+        }
+        
+        /* Company Profileの定義リスト全体のはみ出し防止 */
+        body.is-en .definition div {
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
         }
     }
       
@@ -2399,7 +2468,7 @@
                     </p>
                     <p class="lang-en">
                         While visiting growers and wholesale markets nationwide with co-founder Kubo during my time at User Like, I was deeply impressed by the passion and craftsmanship of the veterans who have long supported Japan’s primary industries. At the same time, I realized the industry was riddled with challenges. We established the Flower Digital Marketing Consortium and conducted research on cost improvement and structural issues with support from Japan’s Ministry of Agriculture, Forestry and Fisheries (MAFF).<br><br>
-                        In an industry with remarkably few young producers, I decided to become a next-generation producer myself. I started by cultivating 50 tsubo (approx. 165 m²) of abandoned farmland. Continuing the restoration, we expanded to 500 tsubo (approx. 1,650 m², 0.17 ha). Securing an additional ~2,400 tsubo (approx. 7,900 m², 0.79 ha) in Numazu City, Shizuoka, I decided to found HYAKUSHO-IKKI. In Japan’s rapidly aging society, we will build a system where youth and seniors unite.
+                        In an industry with remarkably few young producers, I decided to become a next-generation producer myself. I started by cultivating 50 tsubo (approx. 165 m²) of abandoned farmland. Continuing the restoration, we expanded to 500 tsubo (approx. 1,650 m², 0.17 ha). Securing an additional ~2,400 tsubo (approx. 7,900 m², 0.79 ha) in Numazu City, Shizuoka, I decided to found HYAKUSHO-IKKI. In Japan’s rapidly aging society, we will build a system where younger and older generations unite.
                     </p>
                 </div>
             </div>
