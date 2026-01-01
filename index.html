@@ -623,13 +623,21 @@
     .site-header {
       height: var(--header-height);
       background-color: var(--header-bg);
-      position: sticky;
+      position: fixed; /* 修正: stickyからfixedに変更して確実に固定 */
       top: 0;
+      left: 0; /* 追加: 固定位置を左端に合わせる */
+      width: 100%; /* 追加: 幅を画面いっぱいに広げる */
       z-index: 1000;
       border-bottom: 1px solid rgba(0,0,0,0.05);
       backdrop-filter: blur(10px);
       display: flex;
       align-items: center;
+      transition: transform 0.3s ease; /* ヘッダーの出し入れアニメーション */
+    }
+
+    /* PCでヘッダーを隠すためのクラス */
+    body:not(.is-mobile) .site-header.is-hidden {
+      transform: translateY(-100%);
     }
 
     .header-inner {
@@ -637,6 +645,7 @@
       justify-content: space-between;
       align-items: center;
       width: 100%;
+      position: relative; /* 追加: 子要素（メニューボタン等）の配置基準にする */
     }
 
     .logo {
@@ -692,35 +701,87 @@
         border-radius: 2px;
     }
 
-    /* Mobile Styles for Nav */
+    /* Mobile Styles for Nav (New Floating Button Style) */
     @media (max-width: 900px) {
+        .site-header {
+            position: absolute; /* 修正: fixedからabsoluteに変更し、スクロールで流れるようにする */
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: transparent !important; /* 帯を消す */
+            border-bottom: none !important;
+            backdrop-filter: none !important;
+            height: auto !important; /* 高さ制限解除 */
+            pointer-events: none; /* コンテンツをクリックできるように */
+        }
+
+        .header-inner {
+            display: block; /* Flex解除 */
+            height: auto;
+            padding: 0;
+        }
+
+        .logo {
+            pointer-events: auto; /* ロゴはクリック可能に */
+            /* ロゴはスクロールとともに画面外へ消える（headerがabsoluteになったため） */
+            margin-top: 20px; 
+            margin-left: 5%;
+            max-width: 140px;
+        }
         .logo img {
             max-width: 140px;
         }
 
+        /* 画面右上の固定言語スイッチは非表示（ハンバーガーのみにするため） */
         .mobile-lang-switch {
-            display: flex !important;
-            position: fixed;
-            top: 21px;
-            right: calc(5% + 50px);
-            z-index: 2000;
-            padding: 6px 12px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(0,0,0,0.1);
-            border-radius: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            white-space: nowrap;
+            display: none !important;
         }
 
+        /* 独立したフローティングボタンとして配置（ハンバーガーのみ） */
         .menu-toggle {
             display: flex;
-            position: fixed;
-            top: 24px;
-            right: 5%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px; /* 線の間隔を確保 */
+            position: fixed !important;
+            top: 20px !important;
+            right: 5% !important;
+            margin: 0;
+            pointer-events: auto; /* クリック可能に */
+            
+            /* 修正: 半透明・すりガラス風デザインに変更 */
+            background: rgba(255, 255, 255, 0.4); 
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            
+            width: 50px; /* サイズ調整 */
+            height: 50px;
+            border-radius: 50%; /* 丸くする */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* シャドウ調整 */
+            padding: 0;
+            transform: none !important;
+            z-index: 2001;
+            transition: background 0.3s ease;
         }
+        
+        /* ホバーやタップ時に少し濃くしてフィードバック */
+        .menu-toggle:active {
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        /* ハンバーガー線の調整 */
+        .menu-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background-color: var(--primary); /* 緑色を維持 */
+            transition: all 0.3s;
+            border-radius: 2px;
+            position: relative;
+        }
+
         .nav {
             position: fixed;
             top: 0;
@@ -740,6 +801,7 @@
             box-shadow: -5px 0 20px rgba(0,0,0,0.1);
             backdrop-filter: blur(10px);
             z-index: 1001;
+            pointer-events: auto;
         }
         .nav.active {
             right: 0;
@@ -747,18 +809,23 @@
         .mobile-only {
             display: block;
         }
+        /* アニメーション位置調整 */
         .menu-toggle.active span:nth-child(1) {
-            transform: translateY(9px) rotate(45deg);
+            transform: translateY(7px) rotate(45deg);
         }
         .menu-toggle.active span:nth-child(2) {
             opacity: 0;
         }
         .menu-toggle.active span:nth-child(3) {
-            transform: translateY(-9px) rotate(-45deg);
+            transform: translateY(-7px) rotate(-45deg);
         }
           
+        /* メニュー内に言語切り替えを表示（代替表示） */
         .nav .nav-lang-switch {
-            display: none;
+            display: flex !important;
+            justify-content: center;
+            margin-top: 20px;
+            transform: scale(1.1);
         }
     }
 
@@ -3190,6 +3257,50 @@
           window.scrollTo(0, 0);
         }, 200);
       }
+    });
+
+    // --- Header Show/Hide Logic (PC) ---
+    const header = document.querySelector('.site-header');
+    
+    function updateHeader() {
+        // モバイル判定 (900px以下)
+        if (window.matchMedia('(max-width: 900px)').matches) {
+            document.body.classList.add('is-mobile');
+            header.classList.remove('is-hidden'); // モバイルはCSSで制御するので隠さない
+            return;
+        } else {
+            document.body.classList.remove('is-mobile');
+        }
+    }
+    
+    // 初回実行
+    updateHeader();
+    window.addEventListener('resize', updateHeader);
+
+    // Mouse Move Logic for PC (Header Reveal)
+    window.addEventListener('mousemove', (e) => {
+        if (document.body.classList.contains('is-mobile')) return;
+        
+        // 画面上部80px以内にカーソルが来たら表示
+        if (e.clientY < 80) { 
+            header.classList.remove('is-hidden');
+        } else if (window.scrollY > 100) { 
+            // それ以外でスクロールしてれば隠す
+            header.classList.add('is-hidden');
+        }
+    });
+    
+    // Scroll Logic for PC
+    window.addEventListener('scroll', () => {
+        if (document.body.classList.contains('is-mobile')) return;
+        
+        if (window.scrollY < 100) {
+            // トップ付近なら表示
+            header.classList.remove('is-hidden');
+        } else {
+            // スクロールしたら基本隠す（マウスオーバーで出る）
+            header.classList.add('is-hidden');
+        }
     });
 
     // --- Cursor Logic (Optimized) ---
