@@ -68,9 +68,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   
   <!-- Chart.js (Fixed: Version pinned for stability, defer loading) -->
-  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
   <!-- Smooth Scroll Library (Fixed: Stable version, defer loading) -->
-  <script defer src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
   <style>
     /* === 統合スタイル (Universal & Responsive Optimized) === */
@@ -441,7 +441,7 @@
 
     /* --- Language Switcher Logic --- */
     .lang-en { display: none !important; }
-     
+      
     body.is-en .lang-ja { display: none !important; }
     body.is-en .lang-en { display: block !important; }
     body.is-en span.lang-en { display: inline !important; }
@@ -471,7 +471,7 @@
         border-color: var(--primary);
         color: var(--primary);
     }
-     
+      
     .mobile-lang-switch {
         display: none !important;
     }
@@ -746,7 +746,7 @@
         .menu-toggle.active span:nth-child(3) {
             transform: translateY(-9px) rotate(-45deg);
         }
-         
+          
         .nav .nav-lang-switch {
             display: none;
         }
@@ -1134,7 +1134,7 @@
         line-height: 1.5;
         letter-spacing: 0.05em;
     }
-     
+      
     body.is-en .ikki-kanji {
         font-family: var(--font-en);
         font-size: 1.2rem; /* 英語は少し小さめに調整してバランスを取る */
@@ -1329,6 +1329,69 @@
         text-align: right;
         margin-top: 16px;
         opacity: 0.8;
+    }
+
+    /* Minister Quote Style */
+    .minister-quote {
+        margin-top: 40px;
+        background-color: #f3f4f6; /* 信頼感のある落ち着いたグレー */
+        border-left: 6px solid var(--primary); /* ブランドカラーのアクセント */
+        border-radius: 8px;
+        padding: 32px;
+        position: relative;
+    }
+    .minister-quote::before {
+        content: '“';
+        position: absolute;
+        top: 10px;
+        left: 20px;
+        font-family: serif;
+        font-size: 80px;
+        line-height: 1;
+        color: rgba(15, 90, 58, 0.1);
+        pointer-events: none;
+    }
+    .minister-quote blockquote {
+        margin: 0;
+        position: relative;
+        z-index: 1;
+    }
+    .quote-text {
+        font-size: 0.95rem; /* 長文のため読みやすいサイズに調整 */
+        font-weight: 500;
+        color: var(--text);
+        line-height: 1.8;
+        margin: 0 0 20px 0;
+        text-align: justify;
+    }
+    /* 強調したいキーワードを太字にする場合（今回は全体をフラットに表示） */
+    .quote-footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        font-size: 0.8rem;
+        color: var(--muted);
+        border-top: 1px solid rgba(0,0,0,0.1);
+        padding-top: 16px;
+        font-family: var(--font-en); /* メタ情報は欧文フォント併用ですっきり見せる */
+    }
+    .quote-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--primary);
+        font-weight: 600;
+        transition: opacity 0.3s;
+    }
+    .quote-link:hover {
+        opacity: 0.7;
+        text-decoration: underline;
+    }
+    @media (max-width: 600px) {
+        .minister-quote { padding: 24px; }
+        .quote-text { font-size: 0.9rem; }
     }
 
     /* --- Trends --- */
@@ -1853,7 +1916,7 @@
         <a href="#roadmap">Roadmap</a>
         <a href="#team">Leadership</a>
         <a href="#contact" class="btn btn-primary">Contact</a>
-         
+          
         <!-- PC Language Switcher (ナビゲーション内) -->
         <div class="lang-switch nav-lang-switch">
             <span class="lang-label active" data-lang="ja">JP</span>
@@ -1870,7 +1933,7 @@
       <div class="container hero-copy fade-up">
         <!-- class="lang-ja" を追加して英語モード時に非表示にする -->
         <p class="hero-purpose-en lang-ja">To revitalize primary industries and cultivate the future of Japan.</p>
-         
+          
         <h1>
             <!-- JA -->
             <span class="lang-ja">
@@ -2029,6 +2092,32 @@
         </div>
         <div class="source-note fade-up lang-en">
             Source: 2025 Census of Agriculture and Forestry, MAFF FY2024 Food Self-Sufficiency Rate Report
+        </div>
+
+        <!-- Issuesセクションの末尾に追加 -->
+        <div class="minister-quote fade-up">
+            <blockquote cite="https://www.maff.go.jp/j/kunzi/r080101.html">
+                <div class="quote-content">
+                    <p class="quote-text lang-ja">
+                        「我が国の農林水産業を取り巻く環境は、国際情勢の不安定化や自然災害、気候変動等の影響、人口減少や高齢者の引退による担い手の急減など、大きく変化しています。このような変化に現場感覚をもって対応し、食料の安定的な供給が可能な基盤を整える必要があります。<br><br>
+                        改正食料・農業・農村基本法の下で策定した新たな食料・農業・農村基本計画に基づき、農地の大区画化や中山間地域におけるきめ細かな対応、共同利用施設の再編・合理化、スマート農業技術の開発、生産性向上に資する農業機械の導入、輸出産地の育成といった施策について、別枠予算を確保し、農業の構造転換を5か年で集中的に推し進めます。」
+                    </p>
+                    <p class="quote-text lang-en">
+                        "Japan’s agriculture, forestry and fisheries are undergoing significant change, driven by growing instability in the international situation, the impacts of natural disasters and climate change, and a sharp decline in the number of people engaged in the sector due to population decline and the retirement of older workers. We must respond to these changes with a clear understanding of realities on the ground and put in place the foundations that will enable a stable food supply.<br><br>
+                        Based on the new Basic Plan for Food, Agriculture and Rural Areas formulated under the revised Basic Act on Food, Agriculture and Rural Areas, we will secure a ring-fenced budget for measures including the consolidation of farmland into larger field blocks, tailored support in hilly and mountainous areas, the reorganization, consolidation and rationalization of shared-use facilities, the development of smart agriculture technologies, the introduction of agricultural machinery that contributes to higher productivity, and the fostering of export-oriented production areas. Over the next five years, we will push forward the structural transformation of agriculture in a focused and intensive manner."
+                    </p>
+                </div>
+                <footer class="quote-footer">
+                    <div class="quote-source">
+                        <span class="lang-ja">令和8年 農林水産大臣 年頭所感より</span>
+                        <span class="lang-en">From the Minister of Agriculture, Forestry and Fisheries' New Year's Address (2026)</span>
+                    </div>
+                    <a href="https://www.maff.go.jp/j/kunzi/r080101.html" target="_blank" rel="noopener noreferrer" class="quote-link">
+                        <span class="lang-ja">全文を読む</span><span class="lang-en">Read Full Text</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
+                </footer>
+            </blockquote>
         </div>
       </div>
     </section>
