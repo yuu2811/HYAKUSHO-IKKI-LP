@@ -116,7 +116,7 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      background-color: #083020; /* より深い緑 */
+      background-color: #083020; /* 深い緑 */
       z-index: 10000;
       display: flex;
       justify-content: center;
@@ -399,7 +399,7 @@
     html {
       scroll-behavior: smooth;
       scroll-padding-top: var(--header-height);
-      overflow-x: hidden; /* 追加：横スクロール防止 */
+      overflow-x: hidden;
     }
     
     /* Smooth Scroll (Lenis) requires auto height */
@@ -546,28 +546,28 @@
       overflow-wrap: break-word;
     }
     
-    /* 修正: モバイル端末では keep-all を解除してはみ出しを防止 */
+    /* モバイル端末では keep-all を解除してはみ出しを防止 */
     @media (max-width: 768px) {
         /* body.is-en h2 を追加して、英語モードのPC用設定を確実に上書きする */
         h2, body.is-en h2 {
             word-break: break-word;
             overflow-wrap: anywhere;
-            /* 修正: 全セクションのh2に対して、画面幅に応じたサイズ調整を適用 */
+            /* 全セクションのh2に対して、画面幅に応じたサイズ調整を適用 */
             font-size: clamp(1.1rem, 5vw, 1.5rem);
             line-height: 1.3;
         }
         
-        /* 追加: Purposeセクション(百姓イッキとは)のh2内改行をモバイルで無効化 */
+        /* Purposeセクション(百姓イッキとは)のh2内改行をモバイルで無効化 */
         #ikki h2 br {
             display: none;
         }
 
-        /* 追加: 英語タイトルのspan要素をインライン化して自然な折り返しを実現（アニメーションよりレイアウト優先） */
+        /* 英語タイトルのspan要素をインライン化して自然な折り返しを実現（アニメーションよりレイアウト優先） */
         #ikki h2 span {
             display: inline;
         }
 
-        /* 追加: Marketセクションのh2は文節ごとの改行を維持 */
+        /* Marketセクションのh2は文節ごとの改行を維持 */
         #market h2 .keep-all {
             white-space: nowrap;
             display: inline-block;
@@ -623,16 +623,16 @@
     .site-header {
       height: var(--header-height);
       background-color: var(--header-bg);
-      position: fixed; /* 修正: stickyからfixedに変更して確実に固定 */
+      position: fixed;
       top: 0;
-      left: 0; /* 追加: 固定位置を左端に合わせる */
-      width: 100%; /* 追加: 幅を画面いっぱいに広げる */
+      left: 0;
+      width: 100%;
       z-index: 1000;
       border-bottom: 1px solid rgba(0,0,0,0.05);
       backdrop-filter: blur(10px);
       display: flex;
       align-items: center;
-      transition: transform 0.3s ease; /* ヘッダーの出し入れアニメーション */
+      transition: transform 0.3s ease;
     }
 
     /* PCでヘッダーを隠すためのクラス */
@@ -645,7 +645,7 @@
       justify-content: space-between;
       align-items: center;
       width: 100%;
-      position: relative; /* 追加: 子要素（メニューボタン等）の配置基準にする */
+      position: relative; /* 子要素（メニューボタン等）の配置基準にする */
     }
 
     .logo {
@@ -704,15 +704,15 @@
     /* Mobile Styles for Nav (New Floating Button Style) */
     @media (max-width: 900px) {
         .site-header {
-            position: absolute; /* 修正: fixedからabsoluteに変更し、スクロールで流れるようにする */
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            background-color: transparent !important; /* 帯を消す */
+            background-color: transparent !important;
             border-bottom: none !important;
             backdrop-filter: none !important;
-            height: auto !important; /* 高さ制限解除 */
-            pointer-events: none; /* コンテンツをクリックできるように */
+            height: auto !important;
+            pointer-events: none;
         }
 
         .header-inner {
@@ -723,7 +723,6 @@
 
         .logo {
             pointer-events: auto; /* ロゴはクリック可能に */
-            /* ロゴはスクロールとともに画面外へ消える（headerがabsoluteになったため） */
             margin-top: 20px; 
             margin-left: 5%;
             max-width: 140px;
@@ -749,8 +748,6 @@
             right: 5% !important;
             margin: 0;
             pointer-events: auto; /* クリック可能に */
-            
-            /* 修正: 半透明・すりガラス風デザインに変更 */
             background: rgba(255, 255, 255, 0.4); 
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
