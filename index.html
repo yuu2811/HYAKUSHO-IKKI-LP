@@ -722,7 +722,7 @@
         }
 
         .logo {
-            pointer-events: auto; /* ロゴはクリック可能に */
+            pointer-events: auto;
             margin-top: 20px; 
             margin-left: 5%;
             max-width: 140px;
@@ -1114,7 +1114,6 @@
     #ikki.purpose-section p {
         color: #fff;
         text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        /* 修正: モバイルでのはみ出しを確実に防ぐ設定 */
         word-wrap: break-word;
         overflow-wrap: break-word;
         max-width: 100%;
@@ -1148,8 +1147,6 @@
         margin-bottom: 40px;
     }
     @media (min-width: 600px) { .ikki-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
-    
-    /* 修正: 900px以上で強制5列にしていたのをやめ、幅に合わせて柔軟に折り返すように変更 */
     @media (min-width: 900px) { 
         .ikki-grid { 
             /* 最小110pxを確保し、入る分だけ並べる（5つ並ばない場合は改行される） */
@@ -1299,7 +1296,6 @@
             font-size: 0.8rem;
             line-height: 1.5;
             padding-bottom: 8px;
-            /* 修正: 強制的に折り返す設定を強化 */
             word-break: break-word;
             overflow-wrap: anywhere; 
             max-width: 100%;
@@ -1365,9 +1361,6 @@
         letter-spacing: -0.02em;
     }
     .stat-value span { font-size: 1.25rem; color: var(--muted); font-weight: 700; margin-left: 4px; }
-    
-    /* 追加: 数値と言語を切り替えるラッパー用のスタイル修正 */
-    /* 単位用のspanスタイルを打ち消して親のフォントサイズを継承する */
     .stat-value .stat-value-wrapper {
         font-size: inherit;
         color: inherit;
@@ -1832,7 +1825,6 @@
         margin-bottom: 0;
         text-align: center;
     }
-    /* 修正: spanタグへの包括的な指定をやめ、特定のクラス(.role-sub)に限定 */
     .member-role .role-sub {
         display: block;
         font-weight: 400;
@@ -1972,14 +1964,11 @@
       </div>
 
       <!-- Hamburger Button (Mobile) - Button tag for accessibility -->
-      <!-- 修正: aria-controls を追加 -->
       <button class="menu-toggle" id="menuToggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="navMenu">
         <span></span>
         <span></span>
         <span></span>
       </button>
-
-      <!-- 修正: data-lenis-prevent 属性を追加して、メニュー内のスクロールが阻害されないようにする -->
       <nav class="nav" id="navMenu" data-lenis-prevent>
         <a href="#purpose">Purpose</a>
         <a href="#ikki" class="mobile-only">Ikki</a>
@@ -2132,8 +2121,6 @@
             <div>
               <p class="stat-label lang-ja">基幹的農業従事者数</p>
               <p class="stat-label lang-en">Core Agricultural Workers</p>
-              
-              <!-- 修正: stat-value-wrapper クラスを追加して文字サイズを正常化 -->
               <p class="stat-value">
                 <span class="lang-ja stat-value-wrapper">102.1<span>万人</span></span>
                 <span class="lang-en stat-value-wrapper">1.02<span>M</span></span>
@@ -2827,14 +2814,13 @@
 
         // メニュー外クリックで閉じる (Optimized)
         document.addEventListener('click', (e) => {
-            if (!navMenu.classList.contains('active')) return; // 開いてなければ何もしない
+            if (!navMenu.classList.contains('active')) return;
             const clickedInside = navMenu.contains(e.target) || menuToggle.contains(e.target);
             if (!clickedInside) closeMenu();
         });
     }
 
     // --- Language Switcher Logic ---
-    // クラスですべてのスイッチを取得するように変更
     const langSwitches = document.querySelectorAll('.lang-switch');
     const langLabels = document.querySelectorAll('.lang-label');
     const body = document.body;
@@ -2998,7 +2984,6 @@
                     borderRadius: 4
                 }]
             },
-            // 修正: ツールチップの表示フォーマットをカスタマイズ
             options: {
                 ...commonOptions,
                 plugins: {
@@ -3065,7 +3050,7 @@
                     x: { 
                         grid: {display:false}, 
                         ticks: {
-                            font: {size: 9}, // 日本語（カタカナ）が入ると長くなるので少し小さく調整
+                            font: {size: 9},
                             maxRotation: 45,
                             minRotation: 45
                         } 
@@ -3165,11 +3150,9 @@
         if (chartInstances.workers) {
              if (lang === 'ja') {
                 chartInstances.workers.data.labels = ['2015', '2020', '2025(概数)'];
-                // 修正: ツールチップで単位を付けるため、ここでの単位表記は削除してシンプルに
                 chartInstances.workers.data.datasets[0].label = '人数'; 
              } else {
                 chartInstances.workers.data.labels = ['2015', '2020', '2025(Est)'];
-                // 修正: ツールチップで単位を付けるため、ここでの単位表記は削除してシンプルに
                 chartInstances.workers.data.datasets[0].label = 'Workers'; 
              }
              chartInstances.workers.update();
@@ -3178,7 +3161,6 @@
         // G7 Chart Update
         if (chartInstances.g7) {
              if (lang === 'ja') {
-                // カタカナ表記に変更
                 chartInstances.g7.data.labels = ['🇨🇦 カナダ', '🇦🇺 オーストラリア', '🇺🇸 アメリカ', '🇫🇷 フランス', '🇩🇪 ドイツ', '🇬🇧 イギリス', '🇮🇹 イタリア', '🇯🇵 日本'];
                 chartInstances.g7.data.datasets[0].label = '食料自給率';
              } else {
@@ -3277,12 +3259,9 @@
     // Mouse Move Logic for PC (Header Reveal)
     window.addEventListener('mousemove', (e) => {
         if (document.body.classList.contains('is-mobile')) return;
-        
-        // 画面上部80px以内にカーソルが来たら表示
         if (e.clientY < 80) { 
             header.classList.remove('is-hidden');
         } else if (window.scrollY > 100) { 
-            // それ以外でスクロールしてれば隠す
             header.classList.add('is-hidden');
         }
     });
@@ -3292,10 +3271,8 @@
         if (document.body.classList.contains('is-mobile')) return;
         
         if (window.scrollY < 100) {
-            // トップ付近なら表示
             header.classList.remove('is-hidden');
         } else {
-            // スクロールしたら基本隠す（マウスオーバーで出る）
             header.classList.add('is-hidden');
         }
     });
@@ -3303,8 +3280,6 @@
     // --- Cursor Logic (Optimized) ---
     const cursorDot = document.querySelector(".cursor-dot");
     const cursorOutline = document.querySelector(".cursor-outline");
-
-    // 修正: prefers-reduced-motion 設定を確認する条件を追加
     if (cursorDot && cursorOutline && window.matchMedia("(hover: hover)").matches && window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
         let mouseX = 0;
         let mouseY = 0;
@@ -3326,9 +3301,7 @@
             const speed = 0.15;
             outlineX += (mouseX - outlineX) * speed;
             outlineY += (mouseY - outlineY) * speed;
-
             cursorOutline.style.transform = `translate(${outlineX}px, ${outlineY}px) translate(-50%, -50%)`;
-
             requestAnimationFrame(animateCursor);
         }
         
@@ -3347,7 +3320,6 @@
     }
     
     // --- Magnetic Button Logic ---
-    // 修正: prefers-reduced-motion 設定を確認する条件を追加
     if(window.matchMedia("(hover: hover)").matches && window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
         const magneticBtns = document.querySelectorAll('.nav a, .btn');
         
@@ -3377,15 +3349,7 @@
       const headers = document.querySelectorAll(".section-header");
       headers.forEach(header => {
         const speed = 0.2;
-        // 擬似要素は直接JSでいじれないので、カスタムプロパティ経由などで制御するか
-        // ここでは簡易的にheader全体ではなく、特定の装飾要素があればそれを動かすが、
-        // ::beforeのパララックスはCSS変数で行うのがモダン。
-        // 今回はシンプルに、画像に対してパララックスを適用
       });
-
-      /* Image Reveal Animationとの競合を防ぐため、
-         画像のJSパララックス処理は削除しました。
-      */
     });
   </script>
 </body>
