@@ -2066,6 +2066,12 @@
             max-width: 240px;      /* PCでの最大幅 */
         }
     }
+    /* === 追記: PC表示時に、スマホ用の言語ボタンを隠す === */
+    @media (min-width: 900px) {
+        .mobile-lang-switch {
+            display: none !important;
+        }
+    }
   </style>
   <noscript>
     <style>
