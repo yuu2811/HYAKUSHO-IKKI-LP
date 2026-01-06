@@ -2101,7 +2101,32 @@
     
     .why-card .why-content {
         padding-top: 16px;      /* 説明文との間隔調整 */
-    }  
+    }
+  /* === 追記: Whitepaper Highlight カードのレイアウト変更 === */
+    .info-header-row {
+        display: flex;
+        align-items: center;    /* アイコンとタイトルを上下中央揃え */
+        gap: 16px;              /* アイコンとタイトルの間隔 */
+        width: 100%;
+        margin-bottom: 16px;    /* 本文との間隔 */
+    }
+
+    /* カード全体の整列を左寄せに変更（元は中央揃えだったため上書き） */
+    .info-item {
+        align-items: flex-start !important; 
+        text-align: left !important;
+    }
+
+    /* アイコンの余白リセット */
+    .info-item .info-icon-new {
+        margin-bottom: 0 !important;
+        flex-shrink: 0;
+    }
+
+    /* タイトルの余白リセット */
+    .info-item .info-title {
+        margin-bottom: 0 !important;
+    }
   </style>
   <noscript>
     <style>
@@ -2557,11 +2582,15 @@
 
             <div class="infographic-grid">
                 <div class="info-item">
-                    <div class="info-icon-new">
-                        <i class="ph ph-grains"></i>
+                    <div class="info-header-row">
+                        <div class="info-icon-new">
+                            <i class="ph ph-grains"></i>
+                        </div>
+                        <div>
+                            <div class="info-title lang-ja">食料安全保障の強化</div>
+                            <div class="info-title lang-en">Food Security</div>
+                        </div>
                     </div>
-                    <div class="info-title lang-ja">食料安全保障の強化</div>
-                    <div class="info-title lang-en">Food Security</div>
                     <div class="info-text lang-ja">
                         <ul>
                             <li>肥料原料(リン・カリ)の海外依存度ほぼ100%という脆弱性の克服。</li>
@@ -2577,11 +2606,15 @@
                 </div>
 
                 <div class="info-item">
-                    <div class="info-icon-new">
-                        <i class="ph ph-leaf"></i>
+                    <div class="info-header-row">
+                        <div class="info-icon-new">
+                            <i class="ph ph-leaf"></i>
+                        </div>
+                        <div>
+                            <div class="info-title lang-ja">環境と調和(みどり戦略)</div>
+                            <div class="info-title lang-en">Green Strategy</div>
+                        </div>
                     </div>
-                    <div class="info-title lang-ja">環境と調和(みどり戦略)</div>
-                    <div class="info-title lang-en">Green Strategy</div>
                     <div class="info-text lang-ja">
                         <ul>
                             <li>2050年までに化学農薬使用量50%低減、化学肥料30%低減を目指す。</li>
@@ -2597,11 +2630,15 @@
                 </div>
 
                 <div class="info-item">
-                    <div class="info-icon-new">
-                        <i class="ph ph-robot"></i>
+                    <div class="info-header-row">
+                        <div class="info-icon-new">
+                            <i class="ph ph-robot"></i>
+                        </div>
+                        <div>
+                            <div class="info-title lang-ja">スマート農業・DX</div>
+                            <div class="info-title lang-en">Smart Agri & DX</div>
+                        </div>
                     </div>
-                    <div class="info-title lang-ja">スマート農業・DX</div>
-                    <div class="info-title lang-en">Smart Agri & DX</div>
                     <div class="info-text lang-ja">
                         <ul>
                             <li>基幹的農業従事者数116万人(65歳以上7割超)という急速な減少に対応。</li>
