@@ -7,7 +7,6 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-JH67K12BB6');
   </script>
 
@@ -450,52 +449,76 @@
       margin: 0 auto;
     }
 
-    /* --- Language Switcher Logic --- */
-    .lang-en { display: none !important; }
-      
-    body.is-en .lang-ja { display: none !important; }
-    body.is-en .lang-en { display: block !important; }
-    body.is-en span.lang-en { display: inline !important; }
+    /* === Language Switcher Logic (Refined) === */
+    :root[lang="ja"] .lang-en {
+      display: none;
+      }
 
-    body.is-en span.ikki-kanji.lang-en,
-    body.is-en span.ikki-desc.lang-en {
-        display: block !important;
-    }
+/* 英語モードの挙動: 日本語要素を隠す */
+:root[lang="en"] .lang-ja {
+  display: none;
+}
 
-    .lang-switch {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-family: var(--font-en);
-        font-weight: 700;
-        font-size: 0.85rem;
-        cursor: pointer;
-        border: 1px solid var(--border);
-        padding: 6px 12px;
-        border-radius: 20px;
-        transition: all 0.3s;
-        background: #fff;
-        white-space: nowrap;
-        flex-shrink: 0;
-    }
-    .lang-switch:hover {
-        border-color: var(--primary);
-        color: var(--primary);
-    }
-      
-    .mobile-lang-switch {
-        display: none !important;
-    }
+/* 特定の要素に対する表示調整（必要な場合のみ記述） */
+/* ※基本は display: none が効くので、表示時の指定（block/inline）は元のCSSに任せる設計にします */
+:root[lang="en"] span.lang-en {
+  display: inline; /* spanはinlineで復帰させる */
+}
+:root[lang="en"] .ikki-kanji.lang-en,
+:root[lang="en"] .ikki-desc.lang-en {
+  display: block; /* 特定要素はblockで復帰 */
+}
 
-    .lang-label {
-        opacity: 0.4;
-        transition: opacity 0.3s;
-    }
-    .lang-label.active {
-        opacity: 1;
-        color: var(--primary);
-        text-decoration: underline;
-    }
+
+/* === Switcher UI Design === */
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-en);
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  background: var(--surface); /* 色変数を使用 */
+  white-space: nowrap;
+  /* ボタンとしてのアクセシビリティ向上 */
+  user-select: none; 
+}
+
+.lang-switch:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: rgba(15, 90, 58, 0.05); /* ホバー時の微細な背景色 */
+}
+
+/* アクティブな言語ラベルのスタイル */
+.lang-label {
+  opacity: 0.4;
+  transition: opacity 0.3s, color 0.3s;
+  position: relative;
+}
+
+/* アクティブ状態の装飾 */
+.lang-label.active {
+  opacity: 1;
+  color: var(--primary);
+  font-weight: 800;
+}
+/* 下線アニメーションなどを加える場合 */
+.lang-label.active::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--primary);
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+}
 
     h1, h2, h3, h4 {
       margin-top: 0;
