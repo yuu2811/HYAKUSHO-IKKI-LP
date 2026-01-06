@@ -2072,6 +2072,36 @@
             display: none !important;
         }
     }
+  /* === 追記: Trendsカードのレイアウト変更（アイコンとタイトル横並び） === */
+    .card-header-row {
+        display: flex;
+        align-items: center;    /* 上下中央揃え */
+        gap: 16px;              /* アイコンとタイトルの間隔 */
+        padding: 32px 32px 0;   /* カード上部の余白 */
+    }
+    
+    /* 既存スタイルの上書き・調整 */
+    .why-card .card-icon-wrap {
+        padding: 0;             /* 元のパディングをリセット */
+        flex-shrink: 0;         /* アイコンが潰れないようにする */
+    }
+    
+    .why-card .card-icon-svg {
+        margin-bottom: 0;       /* 下の余白を削除 */
+        width: 56px;            /* アイコンサイズを少し調整 */
+        height: 56px;
+        font-size: 28px;
+    }
+    
+    .why-card .why-title-new {
+        margin: 0;              /* タイトルの余白リセット */
+        font-size: 1.1rem;      /* フォントサイズ調整 */
+        line-height: 1.4;
+    }
+    
+    .why-card .why-content {
+        padding-top: 16px;      /* 説明文との間隔調整 */
+    }  
   </style>
   <noscript>
     <style>
@@ -2427,15 +2457,19 @@
             </h2>
             <h2 class="lang-en"><span>Why HYAKUSHO-IKKI Now?</span><br><span>The era demands "Food Security"</span><br><span>and "Structural Transformation".</span></h2>
         </div>
-       
+
         <div class="why-grid fade-up">
           <div class="why-card">
-            <div class="card-icon-wrap">
-              <i class="ph ph-globe-hemisphere-west card-icon-svg"></i>
+            <div class="card-header-row">
+              <div class="card-icon-wrap">
+                <i class="ph ph-globe-hemisphere-west card-icon-svg"></i>
+              </div>
+              <div class="card-title-group">
+                <h3 class="why-title-new lang-ja">地政学リスクと食料安保</h3>
+                <h3 class="why-title-new lang-en">Geopolitics & Food Security</h3>
+              </div>
             </div>
             <div class="why-content">
-              <h3 class="why-title-new lang-ja">地政学リスクと食料安保</h3>
-              <h3 class="why-title-new lang-en">Geopolitics & Food Security</h3>
               <p class="why-desc-new lang-ja">国際情勢の不安定化に伴い、食料・肥料の調達リスクが高まっている。経済安全保障の観点からも、国内生産基盤の強化は待ったなしの状況にある。</p>
               <p class="why-desc-new lang-en">With increasing global instability, risks in procuring food and fertilizers are rising. Strengthening the domestic production base is urgent.</p>
             </div>
@@ -2454,13 +2488,16 @@
           </div>
 
           <div class="why-card">
-            <div class="card-icon-wrap">
-              <i class="ph ph-trend-down card-icon-svg"></i>
+            <div class="card-header-row">
+              <div class="card-icon-wrap">
+                <i class="ph ph-trend-down card-icon-svg"></i>
+              </div>
+              <div class="card-title-group">
+                <h3 class="why-title-new lang-ja">2030年の需給逼迫</h3>
+                <h3 class="why-title-new lang-en">Supply Tightening by 2030</h3>
+              </div>
             </div>
             <div class="why-content">
-              <h3 class="why-title-new lang-ja">2030年の需給逼迫</h3>
-              <h3 class="why-title-new lang-en">Supply Tightening by 2030</h3>
-              
               <p class="why-desc-new lang-ja">2026年〜2030年にかけて、労働力不足と供給制約がさらに深刻化する見通し。従来の労働集約型から、省人化・効率化された「新しい産業モデル」への転換が急務。</p>
               <p class="why-desc-new lang-en">Labor shortages and supply constraints are expected to worsen from 2026 to 2030. An urgent shift to a new industrial model is needed.</p>
             </div>
@@ -2479,12 +2516,16 @@
           </div>
 
           <div class="why-card">
-            <div class="card-icon-wrap">
-              <i class="ph ph-plant card-icon-svg"></i>
+            <div class="card-header-row">
+              <div class="card-icon-wrap">
+                <i class="ph ph-plant card-icon-svg"></i>
+              </div>
+              <div class="card-title-group">
+                <h3 class="why-title-new lang-ja">GX・成長戦略の主役へ</h3>
+                <h3 class="why-title-new lang-en">Leading GX & Growth Strategy</h3>
+              </div>
             </div>
             <div class="why-content">
-              <h3 class="why-title-new lang-ja">GX・成長戦略の主役へ</h3>
-              <h3 class="why-title-new lang-en">Leading GX & Growth Strategy</h3>
               <p class="why-desc-new lang-ja">政府の成長戦略においても、スマート農業やGXは重点投資分野。地域資源を活用した持続可能な農業は、次世代の成長産業として期待されている。</p>
               <p class="why-desc-new lang-en">Smart agriculture and GX are key investment areas. Sustainable agriculture is expected to be a next-gen growth industry.</p>
             </div>
@@ -2501,7 +2542,8 @@
               </div>
             </div>
           </div>
-          </div>
+        </div>       
+
         <!-- Whitepaper Highlight Section -->
           <div class="whitepaper-highlight fade-up">
             
