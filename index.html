@@ -81,6 +81,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
   <!-- Smooth Scroll Library (Fixed: Stable version, defer loading) -->
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
   <style>
     /* === 統合スタイル (Universal & Responsive Optimized) === */
@@ -1461,54 +1462,122 @@
         .quote-text { font-size: 0.9rem; }
     }
 
-    /* --- Trends --- */
+    /* --- Trends (New Design with Phosphor Icons) --- */
     .why-grid {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 24px;
+        gap: 32px;
         margin-top: 40px;
     }
-    @media (min-width: 900px) { .why-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 900px) {
+        .why-grid { grid-template-columns: repeat(3, 1fr); }
+    }
       
     .why-card {
         background: #fff;
-        padding: 32px;
-        border-radius: 12px;
-        border: 1px solid var(--border);
-        transition: all 0.3s;
+        border: none; /* 枠線を削除 */
+        border-radius: 20px;
+        padding: 0;
+        box-shadow: 0 10px 40px -5px rgba(0, 0, 0, 0.06);
+        transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        position: relative;
     }
     .why-card:hover {
-        border-color: var(--primary);
-        transform: translateY(-4px);
-        box-shadow: 0 10px 30px rgba(15, 90, 58, 0.1);
+        transform: translateY(-8px);
+        box-shadow: 0 20px 50px -5px rgba(15, 90, 58, 0.15);
     }
-    .why-title {
-        font-size: 1.1rem;
-        font-weight: 700;
-        color: var(--primary-dark);
-        margin-bottom: 16px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        border-bottom: 2px solid var(--soft);
-        padding-bottom: 12px;
+    .why-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 6px;
+        background: var(--primary);
+        opacity: 0.8;
     }
-    .why-desc { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
-    .citation {
-        margin-top: 20px;
-        font-size: 0.75rem;
-        color: var(--muted);
-        background: var(--soft);
-        padding: 12px;
-        border-radius: 8px;
-        line-height: 1.6;
-        word-break: break-all;
-    }
-    .citation ul { list-style: none; padding: 0; margin: 0; }
-    .citation li { margin-bottom: 6px; }
-    .citation li:last-child { margin-bottom: 0; }
-    .citation a { color: var(--primary); text-decoration: underline; display: block; }
 
+    /* アイコン部分 */
+    .card-icon-wrap {
+        padding: 40px 32px 0;
+    }
+    .card-icon-svg {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 64px;
+        height: 64px;
+        font-size: 32px;
+        color: var(--primary);
+        background-color: rgba(15, 90, 58, 0.1);
+        border-radius: 50%;
+        margin-bottom: 8px;
+        transition: all 0.4s ease;
+    }
+    /* ホバー時のアイコンアニメーション */
+    .why-card:hover .card-icon-svg {
+        transform: scale(1.1) rotate(5deg);
+        background-color: var(--primary);
+        color: #fff;
+        box-shadow: 0 4px 12px rgba(15, 90, 58, 0.3);
+    }
+
+    /* コンテンツ部分 */
+    .why-content {
+        padding: 24px 32px;
+        flex-grow: 1;
+    }
+    .why-title-new {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--text);
+        margin: 0 0 16px 0;
+        line-height: 1.4;
+    }
+    .why-desc-new {
+        font-size: 0.95rem;
+        color: var(--muted);
+        line-height: 1.8;
+        margin: 0;
+        text-align: justify;
+    }
+
+    /* 引用・フッター部分 */
+    .why-footer {
+        padding: 0 32px 32px 32px;
+        background: transparent;
+    }
+    .citation-new {
+        padding-top: 16px;
+        border-top: 1px dashed var(--border);
+    }
+    .citation-new ul { list-style: none; padding: 0; margin: 0; }
+    .citation-new li {
+        margin-bottom: 8px;
+        font-size: 0.75rem;
+        line-height: 1.5;
+        color: var(--muted);
+        opacity: 0.8;
+        position: relative;
+        padding-left: 14px;
+    }
+    .citation-new li::before {
+        content: '↗';
+        position: absolute; left: 0; top: 0;
+        font-family: sans-serif;
+        color: var(--accent);
+        font-size: 10px;
+    }
+    .citation-new a {
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+    .citation-new a:hover {
+        color: var(--primary);
+        text-decoration: underline;
+    }
+    
     /* Whitepaper Highlight */
     .whitepaper-highlight {
         margin-top: 40px;
@@ -2264,7 +2333,6 @@
         <div class="section-header fade-up" data-title="TRENDS">
             <span class="eyebrow lang-ja">外部環境</span>
             <span class="eyebrow lang-en">Market Trends</span>
-            
             <h2 class="lang-ja">
               <span class="keep-all">なぜ今、百姓イッキなのか。</span><br>
               <span class="keep-all">時代は「食料安保」と</span>
@@ -2272,63 +2340,80 @@
             </h2>
             <h2 class="lang-en"><span>Why HYAKUSHO-IKKI Now?</span><br><span>The era demands "Food Security"</span><br><span>and "Structural Transformation".</span></h2>
         </div>
-          
+       
         <div class="why-grid fade-up">
-            <div class="why-card">
-                <div class="why-title lang-ja"><span>🌏</span>地政学リスクと食料安保</div>
-                <div class="why-title lang-en"><span>🌏</span>Geopolitics & Food Security</div>
-                
-                <p class="why-desc lang-ja">国際情勢の不安定化に伴い、食料・肥料の調達リスクが高まっている。経済安全保障の観点からも、国内生産基盤の強化は待ったなしの状況にある。</p>
-                <p class="why-desc lang-en">With increasing global instability, risks in procuring food and fertilizers are rising. Strengthening the domestic production base is urgent for economic security.</p>
-                
-                <div class="citation">
-                    <ul class="lang-ja">
-                        <li><a href="https://www.murc.jp/wp-content/uploads/2025/12/report_251219_01.pdf" target="_blank" rel="noopener noreferrer">三菱UFJリサーチ&コンサルティング「経済調査 地政学リスクの展望 (2025年12月)」</a></li>
-                        <li><a href="https://www.mizuho-rt.co.jp/business/research/report/pdf/outlook251225.pdf" target="_blank" rel="noopener noreferrer">みずほリサーチ&テクノロジーズ「2026年 新春経済見通し (2025年12月)」</a></li>
-                    </ul>
-                    <ul class="lang-en">
-                        <li>MURC "Geopolitical Risk Outlook (Dec 2025)"</li>
-                        <li>Mizuho RT "2026 New Year Economic Outlook (Dec 2025)"</li>
-                    </ul>
-                </div>
+          <div class="why-card">
+            <div class="card-icon-wrap">
+              <i class="ph ph-globe-hemisphere-west card-icon-svg"></i>
             </div>
-            <div class="why-card">
-                <div class="why-title lang-ja"><span>📉</span>2030年の需給逼迫</div>
-                <div class="why-title lang-en"><span>📉</span>Supply Tightening by 2030</div>
-                
-                <p class="why-desc lang-ja">2026年〜2030年にかけて、労働力不足と供給制約がさらに深刻化する見通し。従来の労働集約型から、省人化・効率化された「新しい産業モデル」への転換が急務。</p>
-                <p class="why-desc lang-en">Labor shortages and supply constraints are expected to worsen from 2026 to 2030. An urgent shift is needed from "just producing" to solving problems.</p>
-                
-                <div class="citation">
-                    <ul class="lang-ja">
-                        <li><a href="https://www.mizuhobank.co.jp/corporate/industry/sangyou/pdf/1079.pdf" target="_blank" rel="noopener noreferrer">みずほ銀行「日本産業の中期見通し (2025年11月)」</a></li>
-                        <li><a href="https://www.smbc.co.jp/hojin/report/investigationlecture/resources/pdf/3_00_CRSDReport147.pdf" target="_blank" rel="noopener noreferrer">三井住友銀行「2025年の回顧と2026年の展望 (2025年12月)」</a></li>
-                    </ul>
-                    <ul class="lang-en">
-                        <li>Mizuho Bank "Medium-term Outlook for Japanese Industry (Nov 2025)"</li>
-                        <li>SMBC "Review of 2025 and Outlook for 2026 (Dec 2025)"</li>
-                    </ul>
-                </div>
+            <div class="why-content">
+              <h3 class="why-title-new lang-ja">地政学リスクと食料安保</h3>
+              <h3 class="why-title-new lang-en">Geopolitics & Food Security</h3>
+              <p class="why-desc-new lang-ja">国際情勢の不安定化に伴い、食料・肥料の調達リスクが高まっている。経済安全保障の観点からも、国内生産基盤の強化は待ったなしの状況にある。</p>
+              <p class="why-desc-new lang-en">With increasing global instability, risks in procuring food and fertilizers are rising. Strengthening the domestic production base is urgent.</p>
             </div>
-            <div class="why-card">
-                <div class="why-title lang-ja"><span>🌱</span>GX・成長戦略の主役へ</div>
-                <div class="why-title lang-en"><span>🌱</span>Leading GX & Growth Strategy</div>
-                
-                <p class="why-desc lang-ja">政府の成長戦略においても、スマート農業やGXは重点投資分野。地域資源を活用した持続可能な農業は、次世代の成長産業として期待されている。</p>
-                <p class="why-desc lang-en">Smart agriculture and GX are key investment areas in government strategy. Sustainable agriculture using local resources is expected to be a next-gen growth industry.</p>
-                
-                <div class="citation">
-                    <ul class="lang-ja">
-                        <li><a href="https://www.meti.go.jp/press/2025/12/20251226003/20251226003-1.pdf" target="_blank" rel="noopener noreferrer">経済産業省 GX実行会議「分野別投資戦略 (2025年12月)」</a></li>
-                        <li><a href="https://www.cas.go.jp/jp/seisaku/nipponseichosenryaku/kaigi/dai2/shiryou1-2.pdf" target="_blank" rel="noopener noreferrer">内閣官房「成長戦略の検討体制 (2025年12月)」</a></li>
-                    </ul>
-                    <ul class="lang-en">
-                        <li>METI "Sectoral Investment Strategy for GX (Dec 2025)"</li>
-                        <li>Cabinet Secretariat "Growth Strategy Review (Dec 2025)"</li>
-                    </ul>
-                </div>
+            <div class="why-footer">
+              <div class="citation-new">
+                <ul class="lang-ja">
+                  <li><a href="https://www.murc.jp/wp-content/uploads/2025/12/report_251219_01.pdf" target="_blank" rel="noopener noreferrer">三菱UFJリサーチ&コンサルティング「経済調査 地政学リスクの展望 (2025年12月)」</a></li>
+                  <li><a href="https://www.mizuho-rt.co.jp/business/research/report/pdf/outlook251225.pdf" target="_blank" rel="noopener noreferrer">みずほリサーチ&テクノロジーズ「2026年 新春経済見通し (2025年12月)」</a></li>
+                </ul>
+                <ul class="lang-en">
+                  <li>MURC "Geopolitical Risk Outlook (Dec 2025)"</li>
+                  <li>Mizuho RT "2026 New Year Economic Outlook (Dec 2025)"</li>
+                </ul>
+              </div>
             </div>
-        </div>
+          </div>
+
+          <div class="why-card">
+            <div class="card-icon-wrap">
+              <i class="ph ph-trend-down card-icon-svg"></i>
+            </div>
+            <div class="why-content">
+              <h3 class="why-title-new lang-ja">2030年の需給逼迫</h3>
+              <h3 class="why-title-new lang-en">Supply Tightening by 2030</h3>
+              
+              <p class="why-desc-new lang-ja">2026年〜2030年にかけて、労働力不足と供給制約がさらに深刻化する見通し。従来の労働集約型から、省人化・効率化された「新しい産業モデル」への転換が急務。</p>
+              <p class="why-desc-new lang-en">Labor shortages and supply constraints are expected to worsen from 2026 to 2030. An urgent shift to a new industrial model is needed.</p>
+            </div>
+            <div class="why-footer">
+              <div class="citation-new">
+                <ul class="lang-ja">
+                  <li><a href="https://www.mizuhobank.co.jp/corporate/industry/sangyou/pdf/1079.pdf" target="_blank" rel="noopener noreferrer">みずほ銀行「日本産業の中期見通し (2025年11月)」</a></li>
+                  <li><a href="https://www.smbc.co.jp/hojin/report/investigationlecture/resources/pdf/3_00_CRSDReport147.pdf" target="_blank" rel="noopener noreferrer">三井住友銀行「2025年の回顧と2026年の展望 (2025年12月)」</a></li>
+                </ul>
+                <ul class="lang-en">
+                  <li>Mizuho Bank "Medium-term Outlook (Nov 2025)"</li>
+                  <li>SMBC "Review of 2025 and Outlook (Dec 2025)"</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="why-card">
+            <div class="card-icon-wrap">
+              <i class="ph ph-plant card-icon-svg"></i>
+            </div>
+            <div class="why-content">
+              <h3 class="why-title-new lang-ja">GX・成長戦略の主役へ</h3>
+              <h3 class="why-title-new lang-en">Leading GX & Growth Strategy</h3>
+              <p class="why-desc-new lang-ja">政府の成長戦略においても、スマート農業やGXは重点投資分野。地域資源を活用した持続可能な農業は、次世代の成長産業として期待されている。</p>
+              <p class="why-desc-new lang-en">Smart agriculture and GX are key investment areas. Sustainable agriculture is expected to be a next-gen growth industry.</p>
+            </div>
+            <div class="why-footer">
+              <div class="citation-new">
+                <ul class="lang-ja">
+                  <li><a href="https://www.meti.go.jp/press/2025/12/20251226003/20251226003-1.pdf" target="_blank" rel="noopener noreferrer">経済産業省 GX実行会議「分野別投資戦略 (2025年12月)」</a></li>
+                  <li><a href="https://www.cas.go.jp/jp/seisaku/nipponseichosenryaku/kaigi/dai2/shiryou1-2.pdf" target="_blank" rel="noopener noreferrer">内閣官房「成長戦略の検討体制 (2025年12月)」</a></li>
+                </ul>
+                <ul class="lang-en">
+                  <li>METI "Sectoral Investment Strategy for GX"</li>
+                  <li>Cabinet Secretariat "Growth Strategy Review"</li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
         <!-- Whitepaper Highlight Section -->
         <div class="whitepaper-highlight fade-up">
