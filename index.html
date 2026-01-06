@@ -95,13 +95,10 @@
       --accent-light: #d66a6a;
       --soft: #f0f4f2;
       --border: #e5e7eb;
-        
       --header-bg: rgba(255, 255, 255, 0.95);
       --header-height: 70px;
-        
       --gradient-hero: linear-gradient(rgba(15, 40, 25, 0.3), rgba(10, 20, 15, 0.6));
       --gradient-purpose: linear-gradient(to right, rgba(10, 63, 42, 0.85), rgba(44, 37, 33, 0.7));
-        
       --font-jp: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
       --font-en: "Inter", -apple-system, sans-serif;
       
@@ -2058,7 +2055,17 @@
         transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
     }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
-
+    /* === 追記: CEO画像のPC表示カスタマイズ === */
+    @media (min-width: 900px) {
+        /* CEOカード内の画像エリアだけスタイルを上書き */
+        .ceo-card .profile-img-placeholder {
+            width: 100%;           /* 幅を親要素(約240px)に合わせる */
+            height: auto;          /* 高さは自動調整 */
+            aspect-ratio: 3 / 4;   /* 縦長4:3の比率を固定 */
+            border-radius: 12px;   /* 丸ではなく、少し角丸の四角にする */
+            max-width: 240px;      /* PCでの最大幅 */
+        }
+    }
   </style>
   <noscript>
     <style>
@@ -2787,11 +2794,14 @@
             <div class="two-col" style="gap:40px; align-items:start;">
                 <div style="flex:0 0 240px; text-align:center;">
                   <div class="profile-img-placeholder">
+                    <picture>
+                      <source media="(min-width: 900px)" srcset="YoshikiSaito_pic.png">
                     <img src="YoshikiSaito_pic_sq.png"
                       alt="Yoshiki Saito"
                       style="width:100%; height:100%; object-fit:cover;"
                       loading="lazy"
                       onerror="this.onerror=null; this.src='https://placehold.co/400x400/0f5a3a/ffffff?text=CEO'">
+                     </picture>
                   </div>
                     <div class="member-name">
                         <span class="name-row">
