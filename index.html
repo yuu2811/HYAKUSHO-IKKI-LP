@@ -1577,103 +1577,154 @@
         color: var(--primary);
         text-decoration: underline;
     }
-    
-    /* Whitepaper Highlight */
+
+    /* Whitepaper Highlight (Refined) */
     .whitepaper-highlight {
-        margin-top: 40px;
-        background-color: #fff;
-        border: 1px solid var(--primary);
-        border-radius: 12px;
-        padding: clamp(20px, 4vw, 32px);
-        position: relative;
-        overflow: hidden;
+        margin-top: 60px;
+        background-color: transparent; 
+        border: none;
+        padding: 0;
     }
-    .whitepaper-highlight::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; width: 6px; height: 100%;
-        background-color: var(--primary);
-    }
+
     .wp-header {
-        margin-bottom: 24px;
-        border-bottom: 1px solid var(--soft);
+        margin-bottom: 32px;
+        border-bottom: 1px solid var(--border);
         padding-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
     }
+    
+    .wp-icon-main {
+        font-size: 28px;
+        color: var(--primary);
+    }
+
     .wp-header h3 {
         font-size: clamp(1rem, 3vw, 1.25rem);
         color: var(--primary-dark);
         margin: 0;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        flex-wrap: wrap;
+        font-weight: 700;
     }
+
     .infographic-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 24px;
+        margin-bottom: 40px;
     }
+
     .info-item {
+        background: #fff;
+        padding: 32px 24px;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        border: 1px solid rgba(0,0,0,0.03);
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
-        background: #fdfdfd;
-        padding: 24px;
-        border-radius: 8px;
-        border: 1px solid #eee;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .info-icon {
-        font-size: 2rem;
-        margin-bottom: 12px;
+
+    .info-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(15, 90, 58, 0.1);
+        border-color: rgba(15, 90, 58, 0.2);
+    }
+
+    .info-icon-new {
+        width: 56px;
+        height: 56px;
         background: var(--soft);
-        width: 60px; height: 60px;
-        border-radius: 50%;
-        display: flex; align-items: center; justify-content: center;
         color: var(--primary);
+        font-size: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 16px;
     }
+
     .info-title {
         font-weight: 700;
         color: var(--text);
-        margin-bottom: 8px;
-        font-size: 1rem;
+        margin-bottom: 12px;
+        font-size: 1.05rem;
     }
+
     .info-text {
         font-size: 0.85rem;
         color: var(--muted);
-        line-height: 1.6;
+        line-height: 1.7;
         text-align: left;
         width: 100%;
     }
     .info-text ul { list-style: none; padding: 0; margin: 0; }
-    .info-text li { margin-bottom: 6px; position: relative; padding-left: 14px; }
+    .info-text li { 
+        margin-bottom: 8px; 
+        position: relative; 
+        padding-left: 16px; 
+    }
     .info-text li::before {
-        content: '・';
-        position: absolute; left: 0;
-        color: var(--primary);
-        font-weight: bold;
+        content: '';
+        position: absolute; left: 0; top: 9px;
+        width: 6px; height: 6px;
+        background-color: var(--accent); /* 赤いアクセント */
+        border-radius: 50%;
     }
+
     .policy-highlight {
-        margin-top: 40px;
-        border-top: 1px dashed var(--border);
-        padding-top: 32px;
+        background: #fff;
+        border-radius: 16px;
+        padding: 32px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        border: 1px solid rgba(0,0,0,0.03);
     }
-    .policy-highlight h3 {
-        font-size: 1.1rem;
-        color: var(--text);
-        margin-bottom: 16px;
-        font-weight: 700;
+
+    .policy-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+        margin-top: 20px;
+    }
+    @media (min-width: 768px) {
+        .policy-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .policy-item {
         display: flex;
-        align-items: center;
-        gap: 8px;
+        align-items: flex-start;
+        gap: 16px;
     }
-      
+    
+    .policy-icon {
+        font-size: 24px;
+        color: var(--primary);
+        background: var(--soft);
+        padding: 10px;
+        border-radius: 12px;
+        flex-shrink: 0;
+    }
+
+    .policy-content strong {
+        display: block;
+        color: var(--text);
+        font-size: 0.95rem;
+        margin-bottom: 4px;
+    }
+    .policy-content span {
+        font-size: 0.85rem;
+        color: var(--muted);
+        line-height: 1.6;
+        display: block;
+    }
+
     .wp-source {
         margin-top: 24px;
         text-align: right;
         font-size: 0.75rem;
         color: var(--muted);
-        word-break: break-all;
     }
     .wp-source a {
         color: var(--muted);
@@ -2416,14 +2467,21 @@
           </div>
 
         <!-- Whitepaper Highlight Section -->
-        <div class="whitepaper-highlight fade-up">
+          <div class="whitepaper-highlight fade-up">
+            
             <div class="wp-header">
-                <h3 class="lang-ja"><span>📖</span>令和6年度 食料・農業・農村白書 ハイライト</h3>
-                <h3 class="lang-en"><span>📖</span>FY2024 White Paper on Food, Agriculture, and Rural Areas</h3>
+                <i class="ph ph-book-open-text wp-icon-main"></i>
+                <div>
+                    <h3 class="lang-ja">令和6年度 食料・農業・農村白書 ハイライト</h3>
+                    <h3 class="lang-en">FY2024 White Paper on Food, Agriculture, and Rural Areas</h3>
+                </div>
             </div>
+
             <div class="infographic-grid">
                 <div class="info-item">
-                    <div class="info-icon">🌾</div>
+                    <div class="info-icon-new">
+                        <i class="ph ph-grains"></i>
+                    </div>
                     <div class="info-title lang-ja">食料安全保障の強化</div>
                     <div class="info-title lang-en">Food Security</div>
                     <div class="info-text lang-ja">
@@ -2434,13 +2492,16 @@
                     </div>
                     <div class="info-text lang-en">
                         <ul>
-                            <li>Overcoming our near-100% dependence on imported fertilizer inputs.</li>
-                            <li>Promoting increased domestic production based on government policy outlines.</li>
+                            <li>Overcoming near-100% dependence on imported fertilizer inputs.</li>
+                            <li>Promoting increased domestic production based on policy outlines.</li>
                         </ul>
                     </div>
                 </div>
+
                 <div class="info-item">
-                    <div class="info-icon">🌿</div>
+                    <div class="info-icon-new">
+                        <i class="ph ph-leaf"></i>
+                    </div>
                     <div class="info-title lang-ja">環境と調和(みどり戦略)</div>
                     <div class="info-title lang-en">Green Strategy</div>
                     <div class="info-text lang-ja">
@@ -2451,13 +2512,16 @@
                     </div>
                     <div class="info-text lang-en">
                         <ul>
-                            <li>Aiming for 50% reduction in chemical pesticides and 30% in fertilizers by 2050.</li>
+                            <li>Aiming for 50% reduction in chemical pesticides/fertilizers by 2050.</li>
                             <li>Expanding organic farming to 25% (1 million ha) of total farmland.</li>
                         </ul>
                     </div>
                 </div>
+
                 <div class="info-item">
-                    <div class="info-icon">🚜</div>
+                    <div class="info-icon-new">
+                        <i class="ph ph-robot"></i>
+                    </div>
                     <div class="info-title lang-ja">スマート農業・DX</div>
                     <div class="info-title lang-en">Smart Agri & DX</div>
                     <div class="info-text lang-ja">
@@ -2468,52 +2532,69 @@
                     </div>
                     <div class="info-text lang-en">
                         <ul>
-                            <li>Addressing the rapid decline in core agricultural workers (1.16 million, over 70% are aged 65 or older).</li>
+                            <li>Addressing the rapid decline in core agricultural workers (mostly aged 65+).</li>
                             <li>Dramatically improving productivity using robotics, AI, and IoT.</li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="wp-source lang-ja">
+
+            <div class="wp-source lang-ja" style="margin-bottom: 40px;">
                 出典：<a href="https://www.maff.go.jp/j/wpaper/w_maff/r6/pdf/zentaiban.pdf" target="_blank" rel="noopener noreferrer">農林水産省「令和6年度 食料・農業・農村白書(全体版)」</a>
             </div>
-            <div class="wp-source lang-en">
+            <div class="wp-source lang-en" style="margin-bottom: 40px;">
                 Source: MAFF "FY2024 White Paper on Food, Agriculture, and Rural Areas"
             </div>
 
-            <!-- Policy Outline -->
             <div class="policy-highlight">
-                <h3 class="lang-ja"><span>🏛️</span>食料安全保障強化政策大綱 (改訂版)</h3>
-                <h3 class="lang-en"><span>🏛️</span>Policy Outline for Strengthening Food Security</h3>
-                <div class="infographic-grid">
-                    <div class="info-text lang-ja">
-                        <ul>
-                            <li><strong>構造転換:</strong> 過度な輸入依存からの脱却と国内生産資源(肥料・飼料)の確保。</li>
-                            <li><strong>適正価格:</strong> 生産資材高騰などのコスト上昇分を農産物価格に適正に転嫁できる仕組みの構築。</li>
-                        </ul>
+                <div class="wp-header" style="border-bottom:none; padding-bottom:0; margin-bottom:24px;">
+                    <i class="ph ph-scroll wp-icon-main"></i>
+                    <div>
+                        <h3 class="lang-ja">食料安全保障強化政策大綱 (改訂版)</h3>
+                        <h3 class="lang-en">Policy Outline for Strengthening Food Security</h3>
                     </div>
-                    <div class="info-text lang-en">
-                        <ul>
-                            <li><strong>Structural Shift:</strong> Reducing excessive reliance on imports and securing domestic resources.</li>
-                            <li><strong>Fair Pricing:</strong> Building mechanisms that allow producers to pass rising input costs on to agricultural prices.</li>
-                        </ul>
+                </div>
+
+                <div class="policy-grid">
+                    <div class="policy-item">
+                        <div class="policy-icon"><i class="ph ph-arrows-left-right"></i></div>
+                        <div class="policy-content">
+                            <strong class="lang-ja">構造転換</strong>
+                            <strong class="lang-en">Structural Shift</strong>
+                            <span class="lang-ja">過度な輸入依存からの脱却と国内生産資源(肥料・飼料)の確保。</span>
+                            <span class="lang-en">Reducing excessive reliance on imports and securing domestic resources.</span>
+                        </div>
                     </div>
-                    <div class="info-text lang-ja">
-                        <ul>
-                            <li><strong>スマート化:</strong> 自動走行農機やドローン等の社会実装を加速し、労働力不足を補う。</li>
-                            <li><strong>輸出拡大:</strong> 海外市場の開拓による農業所得の向上と生産基盤の維持。</li>
-                        </ul>
+                    <div class="policy-item">
+                        <div class="policy-icon"><i class="ph ph-currency-yen"></i></div>
+                        <div class="policy-content">
+                            <strong class="lang-ja">適正価格</strong>
+                            <strong class="lang-en">Fair Pricing</strong>
+                            <span class="lang-ja">生産資材高騰などのコスト上昇分を農産物価格に適正に転嫁できる仕組み。</span>
+                            <span class="lang-en">Building mechanisms to pass rising input costs on to agricultural prices.</span>
+                        </div>
                     </div>
-                    <div class="info-text lang-en">
-                        <ul>
-                            <li><strong>Smart Tech:</strong> Accelerating implementation of autonomous machinery and drones.</li>
-                            <li><strong>Export Expansion:</strong> Raising farm income and sustaining production capacity by expanding overseas markets.</li>
-                        </ul>
+                    <div class="policy-item">
+                        <div class="policy-icon"><i class="ph ph-cpu"></i></div>
+                        <div class="policy-content">
+                            <strong class="lang-ja">スマート化</strong>
+                            <strong class="lang-en">Smart Tech</strong>
+                            <span class="lang-ja">自動走行農機やドローン等の社会実装を加速し、労働力不足を補う。</span>
+                            <span class="lang-en">Accelerating implementation of autonomous machinery and drones.</span>
+                        </div>
+                    </div>
+                    <div class="policy-item">
+                        <div class="policy-icon"><i class="ph ph-globe-hemisphere-east"></i></div>
+                        <div class="policy-content">
+                            <strong class="lang-ja">輸出拡大</strong>
+                            <strong class="lang-en">Export Expansion</strong>
+                            <span class="lang-ja">海外市場の開拓による農業所得の向上と生産基盤の維持。</span>
+                            <span class="lang-en">Raising farm income and sustaining production capacity via overseas markets.</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-      </div>
     </section>
 
     <!-- Market -->
