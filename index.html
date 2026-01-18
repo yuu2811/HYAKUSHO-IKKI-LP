@@ -3175,7 +3175,11 @@
     const langSwitches = document.querySelectorAll('.lang-switch');
     const langLabels = document.querySelectorAll('.lang-label');
     const body = document.body;
-    let currentLang = 'ja';
+
+    // URLパラメータから言語を取得
+    const urlParams = new URLSearchParams(window.location.search);
+    const langParam = urlParams.get('lang');
+    let currentLang = (langParam === 'en') ? 'en' : 'ja';
 
     // すべてのスイッチにイベントリスナーを設定
     langSwitches.forEach(switchEl => {
@@ -3249,6 +3253,9 @@
         // Update Charts for new language
         updateCharts(lang);
     }
+
+    // ページロード時に初期言語を設定
+    setLanguage(currentLang);
 
     // --- Scroll & Animation ---
     const observer = new IntersectionObserver((entries) => {
