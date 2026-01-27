@@ -1,4 +1,2 @@
 User-agent: *
-Allow: /
-
-Sitemap: https://www.google.com/search?q=https://100ikki.com/sitemap.xml
+Disallow: /
